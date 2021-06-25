@@ -8,4 +8,4 @@ sed -i '1,$d' ${workdir}/ini/global.ini
 sed -i 's/true/false/g' ${workdir}/ini/store.ini
 
 # 删除日志
-cd ${workdir}/log && rm -rf *
+cd ${workdir}/log && find . -name "*.log" --delete
