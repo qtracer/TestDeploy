@@ -1,0 +1,17 @@
+FROM centos/python-36-centos7:latest
+
+MAINTAINER GHJ 3011483811@qq.com
+
+USER root
+
+COPY . /app
+
+WORKDIR /app
+
+ARG envArg="2.5.4"
+
+RUN pip3 install httprunner==$envArg
+
+RUN pip3 install mock
+
+EXPOSE 8080
