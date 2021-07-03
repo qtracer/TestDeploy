@@ -16,7 +16,7 @@
 * $tag : 版本号
 * $workerNum : Interger
 ```
-# tip:
+# tips:
 if [ $workerNum -ge 1 ];then
   echo "performance test"
 else
