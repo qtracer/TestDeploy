@@ -12,9 +12,9 @@
 > bash ${ShellDir}/main-cli.sh **$JOB_NAME** **$tag** **$workerNum** $appointedCase
 
 其中，必选参数：
-* $JOB_NAME
-* $tag
-* $workerNum
+* $JOB_NAME ：项目名 
+* $tag : 版本号
+* $workerNum : Interger
 ```
 # tip:
 if [ $workerNum -ge 1 ];then
@@ -25,6 +25,6 @@ fi
 ```
 
 可选参数：
-* $appointedCase
+* $appointedCase ： 指定路径或用例
 
 另，若想实现PipeLine，则需要封装或直接调用views和func里面的Shell脚本。
