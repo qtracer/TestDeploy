@@ -9,12 +9,20 @@
 
 
 # 环境部署和执行统一入口
-> bash ${ShellDir}/main-cli.sh $JOB_NAME $tag $workerNum $appointedCase
+> bash ${ShellDir}/main-cli.sh **$JOB_NAME** **$tag** **$workerNum** $appointedCase
 
 其中，必选参数：
 * $JOB_NAME
 * $tag
 * $workerNum
+```
+# tip:
+if [ $workerNum -ge 1 ];then
+  echo "performance test"
+else
+  echo "api test"
+fi
+```
 
 可选参数：
 * $appointedCase
