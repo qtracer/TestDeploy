@@ -1,0 +1,8 @@
+
+
+# 还需手动在Jenkins页面更新网站 #
+
+1、点击Jenkins的系统管理 --> 插件管理，打开插件管理页面
+2、Jenkins 欢迎页面点击系统管理，进入系统管理页面，并点击插件管理进入到插件管理页面
+3、在插件管理页面点击高级（Advanced）
+4、在高级选项卡找到更新网站（Update Site）菜单项，将默认网站更新为 https://mirrors.tuna.tsinghua.edu.cn/jenkins/updates/update-center.json 并提交

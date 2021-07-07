@@ -1,0 +1,23 @@
+# 前提：首先安装docker环境，安装docker环境后才可以执行Dockerfile
+
+# 安装tomcat
+
+FROM jenkins/jenkins:lts
+
+MAINTAINER GHJ <1993huajun@gmail.com>
+
+# 指定Dockerfile的使用用户
+USER root
+# RUN echo `whoami`
+
+# 定义变量，创建目录
+#ARG envArg="/var"
+#RUN echo "$envArg"
+#RUN mkdir "$envArg"
+
+# WORKDIR /code
+# ADD . buildContainer.sh
+# RUN chmod +x /code/buildContainer.sh
+
+# CMD ["/code/buildContainer.sh"]
+

@@ -1,0 +1,6 @@
+  
+#####配置Node
+
+(1)Jenkins的Docker镜像跑起来后，已经安装了JDK环境。宿主机尚未安装JDK环境，用不了节点。这时候需要将容器的java命令在宿主机/usr/bin的位置建立软链接。
+(2)并且需要因为需要拉github或gitlab上的代码，需要在宿主机安装Git服务。yum -y install git
+(3)设置节点时，将远程工作目录定义为Shell脚本所在目录。

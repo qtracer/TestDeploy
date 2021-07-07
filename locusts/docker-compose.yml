@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  master:
+    build:
+      context: ./
+      args:
+        VER: ${JOB_NAME}
+    image: ${locust_image}
+    tty: true
+    volumes:
+      - /opt/locust/${JOB_NAME}:/mnt/locust/${JOB_NAME}
+    ports:
+      - "8089:8089"
+      - "5557:5557"
+    command: locust -f /mnt/locust/${JOB_NAME}/locustfile.py --master
+
+  worker:
+    image: ${locust_image}
+    tty: true
+    volumes:
+      - /opt/locust/${JOB_NAME}:/mnt/locust/${JOB_NAME}
+    command: locust -f /mnt/locust/${JOB_NAME}/locustfile.py --worker --master-host=master
