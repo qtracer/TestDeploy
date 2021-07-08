@@ -10,9 +10,12 @@ function setDockerRepo(){
   yum install -y yum-utils device-mapper-persistent-data lvm2 && 
   yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo &&
   yum makecache fast
+  
+  echo "列出Docker所有版本"
+  yum list docker-ce --showduplicates | sort -r
 }
 
-
+:<<!
 function choiceVersion(){
   echo "列出Docker所有版本"
   yum list docker-ce --showduplicates | sort -r
@@ -29,7 +32,7 @@ function choiceVersion(){
     dVersion="docker-ce-${version}.ce"
   fi
 }
-
+!
 
 installDocker(){
   echo "$dVersion"
@@ -44,5 +47,5 @@ installDocker(){
 }
 
 setDockerRepo "安装docker仓库和依赖"
-choiceVersion "选择docker版本"
+# choiceVersion "选择docker版本"
 installDocker "安装docker环境并且加入开机自启动"
