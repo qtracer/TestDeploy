@@ -4,6 +4,9 @@
 * 省去可视化web平台相关技术的研发和维护
 * 不重复造轮子，拥抱开源，充分利用已有的优秀轮子
 
+# 整体架构设计
+![效果](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE.png)
+
 # 工具特点
 * 符合DevOps思想，持续集成持续交付
 * 纯Shell脚本，功能组件化，支持PipeLine
