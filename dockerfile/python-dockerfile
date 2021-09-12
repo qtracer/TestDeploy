@@ -1,0 +1,17 @@
+FROM python:3.7.4
+
+MAINTAINER GHJ 3011483811@qq.com
+
+RUN pip install -U pip
+
+RUN pip config set global.index-url http://mirrors.aliyun.com/pypi/simple
+
+RUN pip config set install.trusted-host mirrors.aliyun.com
+
+ARG envArg="2.5.4"
+
+RUN pip3 install httprunner==$envArg
+
+RUN pip3 install mock
+
+EXPOSE 8080
