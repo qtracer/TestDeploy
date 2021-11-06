@@ -42,6 +42,6 @@ fi
 另，若想实现PipeLine，则需要封装或直接调用views和func里面的Shell脚本。
 
 # 测试集群自动化启动
-需要手动配置**ini/host.ini**文件，格式：host ip,account,password
+需要手动配置**ini/host.ini**文件，格式：${host ip},${account},${password}
 
 程序会根据$workerNum计算需要启动多少台主机。
