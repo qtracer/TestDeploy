@@ -45,3 +45,5 @@ fi
 需要手动配置**ini/host.ini**文件，格式：${host ip},${account},${password}
 
 程序会根据$workerNum计算需要启动多少台主机。
+
+备注：整套流程尚未实现完全的自动化，如jenkins初次启动和配置、定时清理任务的配置等，仍需手动操作。
