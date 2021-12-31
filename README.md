@@ -1,7 +1,7 @@
 # 演示demo
 http://42.192.227.196:8080/
-账号：tester
-密码：tester
+账号：gaohuajun
+密码：gaohuajun
 
 备注：
 
