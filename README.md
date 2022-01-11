@@ -50,7 +50,7 @@ fi
 
 # NGINX转发请求执行shell
 curl -H "dirpath:$PWD" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
-* 其中，host对应Nginx主机ip或域名，其他为变量
+* 其中，host对应Nginx主机ip，其他为变量
 
 # 测试集群自动化启动
 需要手动配置**ini/host.ini**文件，格式：${host ip},${account},${password}
