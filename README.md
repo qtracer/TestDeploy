@@ -49,8 +49,8 @@ fi
 另，若想实现PipeLine，则需要封装或直接调用views和func里面的Shell脚本。
 
 # NGINX转发请求执行shell
-curl -H "dirpath:$PWD" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
-* 其中，host对应Nginx主机ip，其他为变量
+curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
+* PWD不需要改，表示自动化项目代码包路径；host对应Nginx主机ip，shellpath对应路径+TestDeploy，BRANCH对应自动化测试项目代码分支。
 
 # 测试集群自动化启动
 需要手动配置**ini/host.ini**文件，格式：${host ip},${account},${password}
