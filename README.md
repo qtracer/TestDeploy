@@ -20,11 +20,11 @@ http://42.192.227.196:8080/
 
 # 工具特点
 * 符合DevOps思想，持续集成持续交付
-* 纯Shell脚本，功能组件化，支持PipeLine
+* 以Shell脚本为主，功能组件化，支持PipeLine
 * 结合Docker容器技术，快速提供所需测试环境
 * 集成Httprunner2/Locust1.4等工具特性
-* 测试集群自动化启动多核，执行分布式压测
-* 日志监控，快速定位和排查
+* 支持Locust Master-Slave架构，执行分布式压测
+* 支持Jenkins Master-Slave架构，自动化测试支持在不同机器上跑
 
 
 # 环境部署和执行统一入口
@@ -48,12 +48,18 @@ fi
 
 另，若想实现PipeLine，则需要封装或直接调用views和func里面的Shell脚本。
 
-# NGINX转发请求执行shell
-curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
-* PWD不需要改，表示自动化项目代码包路径；host对应Nginx主机ip，shellpath对应路径+TestDeploy，BRANCH对应自动化测试项目代码分支。
 
 # 测试集群自动化启动
-需要手动配置**ini/host.ini**文件，格式：${host ip},${account},${password}
+需要手动配置**ini/host.ini**文件，格式：${host ip},${account},${password},${constant}
 
-程序会根据$workerNum计算需要启动多少台主机。
+其中，${constant}为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”。
 
+host.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理下slave的文件，在首次初始化时配置，后续配置需要通过**统一执行入口**重新执行一次slave的初始化。
+
+性能压测时，程序会根据$workerNum计算需要启动多少台主机，无需手动填写。
+
+
+# NGINX转发请求执行shell
+Jenkins配置：curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
+* PWD不需要改，表示自动化项目代码包路径；host对应Nginx主机ip，shellpath对应路径+TestDeploy，BRANCH对应自动化测试项目代码分支。
+* 该方式已支持，但不推荐使用，默认为关闭状态。若需要使用，则在views/buildEnvDepend.sh 取消注释，开启。
