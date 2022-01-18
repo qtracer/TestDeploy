@@ -26,6 +26,11 @@ http://42.192.227.196:8080/
 * 支持Locust Master-Slave架构，执行分布式压测
 * 支持Jenkins Master-Slave架构，自动化测试支持在不同机器上跑
 
+# 快速开始，三步走
+* 如需要用到Master-Slave模式，那么需要手动配置ini/hosts.ini
+* 进入${ShellDir}，在cli通过**环境部署和执行统一入口**执行初始化，并搭建CI平台Jenkins
+* 配置Jenkins并创建项目
+
 
 # 环境部署和执行统一入口
 > bash ${ShellDir}/main-cli.sh **$JOB_NAME** **$tag** **$workerNum** $appointedCase
@@ -50,7 +55,7 @@ fi
 
 
 # 测试集群自动化启动
-需要手动配置**ini/host.ini**文件，格式：${host ip},${account},${password},${constant}
+需要手动配置**ini/hosts.ini**文件，格式：${host ip},${account},${password},${constant}
 
 其中，${constant}为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”。
 
@@ -68,5 +73,5 @@ host.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文�
 
 # NGINX转发请求执行shell
 > Jenkins配置：curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
-* PWD不需要改，表示自动化项目代码包路径；参数host对应Nginx主机ip，参数shellpath对应路径+TestDeploy，BRANCH对应自动化测试项目代码分支。
+* PWD不需要改，表示自动化项目代码包路径；参数host对应Nginx主机ip，参数shellpath对应路径+TestDeploy，参数BRANCH对应自动化测试项目代码分支。
 * 该方式已支持，但不推荐使用，默认为关闭状态。若需要使用，则在views/buildEnvDepend.sh 取消注释，开启。
