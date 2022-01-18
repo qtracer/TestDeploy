@@ -60,6 +60,12 @@ host.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理下slave的�
 
 
 # NGINX转发请求执行shell
-Jenkins配置：curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
-* PWD不需要改，表示自动化项目代码包路径；host对应Nginx主机ip，shellpath对应路径+TestDeploy，BRANCH对应自动化测试项目代码分支。
+> Jenkins配置：curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
+* PWD不需要改，表示自动化项目代码包路径；参数host对应Nginx主机ip，参数shellpath对应路径+TestDeploy，BRANCH对应自动化测试项目代码分支。
 * 该方式已支持，但不推荐使用，默认为关闭状态。若需要使用，则在views/buildEnvDepend.sh 取消注释，开启。
+
+# store.ini部分参数说明
+* installedEnv：是否安装了基础环境。不建议手动修改。
+* installedCI：是否安装了CI平台Jenkins。不建议手动修改。
+* remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留2个。支持修改。
+* hrun_path：接口自动化默认执行的指定路径，默认为testcases/，支持修改，也可在统一执行入口指定。
