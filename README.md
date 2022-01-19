@@ -54,7 +54,7 @@ fi
 另，若想实现PipeLine，则需要封装或直接调用views和func里面的Shell脚本。
 
 
-# 测试集群自动化启动
+# 测试集群配置
 需要手动配置**ini/hosts.ini**文件，格式：${host ip},${account},${password},${constant}
 
 其中，${constant}为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”。
