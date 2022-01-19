@@ -10,10 +10,9 @@ http://42.192.227.196:8080/
 促进测试流程高效与稳定。
 
 # 设计原则
-* 追求高的ROI
-* 快速提供测试所需环境，环境高效支持测试技术执行
-* 省去可视化web平台相关技术的研发和维护
-* 不重复造轮子，拥抱开源，充分利用已有的优秀轮子
+* 高效的自动化和标准化
+* 简单的技术栈，高可维护性
+* 拥抱开源，充分利用已有的优秀轮子
 
 # 整体架构设计
 ![效果](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE00.png)
@@ -23,8 +22,8 @@ http://42.192.227.196:8080/
 * 以Shell脚本为主，功能组件化，支持PipeLine
 * 结合Docker容器技术，快速提供所需测试环境
 * 集成Httprunner2/Locust1.4等工具特性
-* 支持Locust Master-Slave架构，执行分布式压测
-* 支持Jenkins Master-Slave架构，自动化测试支持在不同机器上跑
+* Jenkins集中式管理，slave节点自动部署测试依赖环境
+* 支持执行分布式压测和接口自动化
 
 # 快速开始，三步走
 * 如需要用到Master-Slave模式，那么需要手动配置ini/hosts.ini
