@@ -58,7 +58,7 @@ fi
 
 其中，${constant}为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”。
 
-host.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文件，在首次初始化前配置，后续新增slave需要通过**统一执行入口**重新执行一次slave的初始化。
+host.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文件，在首次初始化前配置，后续新增slave需要通过进入Master主机的**统一执行入口**重新执行一次slave的初始化。
 
 性能压测时，程序会根据$workerNum计算需要启动多少台主机，无需手动填写。
 
