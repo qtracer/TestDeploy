@@ -54,9 +54,9 @@ fi
 
 
 # 测试集群配置
-需要手动配置**ini/hosts.ini**文件，格式：${host ip},${account},${password},${constant}
+需要手动配置**ini/hosts.ini**文件，格式：${host ip},${account},${password},${constant},${Master-Slave}
 
-其中，${constant}为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”。
+其中，${constant}为“isnew”或者“notnew”，如果是新的从机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”。${Master-Slave}填“master”或“slave”，只支持一个master。
 
 host.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文件，在首次初始化前配置，后续新增slave需要通过进入Master主机的**统一执行入口**重新执行一次slave的初始化。
 
