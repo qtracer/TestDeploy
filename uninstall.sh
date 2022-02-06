@@ -11,8 +11,8 @@ jenkins_home=$(cat ./ini/store.ini | grep "jenkins_home" | awk -F = '{print $2}'
 jenkins_image=$(cat ./ini/store.ini | grep "jenkins_image" | awk -F = '{print $2}')
 jenkins_container=$(cat ./ini/store.ini | grep "jenkins_container" | awk -F = '{print $2}')  
 python_image=$(cat ./ini/store.ini | grep "python_image" | awk -F = '{print $2}')
-python_container=$(cat ./ini/container.ini | awk -F , '{print $1}')
-python_home=$(cat ./ini/container.ini | awk -F , '{print $2}')
+python_container=$(cat ./ini/pycontainer.ini | awk -F , '{print $1}')
+python_home=$(cat ./ini/pycontainer.ini | awk -F , '{print $2}')
 
 # 停止并删除容器
 docker stop $python_container $jenkins_container
@@ -26,11 +26,11 @@ docker rmi -f $python_image $jenkins_image
 # 清理文件 
 rm -rf $jenkins_home
 rm -rf $python_home
-sed -i '1,$d' ${workdir}/ini/container.ini
+sed -i '1,$d' ${workdir}/ini/pycontainer.ini
 sed -i '1,$d' ${workdir}/ini/global.ini
 
 sed -i 's/true/false/g' ${workdir}/ini/store.ini
-
+sed -i 's/isInstalled/notInstalled/g' ${workdir}/ini/store.ini
 # 删除docker环境
 yum list installed | grep docker
 

@@ -1,7 +1,11 @@
 #!/bin/bash
 
 workdir=$1
+
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
+
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
 
 expect -v &> /dev/null
 

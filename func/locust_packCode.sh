@@ -9,6 +9,9 @@ appointedCase=$5
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
 jenkins_container=$(cat ${workdir}/ini/store.ini | grep "jenkins_container" | awk -F = '{print $2}')
 
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
+
 mkdir -vp /opt/locust
 # cd /opt/locust/${JOB_HOME}
 

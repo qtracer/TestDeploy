@@ -1,10 +1,9 @@
 #!/bin/bash
 
 workdir=$1
+
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
 jenkins_image=$(cat ${workdir}/ini/store.ini | grep "jenkins_image" | awk -F = '{print $2}')
-
-# logpath=$(cat ${workdir}/ini/store.ini | grep "logpath" | awk -F = '{print $2}')
 
 export info="$0: build jenkins image"
 bash ${workdir}/comm/echoInfo.sh $workdir

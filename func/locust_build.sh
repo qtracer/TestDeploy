@@ -8,6 +8,6 @@ curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}'
 export info="$0: build locust image of $JOB_NAME"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-# 构建镜像
+# 构建locust镜像
 cd /opt/locust/${JOB_NAME}
 docker build -t ${JOB_NAME} -f locust-dockerfile . | tee -a ${workdir}/log/${curdate}.log

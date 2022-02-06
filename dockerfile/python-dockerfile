@@ -10,6 +10,12 @@ RUN pip config set install.trusted-host mirrors.aliyun.com
 
 ARG envArg="2.5.4"
 
+RUN pip3 install requests
+
+RUN pip3 install PyMySQL
+
+RUN pip3 install PyYAML
+
 RUN pip3 install httprunner==$envArg
 
 RUN pip3 install mock

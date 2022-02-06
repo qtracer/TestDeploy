@@ -1,7 +1,11 @@
 #!/bin/bash
+# 解压文件
 
 workdir=$1
 packageName=$2
+
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
 
 function xvfCodePackage(){
   package=$1

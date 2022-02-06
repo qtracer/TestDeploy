@@ -1,4 +1,5 @@
 #!/bin/bash
+# 性能测试主流程
 
 workdir=$1
 JOB_NAME=$2
@@ -8,10 +9,8 @@ appointedCase=$5
 
 projectPacakge=$JOB_NAME$tag
 
-# init 
-# bash ${workdir}/views/installDocker.sh $workdir &\
-# bash ${workdir}/func/installDockerCompose.sh ${workdir} &\
-# bash ${workdir}/views/runRedisImage.sh ${workdir}
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
 
 # 判断性能开启模式，获取从机开启worker数量
 bash ${workdir}/func/countCores.sh ${workdir} ${workerNum} ${appointedCase}
@@ -27,6 +26,8 @@ bash ${workdir}/func/changeComposeEnv.sh $workdir $JOB_NAME $appointedCase  # �
 # 构建locust镜像
 bash ${workdir}/func/locust_build.sh $workdir $JOB_NAME
 
+echo "realWorkers is: $realWorkers"
+echo "openModel is: $openModel"
 
 if [ "$openModel" = "single" ];then
   bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase

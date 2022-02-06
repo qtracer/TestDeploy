@@ -3,6 +3,9 @@
 packageName=$1
 JOB_NAME=$2
 
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
+
 echo $0
 tar zcvf ${packageName}.tar $(ls | grep "${JOB_NAME}$")
 

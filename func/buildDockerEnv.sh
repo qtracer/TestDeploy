@@ -3,8 +3,13 @@
 # @author GHJ 2021/05/15
 
 workdir=$1
+
 dVersion=$(cat ${workdir}/ini/store.ini | grep "dVersion" | awk -F = '{print $2}')
 
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
+
+# 安装Docker依赖环境
 function setDockerRepo(){
   # echo `yum list installed`
   yum install -y yum-utils device-mapper-persistent-data lvm2 && 
@@ -34,6 +39,7 @@ function choiceVersion(){
 }
 !
 
+# 安装Docker
 installDocker(){
   echo "$dVersion"
   # 自动确认license声明，并回车继续安装

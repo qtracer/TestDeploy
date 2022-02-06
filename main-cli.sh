@@ -11,18 +11,24 @@ appointedCase=$4
 
 
 curdate="$(date +%Y%m%d)"
-workdir=$(find / -type d -name "TestDeploy*" | head -1)
+workdir=$PWD
+keyword="TestDeploy"
+if [[ $PWD == *$keyword* ]];then
+  :
+else
+  workdir=$(find / -type d -name "TestDeploy*" | head -1)
+fi
 
-echo "curdate=$curdate" > ${workdir}/ini/global.ini
-echo "workdir=$workdir" >> ${workdir}/ini/global.ini
+bash ${workdir}/views/initJenkinsNode.sh ${workdir}
+bash ${workdir}/views/buildEnvDepend.sh ${workdir}
 
-
-ifexist=$(cat ${workdir}/ini/store.ini | grep "installed" | awk -F = '{print $2}')
-echo "ifexists' value is：$ifexist"
+ifexist=$(cat ${workdir}/ini/store.ini | grep "installedEnv" | awk -F = '{print $2}')
+installedCI=$(cat ${workdir}/ini/store.ini | grep "installedCI" | awk -F = '{print $2}')
+echo "ifexist is: "$ifexist
 
 # 注意:默认Jenkins下执行,若cli执行需要将代码包放置在pwd的上级目录
 if [ "$ifexist" = "false" ];then
-  bash ${workdir}/views/buildCIPlatform.sh ${workdir}
+  sed -i 's/false/true/g' ${workdir}/ini/store.ini 
 elif [ $workerNum -ge 1 ];then
   bash ${workdir}/views/locustExe.sh ${workdir} ${JOB_NAME} $tag ${workerNum} $appointedCase
 else
@@ -30,3 +36,6 @@ else
 fi
 
 
+if [ "$installedCI" = "notInstalled" ];then
+  bash ${workdir}/views/buildCIPlatform.sh ${workdir}
+fi

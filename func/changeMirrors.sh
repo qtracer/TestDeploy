@@ -1,16 +1,17 @@
 #!/bin/bash
 
 workdir=$1
+
 jenkins_home=$(cat ${workdir}/ini/store.ini | grep "jenkins_home" | awk -F = '{print $2}')
 jenkins_container=$(cat ${workdir}/ini/store.ini | grep "jenkins_container" | awk -F = '{print $2}')
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
-echo "jenkins_home is：${jenkins_home}"
-echo "jenkins_container is： ${jenkins_container}"
 
-# logpath=$(cat ${workdir}/ini/store.ini | grep "logpath" | awk -F = '{print $2}')
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
 
 # 改变docker的镜像源
 cat ${workdir}/data/daemon.json > /etc/docker/daemon.json
+
 
 # 改变jenkins下载组件的镜像源
 export info="$0: 更换容器Jenkins镜像源(判断tsinghua是否存在，存在1,不存在0)"

@@ -6,6 +6,9 @@ appointedCase=$3
 
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
 
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
+
 # 构建镜像
 cd /opt/locust/${JOB_NAME}
 sed -i 's/default/'"${JOB_NAME}"'/g' .env

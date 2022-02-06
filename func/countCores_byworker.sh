@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# workdir=$(find /opt -type d -name "TestDeploy*" | head -1)
 remaincores=$1
+
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
 
 totalCores=$[ $(cat /proc/cpuinfo | grep "cpu cores" | wc -l) - $remaincores ]
 
