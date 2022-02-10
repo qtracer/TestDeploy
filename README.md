@@ -1,43 +1,43 @@
-# ÑÝÊ¾demo
+# æ¼”ç¤ºdemo
 http://42.192.227.196:8080/
-ÕËºÅ£ºgaohuajun
-ÃÜÂë£ºgaohuajun
+è´¦å·ï¼šgaohuajun
+å¯†ç ï¼šgaohuajun
 
-±¸×¢£ºÕûÌ×Á÷³ÌÉÐÎ´ÊµÏÖÍêÈ«µÄ×Ô¶¯»¯£¬Èçjenkins³õ´ÎÆô¶¯ºÍÅäÖÃ¡¢¶¨Ê±ÇåÀíÈÎÎñµÄÅäÖÃµÈ£¬ÈÔÐèÊÖ¶¯²Ù×÷¡£
+å¤‡æ³¨ï¼šæ•´å¥—æµç¨‹å°šæœªå®žçŽ°å®Œå…¨çš„è‡ªåŠ¨åŒ–ï¼Œå¦‚jenkinsåˆæ¬¡å¯åŠ¨å’Œé…ç½®ã€å®šæ—¶æ¸…ç†ä»»åŠ¡çš„é…ç½®ç­‰ï¼Œä»éœ€æ‰‹åŠ¨æ“ä½œã€‚
 
-# Ä¿±ê
-¿ìËÙÌá¹©²âÊÔ±ê×¼»¯»·¾³£¬
-´Ù½ø²âÊÔÁ÷³Ì¸ßÐ§ÓëÎÈ¶¨¡£
+# ç›®æ ‡
+å¿«é€Ÿæä¾›æµ‹è¯•æ ‡å‡†åŒ–çŽ¯å¢ƒï¼Œ
+ä¿ƒè¿›æµ‹è¯•æµç¨‹é«˜æ•ˆä¸Žç¨³å®šã€‚
 
-# Éè¼ÆÔ­Ôò
-* ¸ßÐ§µÄ×Ô¶¯»¯ºÍ±ê×¼»¯
-* ¼òµ¥µÄ¼¼ÊõÕ»£¬¸ß¿ÉÎ¬»¤ÐÔ
-* Óµ±§¿ªÔ´£¬³ä·ÖÀûÓÃÒÑÓÐµÄÓÅÐãÂÖ×Ó
+# è®¾è®¡åŽŸåˆ™
+* é«˜æ•ˆçš„è‡ªåŠ¨åŒ–å’Œæ ‡å‡†åŒ–
+* ç®€å•çš„æŠ€æœ¯æ ˆï¼Œé«˜å¯ç»´æŠ¤æ€§
+* æ‹¥æŠ±å¼€æºï¼Œå……åˆ†åˆ©ç”¨å·²æœ‰çš„ä¼˜ç§€è½®å­
 
-# ÕûÌå¼Ü¹¹Éè¼Æ
-![Ð§¹û](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE00.png)
+# æ•´ä½“æž¶æž„è®¾è®¡
+![æ•ˆæžœ](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE00.png)
 
-# ¹¤¾ßÌØµã
-* ·ûºÏDevOpsË¼Ïë£¬³ÖÐø¼¯³É³ÖÐø½»¸¶
-* ÒÔShell½Å±¾ÎªÖ÷£¬¹¦ÄÜ×é¼þ»¯£¬Ö§³ÖPipeLine
-* ½áºÏDockerÈÝÆ÷¼¼Êõ£¬¿ìËÙÌá¹©ËùÐè²âÊÔ»·¾³
-* ¼¯³ÉHttprunner2/Locust1.4µÈ¹¤¾ßÌØÐÔ
-* Jenkins¼¯ÖÐÊ½¹ÜÀí£¬slave½Úµã×Ô¶¯²¿Êð²âÊÔÒÀÀµ»·¾³
-* Ö§³ÖÖ´ÐÐ·Ö²¼Ê½Ñ¹²âºÍ½Ó¿Ú×Ô¶¯»¯
+# å·¥å…·ç‰¹ç‚¹
+* ç¬¦åˆDevOpsæ€æƒ³ï¼ŒæŒç»­é›†æˆæŒç»­äº¤ä»˜
+* ä»¥Shellè„šæœ¬ä¸ºä¸»ï¼ŒåŠŸèƒ½ç»„ä»¶åŒ–ï¼Œæ”¯æŒPipeLine
+* ç»“åˆDockerå®¹å™¨æŠ€æœ¯ï¼Œå¿«é€Ÿæä¾›æ‰€éœ€æµ‹è¯•çŽ¯å¢ƒ
+* é›†æˆHttprunner2/Locust1.4ç­‰å·¥å…·ç‰¹æ€§
+* Jenkinsé›†ä¸­å¼ç®¡ç†ï¼ŒslaveèŠ‚ç‚¹è‡ªåŠ¨éƒ¨ç½²æµ‹è¯•ä¾èµ–çŽ¯å¢ƒ
+* æ”¯æŒæ‰§è¡Œåˆ†å¸ƒå¼åŽ‹æµ‹å’ŒæŽ¥å£è‡ªåŠ¨åŒ–
 
-# ¿ìËÙ¿ªÊ¼£¬Èý²½×ß
-* ÈçÐèÒªÓÃµ½Master-SlaveÄ£Ê½£¬ÄÇÃ´ÐèÒªÊÖ¶¯ÅäÖÃini/hosts.ini
-* ½øÈë${ShellDir}£¬ÔÚcliÍ¨¹ý**»·¾³²¿ÊðºÍÖ´ÐÐÍ³Ò»Èë¿Ú**Ö´ÐÐ³õÊ¼»¯£¬²¢´î½¨CIÆ½Ì¨Jenkins
-* ÅäÖÃJenkins²¢´´½¨ÏîÄ¿
+# å¿«é€Ÿå¼€å§‹ï¼Œä¸‰æ­¥èµ°
+* å¦‚éœ€è¦ç”¨åˆ°Master-Slaveæ¨¡å¼ï¼Œé‚£ä¹ˆéœ€è¦æ‰‹åŠ¨é…ç½®ini/hosts.ini
+* è¿›å…¥${ShellDir}ï¼Œåœ¨clié€šè¿‡**çŽ¯å¢ƒéƒ¨ç½²å’Œæ‰§è¡Œç»Ÿä¸€å…¥å£**æ‰§è¡Œåˆå§‹åŒ–ï¼Œå¹¶æ­å»ºCIå¹³å°Jenkins
+* é…ç½®Jenkinså¹¶åˆ›å»ºé¡¹ç›®
 
 
-# »·¾³²¿ÊðºÍÖ´ÐÐÍ³Ò»Èë¿Ú
+# çŽ¯å¢ƒéƒ¨ç½²å’Œæ‰§è¡Œç»Ÿä¸€å…¥å£
 > bash ${ShellDir}/main-cli.sh **$JOB_NAME** **$tag** **$workerNum** $appointedCase
 
-ÆäÖÐ£¬±ØÑ¡²ÎÊý£º
-* $JOB_NAME £ºÏîÄ¿Ãû 
-* $tag : °æ±¾ºÅ
-* $workerNum : Æô¶¯ºËÊý£¬Interger
+å…¶ä¸­ï¼Œå¿…é€‰å‚æ•°ï¼š
+* $JOB_NAME ï¼šé¡¹ç›®å 
+* $tag : ç‰ˆæœ¬å·
+* $workerNum : å¯åŠ¨æ ¸æ•°ï¼ŒInterger
 ```
 # tips:
 if [ $workerNum -ge 1 ];then
@@ -47,30 +47,30 @@ else
 fi
 ```
 
-¿ÉÑ¡²ÎÊý£º
-* $appointedCase £º Ö¸¶¨Â·¾¶»òÓÃÀý
+å¯é€‰å‚æ•°ï¼š
+* $appointedCase ï¼š æŒ‡å®šè·¯å¾„æˆ–ç”¨ä¾‹
 
-Áí£¬ÈôÏëÊµÏÖPipeLine£¬ÔòÐèÒª·â×°»òÖ±½Óµ÷ÓÃviewsºÍfuncÀïÃæµÄShell½Å±¾¡£
-
-
-# ²âÊÔ¼¯ÈºÅäÖÃ
-ÐèÒªÊÖ¶¯ÅäÖÃ**ini/hosts.ini**ÎÄ¼þ£¬¸ñÊ½£º${host ip},${account},${password},${constant}
-
-ÆäÖÐ£¬${constant}Îª¡°isnew¡±»òÕß¡°notnew¡±£¬Èç¹ûÊÇÐÂÖ÷»úÇÒÐèÒª×ö³õÊ¼»¯£¬Ôò±ØÐëÊÇ¡°isnew¡±£¬³õÊ¼»¯ºó»á±äÎª¡°notnew¡±¡£
-
-host.iniÎªJenkins Master-SlaveÒÔ¼°Locust Master-SlaveÄ£Ê½¹ÜÀíslaveµÄÎÄ¼þ£¬ÔÚÊ×´Î³õÊ¼»¯Ç°ÅäÖÃ£¬ºóÐøÐÂÔöslaveÐèÒªÍ¨¹ý**Í³Ò»Ö´ÐÐÈë¿Ú**ÖØÐÂÖ´ÐÐÒ»´ÎslaveµÄ³õÊ¼»¯¡£
-
-ÐÔÄÜÑ¹²âÊ±£¬³ÌÐò»á¸ù¾Ý$workerNum¼ÆËãÐèÒªÆô¶¯¶àÉÙÌ¨Ö÷»ú£¬ÎÞÐèÊÖ¶¯ÌîÐ´¡£
+å¦ï¼Œè‹¥æƒ³å®žçŽ°PipeLineï¼Œåˆ™éœ€è¦å°è£…æˆ–ç›´æŽ¥è°ƒç”¨viewså’Œfuncé‡Œé¢çš„Shellè„šæœ¬ã€‚
 
 
-# store.ini²¿·Ö²ÎÊýËµÃ÷
-* installedEnv£ºÊÇ·ñ°²×°ÁË»ù´¡»·¾³¡£²»½¨ÒéÊÖ¶¯ÐÞ¸Ä¡£
-* installedCI£ºÊÇ·ñ°²×°ÁËCIÆ½Ì¨Jenkins¡£²»½¨ÒéÊÖ¶¯ÐÞ¸Ä¡£
-* remaincores£ºÖ´ÐÐÐÔÄÜ²âÊÔÊ±£¬Ã¿¸ö´Ó»úÔ¤ÁôµÄcoresÊýÁ¿£¬±ÜÃâ´òÂú£¬Ä¬ÈÏÔ¤Áô2¸ö¡£Ö§³ÖÐÞ¸Ä¡£
-* hrun_path£º½Ó¿Ú×Ô¶¯»¯Ä¬ÈÏÖ´ÐÐµÄÖ¸¶¨Â·¾¶£¬Ä¬ÈÏÎªtestcases/£¬Ö§³ÖÐÞ¸Ä£¬Ò²¿ÉÔÚÍ³Ò»Ö´ÐÐÈë¿ÚÖ¸¶¨¡£
+# æµ‹è¯•é›†ç¾¤é…ç½®
+éœ€è¦æ‰‹åŠ¨é…ç½®**ini/hosts.ini**æ–‡ä»¶ï¼Œæ ¼å¼ï¼š${host},${account},${password},${constant}
+
+å…¶ä¸­ï¼Œ${constant}ä¸ºâ€œisnewâ€æˆ–è€…â€œnotnewâ€ï¼Œå¦‚æžœæ˜¯æ–°ä¸»æœºä¸”éœ€è¦åšåˆå§‹åŒ–ï¼Œåˆ™å¿…é¡»æ˜¯â€œisnewâ€ï¼Œåˆå§‹åŒ–åŽä¼šå˜ä¸ºâ€œnotnewâ€ã€‚
+
+host.iniä¸ºJenkins Master-Slaveä»¥åŠLocust Master-Slaveæ¨¡å¼ç®¡ç†slaveçš„æ–‡ä»¶ï¼Œåœ¨é¦–æ¬¡åˆå§‹åŒ–å‰é…ç½®ï¼ŒåŽç»­æ–°å¢žslaveéœ€è¦é€šè¿‡**ç»Ÿä¸€æ‰§è¡Œå…¥å£**é‡æ–°æ‰§è¡Œä¸€æ¬¡slaveçš„åˆå§‹åŒ–ã€‚
+
+æ€§èƒ½åŽ‹æµ‹æ—¶ï¼Œç¨‹åºä¼šæ ¹æ®$workerNumè®¡ç®—éœ€è¦å¯åŠ¨å¤šå°‘å°ä¸»æœºï¼Œæ— éœ€æ‰‹åŠ¨å¡«å†™ã€‚
 
 
-# NGINX×ª·¢ÇëÇóÖ´ÐÐshell
-> JenkinsÅäÖÃ£ºcurl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
-* PWD²»ÐèÒª¸Ä£¬±íÊ¾×Ô¶¯»¯ÏîÄ¿´úÂë°üÂ·¾¶£»²ÎÊýhost¶ÔÓ¦NginxÖ÷»úip£¬²ÎÊýshellpath¶ÔÓ¦Â·¾¶+TestDeploy£¬²ÎÊýBRANCH¶ÔÓ¦×Ô¶¯»¯²âÊÔÏîÄ¿´úÂë·ÖÖ§¡£
-* ¸Ã·½Ê½ÒÑÖ§³Ö£¬µ«²»ÍÆ¼öÊ¹ÓÃ£¬Ä¬ÈÏÎª¹Ø±Õ×´Ì¬¡£ÈôÐèÒªÊ¹ÓÃ£¬ÔòÔÚviews/buildEnvDepend.sh È¡Ïû×¢ÊÍ£¬¿ªÆô¡£
+# store.iniéƒ¨åˆ†å‚æ•°è¯´æ˜Ž
+* installedEnvï¼šæ˜¯å¦å®‰è£…äº†åŸºç¡€çŽ¯å¢ƒã€‚ä¸å»ºè®®æ‰‹åŠ¨ä¿®æ”¹ã€‚
+* installedCIï¼šæ˜¯å¦å®‰è£…äº†CIå¹³å°Jenkinsã€‚ä¸å»ºè®®æ‰‹åŠ¨ä¿®æ”¹ã€‚
+* remaincoresï¼šæ‰§è¡Œæ€§èƒ½æµ‹è¯•æ—¶ï¼Œæ¯ä¸ªä»Žæœºé¢„ç•™çš„coresæ•°é‡ï¼Œé¿å…æ‰“æ»¡ï¼Œé»˜è®¤é¢„ç•™2ä¸ªã€‚æ”¯æŒä¿®æ”¹ã€‚
+* hrun_pathï¼šæŽ¥å£è‡ªåŠ¨åŒ–é»˜è®¤æ‰§è¡Œçš„æŒ‡å®šè·¯å¾„ï¼Œé»˜è®¤ä¸ºtestcases/ï¼Œæ”¯æŒä¿®æ”¹ï¼Œä¹Ÿå¯åœ¨ç»Ÿä¸€æ‰§è¡Œå…¥å£æŒ‡å®šã€‚
+
+
+# NGINXè½¬å‘è¯·æ±‚æ‰§è¡Œshell
+> Jenkinsé…ç½®ï¼šcurl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
+* PWDä¸éœ€è¦æ”¹ï¼Œè¡¨ç¤ºè‡ªåŠ¨åŒ–é¡¹ç›®ä»£ç åŒ…è·¯å¾„ï¼›å‚æ•°hostå¯¹åº”Nginxä¸»æœºip addressï¼Œå‚æ•°shellpathå¯¹åº”è·¯å¾„+TestDeployï¼Œå‚æ•°BRANCHå¯¹åº”è‡ªåŠ¨åŒ–æµ‹è¯•é¡¹ç›®ä»£ç åˆ†æ”¯ã€‚
+* è¯¥æ–¹å¼å·²æ”¯æŒï¼Œä½†ä¸æŽ¨èä½¿ç”¨ï¼Œé»˜è®¤ä¸ºå…³é—­çŠ¶æ€ã€‚è‹¥éœ€è¦ä½¿ç”¨ï¼Œåˆ™åœ¨views/buildEnvDepend.sh å–æ¶ˆæ³¨é‡Šï¼Œå¼€å¯ã€‚
