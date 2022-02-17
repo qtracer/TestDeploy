@@ -18,11 +18,10 @@ http://42.192.227.196:8080/
 ![效果](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE00.png)
 
 # 5.工具特点
-* 符合DevOps思想，持续集成持续交付
-* 以Shell脚本为主，功能组件化，有较高可拓展性
-* 开箱即用，结合Docker容器技术，快速提供所需测试环境
+* 简单，开箱即用
+* 功能组件化，有较高可拓展性
+* 结合Docker容器技术，轻量高效
 * 集成Httprunner2.X/Locust1.4.X等工具特性
-* Jenkins集中式管理，slave节点自动部署测试依赖环境
 * 支持执行分布式压测和接口自动化
 
 
