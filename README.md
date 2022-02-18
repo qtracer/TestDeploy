@@ -3,7 +3,7 @@ http://42.192.227.196:8080/
 账号：gaohuajun
 密码：gaohuajun
 
-备注：整套流程尚未实现完全的自动化，如jenkins初次启动和配置、定时清理任务的配置等，仍需手动操作。
+备注：整套流程尚未实现完全的自动化，如jenkins启动和配置、定时清理任务的配置等，仍需手动操作。
 
 # 2.目标
 快速提供测试标准化环境，
@@ -18,11 +18,11 @@ http://42.192.227.196:8080/
 ![效果](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE00.png)
 
 # 5.工具特点
-* 简单，开箱即用
-* 功能组件化，有较高可拓展性
 * 结合Docker容器技术，轻量高效
+* 开箱即用，简化测试的执行过程，提供测试用例版本控制机制
 * 集成Httprunner2.X/Locust1.4.X等工具特性
-* 支持执行分布式压测和接口自动化
+* 提供了与CI/CD流水线的统一集成机制
+* 最大化测试执行机器的资源利用率
 
 
 # 6.如何快速开始
@@ -89,5 +89,5 @@ hosts.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文
 
 # 10.NGINX转发请求执行shell
 > Jenkins配置：curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
-* PWD不需要改，表示自动化项目代码包路径；参数host对应Nginx主机ip address，参数shellpath对应路径+TestDeploy，参数BRANCH对应自动化测试项目代码分支。
+* PWD为shell系统变量，表示自动化项目代码包路径；参数host对应Nginx主机ip address，参数shellpath对应路径+TestDeploy，参数BRANCH对应自动化测试项目代码分支。
 * 该方式已支持，但不推荐使用，默认为关闭状态。若需要使用，则在views/buildEnvDepend.sh 取消注释，开启。
