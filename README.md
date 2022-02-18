@@ -86,8 +86,16 @@ hosts.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文
 * HttpRunner2.X参考：https://debugtalk.com/post/HttpRunner-testcase-layer-2x/
 * Locust1.4.1参考：https://docs.locust.io/en/1.4.1/running-locust-docker.html
 
+# 10.Jenkins建议插件
+除了默认插件外，这里建议安装以下插件
+* Node and Label parameter	
+* Extended Choice Parameter
+* Git Parameter
+* Git
+* Email Extension Plugin
+* Role-based Authorization Strategy
 
-# 10.NGINX转发请求执行shell
+# 11.NGINX转发请求执行shell
 > Jenkins配置：curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
 * PWD为shell系统变量，表示自动化项目代码包路径；参数host对应Nginx主机ip address，参数shellpath对应路径+TestDeploy，参数BRANCH对应自动化测试项目代码分支。
 * 该方式已支持，但不推荐使用，默认为关闭状态。若需要使用，则在views/buildEnvDepend.sh 取消注释，开启。
