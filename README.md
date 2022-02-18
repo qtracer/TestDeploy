@@ -66,12 +66,13 @@ fi
 
 # 8.两个重要配置文件
 ## 8.1.测试集群配置hosts.ini
-配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant
+配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
 
 * $host：slave节点的IP地址
 * $account：slave节点主机的账号
 * $password：slave节点主机的密码
-* $constant：参数值为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”。
+* $constant：参数值为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”
+* $MasterOrSlave：参数值为“master”或者“slave”，指明是master还是slave节点
 
 hosts.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文件，在首次初始化前配置，后续新增slave需要重新执行一次初始化**bash $PRJ_ROOT_DIR/main-cli.sh**。
 
@@ -87,7 +88,7 @@ hosts.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文
 * Locust1.4.1参考：https://docs.locust.io/en/1.4.1/running-locust-docker.html
 
 # 10.Jenkins建议插件
-除了默认插件外，这里建议安装以下插件
+除了系统默认安装插件外，这里建议安装以下插件
 * Node and Label parameter	
 * Extended Choice Parameter
 * Git Parameter
