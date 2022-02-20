@@ -18,6 +18,3 @@ else
   chmod +x /usr/local/bin/docker-compose
 fi
 
-export info="$0: cat docker-compose version after install it"
-bash ${workdir}/comm/echoInfo.sh $workdir
-docker-compose -v | tee -a /${workdir}/log/${curdate}.log

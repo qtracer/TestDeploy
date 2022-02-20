@@ -1,15 +1,2 @@
-hrundemo_v1,/opt/pythonContainer/python12,9012,1
-hrundemo_v1,/opt/pythonContainer/python13,9013,1
-hrundemo_v1,/opt/pythonContainer/python14,9014,1
-hrundemo_v1,/opt/pythonContainer/python15,9015,1
-hrundemo_v1,/opt/pythonContainer/python16,9016,1
-hrundemo_v1,/opt/pythonContainer/python17,9017,1
-hrundemo_v1,/opt/pythonContainer/python18,9018,1
-hrundemo_v1,/opt/pythonContainer/python19,9019,1
-hrundemo_v1,/opt/pythonContainer/python20,9020,1
-hrundemo_v1,/opt/pythonContainer/python21,9021,1
-hrundemo_v1,/opt/pythonContainer/python22,9022,1
-hrundemo_v1,/opt/pythonContainer/python23,9023,1
-hrundemo_v1,/opt/pythonContainer/python24,9024,1
-hrundemo_v1,/opt/pythonContainer/python25,9025,1
-hrundemo_v1,/opt/pythonContainer/python26,9026,0
+_,/opt/pythonContainer/python1,9001,1
+_,/opt/pythonContainer/python2,9002,0

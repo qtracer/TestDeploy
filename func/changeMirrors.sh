@@ -2,8 +2,8 @@
 
 workdir=$1
 
-jenkins_home=$(cat ${workdir}/ini/store.ini | grep "jenkins_home" | awk -F = '{print $2}')
-jenkins_container=$(cat ${workdir}/ini/store.ini | grep "jenkins_container" | awk -F = '{print $2}')
+jenkins_home=$(cat ${workdir}/ini/config.ini | grep "jenkins_home" | awk -F = '{print $2}')
+jenkins_container=$(cat ${workdir}/ini/config.ini | grep "jenkins_container" | awk -F = '{print $2}')
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
 
 export info="$0: $PWD"

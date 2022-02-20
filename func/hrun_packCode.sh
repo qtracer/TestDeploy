@@ -6,10 +6,10 @@ tag=$3
 
 python_container=$(tail -1 ${workdir}/ini/pycontainer.ini | awk -F , '{print $1}')
 python_home=$(tail -1 ${workdir}/ini/pycontainer.ini | awk -F , '{print $2}')
-jenkins_container=$(cat ${workdir}/ini/store.ini | grep "jenkins_container" | awk -F = '{print $2}')
+jenkins_container=$(cat ${workdir}/ini/config.ini | grep "jenkins_container" | awk -F = '{print $2}')
 
 export info="$0: $PWD"
-bash ${workdir}/comm/echoInfo.sh $workdir
+bash $workdir/comm/echoInfo.sh $workdir
 
 # 将打包shell脚本copy一份到Jenkins工作路径，并打包到python容器
 echo "this is hrun_packCode.sh,pwd is：$(pwd)"

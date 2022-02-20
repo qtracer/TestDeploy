@@ -7,10 +7,10 @@ workdir=$(cat ./ini/global.ini | grep "workdir" | awk -F = '{print $2}')
 
 # 查看所有容器
 docker ps -a
-jenkins_home=$(cat ./ini/store.ini | grep "jenkins_home" | awk -F = '{print $2}')
-jenkins_image=$(cat ./ini/store.ini | grep "jenkins_image" | awk -F = '{print $2}')
-jenkins_container=$(cat ./ini/store.ini | grep "jenkins_container" | awk -F = '{print $2}')  
-python_image=$(cat ./ini/store.ini | grep "python_image" | awk -F = '{print $2}')
+jenkins_home=$(cat ./ini/config.ini | grep "jenkins_home" | awk -F = '{print $2}')
+jenkins_image=$(cat ./ini/config.ini | grep "jenkins_image" | awk -F = '{print $2}')
+jenkins_container=$(cat ./ini/config.ini | grep "jenkins_container" | awk -F = '{print $2}')
+python_image=$(cat ./ini/config.ini | grep "python_image" | awk -F = '{print $2}')
 python_container=$(cat ./ini/pycontainer.ini | awk -F , '{print $1}')
 python_home=$(cat ./ini/pycontainer.ini | awk -F , '{print $2}')
 
@@ -29,8 +29,8 @@ rm -rf $python_home
 sed -i '1,$d' ${workdir}/ini/pycontainer.ini
 sed -i '1,$d' ${workdir}/ini/global.ini
 
-sed -i 's/true/false/g' ${workdir}/ini/store.ini
-sed -i 's/isInstalled/notInstalled/g' ${workdir}/ini/store.ini
+sed -i 's/true/false/g' ${workdir}/ini/config.ini
+sed -i 's/isInstalled/notInstalled/g' ${workdir}/ini/config.ini
 # 删除docker环境
 yum list installed | grep docker
 

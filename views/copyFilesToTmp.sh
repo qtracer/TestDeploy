@@ -6,8 +6,8 @@ openModel=$2
 projectPackage=$3
 
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
-tmp=$(cat ${workdir}/ini/store.ini | grep "sourceDir" | awk -F = '{print $2}')
-baseLocustHome=$(cat ${workdir}/ini/store.ini | grep "baseLocustHome" | awk -F = '{print $2}')
+tmp=$(cat ${workdir}/ini/config.ini | grep "sourceDir" | awk -F = '{print $2}')
+baseLocustHome=$(cat ${workdir}/ini/config.ini | grep "baseLocustHome" | awk -F = '{print $2}')
 
 sn=$[ $(cat ${workdir}/ini/locontainer.ini | grep "${baseLocustHome}" | wc -l) + 1 ]
 locust_home=${baseLocustHome}/locust${sn}

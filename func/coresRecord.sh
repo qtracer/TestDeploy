@@ -4,10 +4,10 @@ workdir=$1
 
 localhost=$(ip addr | grep -e "eth0" -e "ens33" | grep "inet" | awk -F " " '{print $2}' | awk -F / '{print $1}')
 
-sourceDir=$(cat ${workdir}/ini/store.ini | grep "sourceDir" | awk -F = '{print $2}')
-targetDir=$(cat ${workdir}/ini/store.ini | grep "targetDir" | awk -F = '{print $2}')
+sourceDir=$(cat ${workdir}/ini/config.ini | grep "sourceDir" | awk -F = '{print $2}')
+targetDir=$(cat ${workdir}/ini/config.ini | grep "targetDir" | awk -F = '{print $2}')
 
-remaincores=$(cat ${workdir}/ini/store.ini | grep "remaincores" | awk -F = '{print $2}')
+remaincores=$(cat ${workdir}/ini/config.ini | grep "remaincores" | awk -F = '{print $2}')
 shellPackage=$(cat ${workdir}/ini/remoteProject.ini | grep "shellPackage" | awk -F = '{print $2}')
 
 cores=0

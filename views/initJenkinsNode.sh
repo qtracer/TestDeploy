@@ -4,7 +4,7 @@
 workdir=$1
 
 shellPackage=$(echo $workdir | awk -F / '{print $NF}')
-targetDir=$(cat ${workdir}/ini/store.ini | grep "targetDir" | awk -F = '{print $2}')
+targetDir=$(cat ${workdir}/ini/config.ini | grep "targetDir" | awk -F = '{print $2}')
 localhost=$(ip addr | grep -e "eth0" -e "ens33" | grep "inet" | awk -F " " '{print $2}' | awk -F / '{print $1}')
 
 export info="$0: $PWD"
@@ -20,10 +20,10 @@ do
   ifnew=$(echo $line | awk -F , '{print $4}')
 
   if [ "$ifnew" = "isnew" ];then
-    sed -i 's/notInstalled/isInstalled/g' ${workdir}/ini/store.ini
+    sed -i 's/notInstalled/isInstalled/g' ${workdir}/ini/config.ini
     cp -rf ${workdir}/ini/hosts.ini ${workdir}/ini/hosts_bak.ini
     sed -i 's/isnew/notnew/g' ${workdir}/ini/hosts.ini
-    sed -i 's/true/false/g' ${workdir}/ini/store.ini
+    sed -i 's/true/false/g' ${workdir}/ini/config.ini
 
     dirname0=$(dirname $workdir)
     cd $dirname0 && bash ${workdir}/func/cvfTarCode.sh $shellPackage $shellPackage
@@ -53,6 +53,7 @@ do
       expect \"]*\" {send \"tar zxvf ${shellPackage}.tar \n\"}
       expect \"]*\" {send \"rm -f ${targetDir}/${shellPackage}.tar \n\"}
       expect \"]*\" {send \"cd ${targetDir}/${shellPackage} && bash func/installGit.sh ${targetDir}/${shellPackage} && bash func/installJDK.sh ${targetDir}/${shellPackage} \n\"}
+      expect \"]*\" {send \"cd ${targetDir}/${shellPackage} && bash main-cli.sh \n\"}
       expect \"]*\" {send \"exit\n\"}
       expect eof;"
   fi

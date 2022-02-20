@@ -17,8 +17,8 @@ echo "xvfTarCode.sh, pwd is: $(pwd)"
 if [ $packageName ];then
   xvfCodePackage $packageName
 else
-  sourceDir=$(cat ${workdir}/ini/store.ini | grep "sourceDir" | awk -F = '{print $2}')
-  targetDir=$(cat ${workdir}/ini/store.ini | grep "targetDir" | awk -F = '{print $2}')
+  sourceDir=$(cat ${workdir}/ini/config.ini | grep "sourceDir" | awk -F = '{print $2}')
+  targetDir=$(cat ${workdir}/ini/config.ini | grep "targetDir" | awk -F = '{print $2}')
 
   shellPackage=$(cat ${targetDir}/${sourceDir}/remoteProject.ini | grep "shellPackage" | awk -F = '{print $2}')
   projectPackage=$(cat ${targetDir}/${sourceDir}/remoteProject.ini | grep "projectPackage" | awk -F = '{print $2}')

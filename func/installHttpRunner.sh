@@ -3,8 +3,8 @@
 workdir=$1
 hrunVersion=$(cat ${workdir}/ini/appVersion.ini | grep "hrunVersion" | awk -F = '{print $2}')
 
-jenkins_home=$(tail -3 ${workdir}/ini/store.ini | grep "jenkins_home" | awk -F , '{print $2}')
-container_name=$(tail -3 ${workdir}/ini/store.ini | grep "container_name" | awk -F , '{print $2}')
+jenkins_home=$(tail -3 ${workdir}/ini/config.ini | grep "jenkins_home" | awk -F , '{print $2}')
+container_name=$(tail -3 ${workdir}/ini/config.ini | grep "container_name" | awk -F , '{print $2}')
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
 
 export info="$0: $PWD"

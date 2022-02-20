@@ -7,7 +7,7 @@ appointedCase=$3
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-remaincores=$(cat ${workdir}/ini/store.ini | grep "remaincores" | awk -F = '{print $2}')
+remaincores=$(cat ${workdir}/ini/config.ini | grep "remaincores" | awk -F = '{print $2}')
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
 
 totalCores=$[ $(cat /proc/cpuinfo | grep "cpu cores" | wc -l) - ${remaincores} ]

@@ -3,7 +3,7 @@
 workdir=$1
 
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
-jdkVersion=$(cat $workdir/ini/store.ini | grep "jdkVersion" | awk -F = '{print $2}')
+jdkVersion=$(cat $workdir/ini/config.ini | grep "jdkVersion" | awk -F = '{print $2}')
 
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir

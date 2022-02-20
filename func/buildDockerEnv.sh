@@ -4,7 +4,7 @@
 
 workdir=$1
 
-dVersion=$(cat ${workdir}/ini/store.ini | grep "dVersion" | awk -F = '{print $2}')
+dVersion=$(cat ${workdir}/ini/config.ini | grep "dVersion" | awk -F = '{print $2}')
 
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir

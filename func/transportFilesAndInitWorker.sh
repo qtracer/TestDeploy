@@ -4,12 +4,12 @@
 workdir=$1
 projectPackage=$2
 
-sourceDir=$(cat ${workdir}/ini/store.ini | grep "sourceDir" | awk -F = '{print $2}')
-targetDir=$(cat ${workdir}/ini/store.ini | grep "targetDir" | awk -F = '{print $2}')
+sourceDir=$(cat ${workdir}/ini/config.ini | grep "sourceDir" | awk -F = '{print $2}')
+targetDir=$(cat ${workdir}/ini/config.ini | grep "targetDir" | awk -F = '{print $2}')
 
 projectPackage=$(cat ${workdir}/ini/remoteProject.ini | grep "projectPackage" | awk -F = '{print $2}')
 shellPackage=$(cat ${workdir}/ini/remoteProject.ini | grep "shellPackage" | awk -F = '{print $2}')
-baseLocustHome=$(cat ${workdir}/ini/store.ini | grep "baseLocustHome" | awk -F = '{print $2}')
+baseLocustHome=$(cat ${workdir}/ini/config.ini | grep "baseLocustHome" | awk -F = '{print $2}')
 
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
