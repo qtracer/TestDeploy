@@ -1,57 +1,58 @@
-# 1.ÑÝÊ¾demo
+# 1.æ¼”ç¤ºdemo
 http://42.192.227.196:8080/
-ÕËºÅ£ºgaohuajun
-ÃÜÂë£ºgaohuajun
+è´¦å·ï¼šgaohuajun
+å¯†ç ï¼šgaohuajun
 
-±¸×¢£ºÕûÌ×Á÷³ÌÉÐÎ´ÊµÏÖÍêÈ«µÄ×Ô¶¯»¯£¬ÈçjenkinsÆô¶¯ºÍÅäÖÃ¡¢¶¨Ê±ÇåÀíÈÎÎñµÄÅäÖÃµÈ£¬ÈÔÐèÊÖ¶¯²Ù×÷¡£
+å¤‡æ³¨ï¼šæ•´å¥—æµç¨‹å°šæœªå®žçŽ°å®Œå…¨çš„è‡ªåŠ¨åŒ–ï¼Œå¦‚jenkinså¯åŠ¨å’Œé…ç½®ã€å®šæ—¶æ¸…ç†ä»»åŠ¡çš„é…ç½®ç­‰ï¼Œä»éœ€æ‰‹åŠ¨æ“ä½œã€‚
 
-# 2.Ä¿±ê
-¿ìËÙÌá¹©²âÊÔ±ê×¼»¯»·¾³£¬
-´Ù½ø²âÊÔÁ÷³Ì¸ßÐ§ÓëÎÈ¶¨¡£
+# 2.ç›®æ ‡
+å¿«é€Ÿæä¾›æµ‹è¯•æ ‡å‡†åŒ–çŽ¯å¢ƒï¼Œ
+ä¿ƒè¿›æµ‹è¯•æµç¨‹é«˜æ•ˆä¸Žç¨³å®šã€‚
 
-# 3.Éè¼ÆÔ­Ôò
-* ¸ßÐ§µÄ×Ô¶¯»¯ºÍ±ê×¼»¯
-* ¼òµ¥µÄ¼¼ÊõÕ»£¬¸ß¿ÉÎ¬»¤ÐÔ
-* Óµ±§¿ªÔ´£¬³ä·ÖÀûÓÃÒÑÓÐµÄÓÅÐãÂÖ×Ó
+# 3.è®¾è®¡åŽŸåˆ™
+* é«˜æ•ˆçš„è‡ªåŠ¨åŒ–å’Œæ ‡å‡†åŒ–
+* ç®€å•çš„æŠ€æœ¯æ ˆï¼Œé«˜å¯ç»´æŠ¤æ€§
+* æ‹¥æŠ±å¼€æºï¼Œå……åˆ†åˆ©ç”¨å·²æœ‰çš„ä¼˜ç§€è½®å­
 
-# 4.ÕûÌå¼Ü¹¹Éè¼Æ
-![Ð§¹û](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE00.png)
+# 4.æ•´ä½“æž¶æž„è®¾è®¡
+![æ•ˆæžœ](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE00.png)
 
-# 5.¹¤¾ßÌØµã
-* ½áºÏDockerÈÝÆ÷¼¼Êõ£¬ÇáÁ¿¸ßÐ§
-* ¿ªÏä¼´ÓÃ£¬¼ò»¯²âÊÔµÄÖ´ÐÐ¹ý³Ì£¬Ìá¹©²âÊÔÓÃÀý°æ±¾¿ØÖÆ»úÖÆ
-* ¼¯³ÉHttprunner2.X/Locust1.4.XµÈ¹¤¾ßÌØÐÔ
-* Ìá¹©ÁËÓëCI/CDÁ÷Ë®ÏßµÄÍ³Ò»¼¯³É»úÖÆ
-* ×î´ó»¯²âÊÔÖ´ÐÐ»úÆ÷µÄ×ÊÔ´ÀûÓÃÂÊ
-
-
-# 6.ÈçºÎ¿ìËÙ¿ªÊ¼
-* main-cli.sh·ÅÖÃÔÚÏîÄ¿¸ùÄ¿Â¼ÏÂ£¬¼ÙÉèÎª**PRJ_ROOT_DIR**
-* ÅäÖÃ $PRJ_ROOT_DIR/ini/hosts.ini
-* cli½øÈë$PRJ_ROOT_DIR£¬Í¨¹ý»·¾³²¿ÊðºÍÈÎÎñ¹¹½¨Í³Ò»Èë¿ÚÖ´ÐÐ³õÊ¼»¯**bash $PRJ_ROOT_DIR/main-cli.sh**£¬Ê×´Î³õÊ¼»¯Ê±»á´î½¨CIÆ½Ì¨Jenkins
-* ÅäÖÃJenkins¡¢´´½¨½Úµã
-* Jenkins´´½¨ÈÎÎñ¡¢ÅäÖÃÈÎÎñ
-#### ×Ô¶¯»¯²âÊÔÈÎÎñµÄÖØÒªÅäÖÃ
-£¨1£©Ñ¡Ôñ¡°²ÎÊý»¯¹¹½¨¹ý³Ì¡±£¬git²ÎÊýÃû³Æ**BRANCH**£¬Ñ¡Ïî²ÎÊýÃû³Æ**appointedHost**
-£¨2£©ÈôÓÃµ½master-slaveÄ£Ê½£¬Í¬Ê±Òª¹´Ñ¡¡°ÏÞÖÆÏîÄ¿²¢·¢¹¹½¨¡±
-£¨3£©¡°Ô´Âë¹ÜÀí¡±£¬ÌîÐ´ÒªÀ­È¡µÄ´úÂë²Ö¿â
-£¨4£©¹¹½¨Ñ¡Ôñ¡°Ö´ÐÐShell¡±£¬ÅäÖÃ **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 0**
-£¨5£©ÆäËûÅäÖÃÂÔ
-#### ÐÔÄÜ²âÊÔÈÎÎñµÄÖØÒªÅäÖÃ
-£¨1£©Ñ¡Ôñ¡°²ÎÊý»¯¹¹½¨¹ý³Ì¡±£¬git²ÎÊýÃû³Æ**BRANCH**
-£¨2£©¡°Ô´Âë¹ÜÀí¡±£¬ÌîÐ´ÒªÀ­È¡µÄ´úÂë²Ö¿â
-£¨3£©¹¹½¨Ñ¡Ôñ¡°Ö´ÐÐShell¡±£¬ÅäÖÃ **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 6£¨»òÆäËûÊýÖµ£©**
-£¨4£©ÆäËûÅäÖÃÂÔ
+# 5.æ ¸å¿ƒç‰¹æ€§
+* ç»“åˆDockerå®¹å™¨æŠ€æœ¯ï¼Œè½»é‡é«˜æ•ˆ
+* ç®€åŒ–æµ‹è¯•çš„æ‰§è¡Œè¿‡ç¨‹ï¼Œæä¾›æµ‹è¯•ç”¨ä¾‹ç‰ˆæœ¬æŽ§åˆ¶æœºåˆ¶
+* é›†æˆHttprunner2.X/Locust1.4.Xç­‰å·¥å…·ç‰¹æ€§
+* æä¾›äº†ä¸ŽCI/CDæµæ°´çº¿çš„ç»Ÿä¸€é›†æˆæœºåˆ¶
+* æœ€å¤§åŒ–æµ‹è¯•æ‰§è¡Œæœºå™¨çš„èµ„æºåˆ©ç”¨çŽ‡
+* æ”¯æŒé€šè¿‡å‚æ•°è¾“å…¥åˆ‡æ¢ä¸åŒçŽ¯å¢ƒ
 
 
-# 7.»·¾³²¿ÊðºÍÈÎÎñ¹¹½¨Í³Ò»Èë¿Ú
+# 6.å¦‚ä½•å¿«é€Ÿå¼€å§‹
+* main-cli.shæ”¾ç½®åœ¨é¡¹ç›®æ ¹ç›®å½•ä¸‹ï¼Œå‡è®¾ä¸º**PRJ_ROOT_DIR**
+* é…ç½® $PRJ_ROOT_DIR/ini/hosts.ini
+* cliè¿›å…¥$PRJ_ROOT_DIRï¼Œé€šè¿‡çŽ¯å¢ƒéƒ¨ç½²å’Œä»»åŠ¡æž„å»ºç»Ÿä¸€å…¥å£æ‰§è¡Œåˆå§‹åŒ–**bash $PRJ_ROOT_DIR/main-cli.sh**ï¼Œé¦–æ¬¡åˆå§‹åŒ–æ—¶ä¼šæ­å»ºCIå¹³å°Jenkins
+* é…ç½®Jenkinsã€åˆ›å»ºèŠ‚ç‚¹
+* Jenkinsåˆ›å»ºä»»åŠ¡ã€é…ç½®ä»»åŠ¡
+#### è‡ªåŠ¨åŒ–æµ‹è¯•ä»»åŠ¡çš„é‡è¦é…ç½®
+ï¼ˆ1ï¼‰é€‰æ‹©â€œå‚æ•°åŒ–æž„å»ºè¿‡ç¨‹â€ï¼Œgitå‚æ•°åç§°**BRANCH**ï¼Œé€‰é¡¹å‚æ•°åç§°**appointedHost**
+ï¼ˆ2ï¼‰è‹¥ç”¨åˆ°master-slaveæ¨¡å¼ï¼ŒåŒæ—¶è¦å‹¾é€‰â€œé™åˆ¶é¡¹ç›®å¹¶å‘æž„å»ºâ€
+ï¼ˆ3ï¼‰â€œæºç ç®¡ç†â€ï¼Œå¡«å†™è¦æ‹‰å–çš„ä»£ç ä»“åº“
+ï¼ˆ4ï¼‰æž„å»ºé€‰æ‹©â€œæ‰§è¡ŒShellâ€ï¼Œé…ç½® **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 0**
+ï¼ˆ5ï¼‰å…¶ä»–é…ç½®ç•¥
+#### æ€§èƒ½æµ‹è¯•ä»»åŠ¡çš„é‡è¦é…ç½®
+ï¼ˆ1ï¼‰é€‰æ‹©â€œå‚æ•°åŒ–æž„å»ºè¿‡ç¨‹â€ï¼Œgitå‚æ•°åç§°**BRANCH**
+ï¼ˆ2ï¼‰â€œæºç ç®¡ç†â€ï¼Œå¡«å†™è¦æ‹‰å–çš„ä»£ç ä»“åº“
+ï¼ˆ3ï¼‰æž„å»ºé€‰æ‹©â€œæ‰§è¡ŒShellâ€ï¼Œé…ç½® **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 6ï¼ˆæˆ–å…¶ä»–æ•°å€¼ï¼‰**
+ï¼ˆ4ï¼‰å…¶ä»–é…ç½®ç•¥
+
+
+# 7.çŽ¯å¢ƒéƒ¨ç½²å’Œä»»åŠ¡æž„å»ºç»Ÿä¸€å…¥å£
 > bash $PRJ_ROOT_DIR/main-cli.sh **$JOB_NAME** **$BRANCH** **$workerNum** **$appointedHost** $appointedCase
 
-ÆäÖÐ£¬**ÈÎÎñ¹¹½¨Ê±**£¬±ØÑ¡²ÎÊý£º
-* $JOB_NAME £ºÏîÄ¿Ãû£¬Jenkins»·¾³±äÁ¿£¬Ö±½ÓÒýÓÃ
-* $BRANCH : ´úÂë·ÖÖ§£¬git²ÎÊý£¬¡°²ÎÊý»¯¹¹½¨¹ý³Ì¡±ÖÐ¶¨Òå£¬ÕâÀïÒýÓÃ
-* $workerNum : Æô¶¯workerÊýÁ¿£¬ÀàÐÍÎªInterger£¬ÐèÊÖ¶¯ÊäÈë²ÎÊýÖµ
-* $appointedHost: Ñ¡Ïî²ÎÊý£¬¡°²ÎÊý»¯¹¹½¨¹ý³Ì¡±ÖÐ¶¨Òå£¬ÕâÀïÒýÓÃ¡£ÌîÐ´ÐèÒªÖ´ÐÐ×Ô¶¯»¯²âÊÔµÄËùÓÐ»·¾³£¬Óë¿ª·¢´úÂëºôÓ¦¡£ÐÔÄÜ²âÊÔÊ±£¬¸ÃÑ¡ÏîËæÒâÌî¡£
+å…¶ä¸­ï¼Œ**ä»»åŠ¡æž„å»ºæ—¶**ï¼Œå¿…é€‰å‚æ•°ï¼š
+* $JOB_NAME ï¼šé¡¹ç›®åï¼ŒJenkinsçŽ¯å¢ƒå˜é‡ï¼Œç›´æŽ¥å¼•ç”¨
+* $BRANCH : ä»£ç åˆ†æ”¯ï¼Œgitå‚æ•°ï¼Œâ€œå‚æ•°åŒ–æž„å»ºè¿‡ç¨‹â€ä¸­å®šä¹‰ï¼Œè¿™é‡Œå¼•ç”¨
+* $workerNum : å¯åŠ¨workeræ•°é‡ï¼Œç±»åž‹ä¸ºIntergerï¼Œéœ€æ‰‹åŠ¨è¾“å…¥å‚æ•°å€¼
+* $appointedHost: é€‰é¡¹å‚æ•°ï¼Œâ€œå‚æ•°åŒ–æž„å»ºè¿‡ç¨‹â€ä¸­å®šä¹‰ï¼Œè¿™é‡Œå¼•ç”¨ã€‚å¡«å†™éœ€è¦æ‰§è¡Œè‡ªåŠ¨åŒ–æµ‹è¯•çš„æ‰€æœ‰çŽ¯å¢ƒï¼Œä¸Žå¼€å‘ä»£ç å‘¼åº”ã€‚æ€§èƒ½æµ‹è¯•æ—¶ï¼Œè¯¥é€‰é¡¹éšæ„å¡«ã€‚
 ```
 # tips:
 if [ $workerNum -ge 1 ];then
@@ -61,35 +62,36 @@ else
 fi
 ```
 
-¿ÉÑ¡²ÎÊý£º
-* $appointedCase£ºÖ¸¶¨Â·¾¶»òÓÃÀý£¬Â·¾¶ÌîÐ´ $PRJ_ROOT_DIR Ïà¶ÔÂ·¾¶£¬Èç testcases/create_user.yml
+å¯é€‰å‚æ•°ï¼š
+* $appointedCaseï¼šæŒ‡å®šè·¯å¾„æˆ–ç”¨ä¾‹ï¼Œè·¯å¾„å¡«å†™ $PRJ_ROOT_DIR ç›¸å¯¹è·¯å¾„ï¼Œå¦‚ testcases/create_user.yml
 
 
-# 8.Á½¸öÖØÒªÅäÖÃÎÄ¼þ
-## 8.1.²âÊÔ¼¯ÈºÅäÖÃhosts.ini
-ÅäÖÃ**$PRJ_ROOT_DIR/ini/hosts.ini**£¬¸ñÊ½£º$host,$account,$password,$constant,$MasterOrSlave
+# 8.ä¸¤ä¸ªé‡è¦é…ç½®æ–‡ä»¶
+## 8.1.æµ‹è¯•é›†ç¾¤é…ç½®hosts.ini
+é…ç½®**$PRJ_ROOT_DIR/ini/hosts.ini**ï¼Œæ ¼å¼ï¼š$host,$account,$password,$constant,$MasterOrSlave
 
-* $host£ºslave½ÚµãµÄIPµØÖ·
-* $account£ºslave½ÚµãÖ÷»úµÄÕËºÅ
-* $password£ºslave½ÚµãÖ÷»úµÄÃÜÂë
-* $constant£º²ÎÊýÖµÎª¡°isnew¡±»òÕß¡°notnew¡±£¬Èç¹ûÊÇÐÂÖ÷»úÇÒÐèÒª×ö³õÊ¼»¯£¬Ôò±ØÐëÊÇ¡°isnew¡±£¬³õÊ¼»¯ºó»á±äÎª¡°notnew¡±
-* $MasterOrSlave£º²ÎÊýÖµÎª¡°master¡±»òÕß¡°slave¡±£¬Ö¸Ã÷ÊÇmaster»¹ÊÇslave½Úµã¡£
+* $hostï¼šslaveèŠ‚ç‚¹çš„IPåœ°å€
+* $accountï¼šslaveèŠ‚ç‚¹ä¸»æœºçš„è´¦å·
+* $passwordï¼šslaveèŠ‚ç‚¹ä¸»æœºçš„å¯†ç 
+* $constantï¼šå‚æ•°å€¼ä¸ºâ€œisnewâ€æˆ–è€…â€œnotnewâ€ï¼Œå¦‚æžœæ˜¯æ–°ä¸»æœºä¸”éœ€è¦åšåˆå§‹åŒ–ï¼Œåˆ™å¿…é¡»æ˜¯â€œisnewâ€ï¼Œåˆå§‹åŒ–åŽä¼šå˜ä¸ºâ€œnotnewâ€
+* $MasterOrSlaveï¼šå‚æ•°å€¼ä¸ºâ€œmasterâ€æˆ–è€…â€œslaveâ€ï¼ŒæŒ‡æ˜Žæ˜¯masterè¿˜æ˜¯slaveèŠ‚ç‚¹ã€‚
 
-hosts.iniÎªJenkins Master-SlaveÒÔ¼°Locust Master-SlaveÄ£Ê½¹ÜÀíslaveµÄÎÄ¼þ£¬ÔÚÊ×´Î³õÊ¼»¯Ç°ÅäÖÃ£¬ºóÐøÐÂÔöslaveÐèÒªÖØÐÂÖ´ÐÐÒ»´Î³õÊ¼»¯**bash $PRJ_ROOT_DIR/main-cli.sh**¡£
+hosts.iniä¸ºJenkins Master-Slaveä»¥åŠLocust Master-Slaveæ¨¡å¼ç®¡ç†slaveçš„æ–‡ä»¶ï¼Œåœ¨é¦–æ¬¡åˆå§‹åŒ–å‰é…ç½®ï¼ŒåŽç»­æ–°å¢žslaveéœ€è¦é‡æ–°æ‰§è¡Œä¸€æ¬¡åˆå§‹åŒ–**bash $PRJ_ROOT_DIR/main-cli.sh**ã€‚
 
-## 8.2.config.ini²¿·Ö²ÎÊýËµÃ÷
-* installedEnv£ºÊÇ·ñ°²×°ÁË»ù´¡»·¾³¡£²»½¨ÒéÊÖ¶¯ÐÞ¸Ä¡£
-* installedCI£ºÊÇ·ñ°²×°ÁËCIÆ½Ì¨Jenkins¡£²»½¨ÒéÊÖ¶¯ÐÞ¸Ä¡£
-* remaincores£ºÖ´ÐÐÐÔÄÜ²âÊÔÊ±£¬Ã¿¸ö´Ó»úÔ¤ÁôµÄcoresÊýÁ¿£¬±ÜÃâ´òÂú£¬Ä¬ÈÏÔ¤Áô2¸ö¡£Ö§³ÖÐÞ¸Ä¡£
-* hrun_path£º½Ó¿Ú×Ô¶¯»¯Ä¬ÈÏÖ´ÐÐµÄÖ¸¶¨Â·¾¶£¬Ä¬ÈÏÎªtestcases/£¬Ö§³ÖÐÞ¸Ä£¬Ò²¿ÉÔÚÍ³Ò»Ö´ÐÐÈë¿ÚÖ¸¶¨¡£
+## 8.2.config.iniéƒ¨åˆ†å‚æ•°è¯´æ˜Ž
+* installedEnvï¼šæ˜¯å¦å®‰è£…äº†åŸºç¡€çŽ¯å¢ƒã€‚ä¸å»ºè®®æ‰‹åŠ¨ä¿®æ”¹ã€‚
+* installedCIï¼šæ˜¯å¦å®‰è£…äº†CIå¹³å°Jenkinsã€‚ä¸å»ºè®®æ‰‹åŠ¨ä¿®æ”¹ã€‚
+* remaincoresï¼šæ‰§è¡Œæ€§èƒ½æµ‹è¯•æ—¶ï¼Œæ¯ä¸ªä»Žæœºé¢„ç•™çš„coresæ•°é‡ï¼Œé¿å…æ‰“æ»¡ï¼Œé»˜è®¤é¢„ç•™2ä¸ªã€‚æ”¯æŒä¿®æ”¹ã€‚
+* hrun_pathï¼šæŽ¥å£è‡ªåŠ¨åŒ–é»˜è®¤æ‰§è¡Œçš„æŒ‡å®šè·¯å¾„ï¼Œé»˜è®¤ä¸ºtestcases/ï¼Œæ”¯æŒä¿®æ”¹ï¼Œä¹Ÿå¯åœ¨ç»Ÿä¸€æ‰§è¡Œå…¥å£æŒ‡å®šã€‚
+* hrun_mainï¼šæŽ¥å£è‡ªåŠ¨åŒ–æ‰§è¡Œå…¥å£ï¼Œé»˜è®¤ä¸ºmain-hrun.pyï¼Œæ”¯æŒä¿®æ”¹ï¼Œä¸Žä»£ç å…¥å£å¯¹åº”ã€‚
 
 
-# 9.´úÂëÎÄµµ×éÖ¯½á¹¹
-* HttpRunner2.X²Î¿¼£ºhttps://github.com/qtracer/HttpRunner_demo
-* Locust1.4.1²Î¿¼£ºhttps://docs.locust.io/en/1.4.1/running-locust-docker.html
+# 9.ä»£ç æ–‡æ¡£ç»„ç»‡ç»“æž„
+* HttpRunner2.Xå‚è€ƒï¼šhttps://github.com/qtracer/HttpRunner_demo
+* Locust1.4.1å‚è€ƒï¼šhttps://docs.locust.io/en/1.4.1/running-locust-docker.html
 
-# 10.Jenkins½¨Òé²å¼þ
-³ýÁËÏµÍ³Ä¬ÈÏ°²×°²å¼þÍâ£¬ÕâÀï½¨Òé°²×°ÒÔÏÂ²å¼þ
+# 10.Jenkinså»ºè®®æ’ä»¶
+é™¤äº†ç³»ç»Ÿé»˜è®¤å®‰è£…æ’ä»¶å¤–ï¼Œè¿™é‡Œå»ºè®®å®‰è£…ä»¥ä¸‹æ’ä»¶
 * Node and Label parameter	
 * Extended Choice Parameter
 * Git Parameter
@@ -97,7 +99,7 @@ hosts.iniÎªJenkins Master-SlaveÒÔ¼°Locust Master-SlaveÄ£Ê½¹ÜÀíslaveµÄÎÄ¼þ£¬ÔÚÊ×´
 * Email Extension Plugin
 * Role-based Authorization Strategy
 
-# 11.NGINX×ª·¢ÇëÇóÖ´ÐÐshell
-> JenkinsÅäÖÃ£ºcurl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
-* PWDÎªshellÏµÍ³±äÁ¿£¬±íÊ¾×Ô¶¯»¯ÏîÄ¿´úÂë°üÂ·¾¶£»²ÎÊýhost¶ÔÓ¦NginxÖ÷»úip address£¬²ÎÊýshellpath¶ÔÓ¦Â·¾¶+TestDeploy£¬²ÎÊýBRANCH¶ÔÓ¦×Ô¶¯»¯²âÊÔÏîÄ¿´úÂë·ÖÖ§¡£
-* ¸Ã·½Ê½ÒÑÖ§³Ö£¬µ«²»ÍÆ¼öÊ¹ÓÃ£¬Ä¬ÈÏÎª¹Ø±Õ×´Ì¬¡£ÈôÐèÒªÊ¹ÓÃ£¬ÔòÔÚviews/buildEnvDepend.sh È¡Ïû×¢ÊÍ£¬¿ªÆô¡£
+# 11.NGINXè½¬å‘è¯·æ±‚æ‰§è¡Œshell
+> Jenkinsé…ç½®ï¼šcurl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
+* PWDä¸ºshellç³»ç»Ÿå˜é‡ï¼Œè¡¨ç¤ºè‡ªåŠ¨åŒ–é¡¹ç›®ä»£ç åŒ…è·¯å¾„ï¼›å‚æ•°hostå¯¹åº”Nginxä¸»æœºip addressï¼Œå‚æ•°shellpathå¯¹åº”è·¯å¾„+TestDeployï¼Œå‚æ•°BRANCHå¯¹åº”è‡ªåŠ¨åŒ–æµ‹è¯•é¡¹ç›®ä»£ç åˆ†æ”¯ã€‚
+* è¯¥æ–¹å¼å·²æ”¯æŒï¼Œä½†ä¸æŽ¨èä½¿ç”¨ï¼Œé»˜è®¤ä¸ºå…³é—­çŠ¶æ€ã€‚è‹¥éœ€è¦ä½¿ç”¨ï¼Œåˆ™åœ¨views/buildEnvDepend.sh å–æ¶ˆæ³¨é‡Šï¼Œå¼€å¯ã€‚
