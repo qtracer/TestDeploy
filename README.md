@@ -84,7 +84,7 @@ hosts.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文
 
 
 # 9.代码文档组织结构
-* HttpRunner2.X参考：https://debugtalk.com/post/HttpRunner-testcase-layer-2x/
+* HttpRunner2.X参考：https://github.com/qtracer/HttpRunner_demo
 * Locust1.4.1参考：https://docs.locust.io/en/1.4.1/running-locust-docker.html
 
 # 10.Jenkins建议插件
