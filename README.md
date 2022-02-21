@@ -36,12 +36,12 @@ http://42.192.227.196:8080/
 （1）选择“参数化构建过程”，git参数名称**BRANCH**，选项参数名称**appointedHost**
 （2）若用到master-slave模式，同时要勾选“限制项目并发构建”
 （3）“源码管理”，填写要拉取的代码仓库
-（4）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 0**
+（4）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH $appointedHost 0**
 （5）其他配置略
 #### 性能测试任务的重要配置
-（1）选择“参数化构建过程”，git参数名称**BRANCH**
+（1）选择“参数化构建过程”，git参数名称**BRANCH**，选项参数名称**appointedHost**
 （2）“源码管理”，填写要拉取的代码仓库
-（3）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 6（或其他数值）**
+（3）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH $appointedHost 6（或其他数值）** 。注：appointedHost没有被程序执行，但必须要传
 （4）其他配置略
 
 
@@ -52,7 +52,7 @@ http://42.192.227.196:8080/
 * $JOB_NAME ：项目名，Jenkins环境变量，直接引用
 * $BRANCH : 代码分支，git参数，“参数化构建过程”中定义，这里引用
 * $workerNum : 启动worker数量，类型为Interger，需手动输入参数值
-* $appointedHost: 选项参数，“参数化构建过程”中定义，这里引用。填写需要执行自动化测试的所有环境，与开发代码呼应。性能测试时，该选项随意填。
+* $appointedHost: 选项参数，“参数化构建过程”中定义，这里引用。填写需要执行自动化测试的所有环境，与开发代码呼应。
 ```
 # tips:
 if [ $workerNum -ge 1 ];then
