@@ -20,7 +20,7 @@ http://42.192.227.196:8080/
 
 # 5.核心特性
 * 结合Docker容器技术，轻量高效
-* 简化测试的执行过程，提供测试用例版本控制机制
+* 开箱即用，简化测试的执行过程，提供测试用例版本控制机制
 * 集成Httprunner2.X/Locust1.4.X等工具特性
 * 提供了与CI/CD流水线的统一集成机制
 * 最大化测试执行机器的资源利用率
@@ -30,19 +30,19 @@ http://42.192.227.196:8080/
 # 6.如何快速开始
 * main-cli.sh放置在项目根目录下，假设为**PRJ_ROOT_DIR**
 * 配置 $PRJ_ROOT_DIR/ini/hosts.ini
-* cli进入$PRJ_ROOT_DIR，通过环境部署和任务构建统一入口执行初始化**bash $PRJ_ROOT_DIR/main-cli.sh**，首次初始化时会搭建CI平台Jenkins
+* CLI进入$PRJ_ROOT_DIR，通过环境部署和任务构建统一入口执行初始化**bash $PRJ_ROOT_DIR/main-cli.sh**，首次初始化时会搭建CI平台Jenkins
 * 配置Jenkins、创建节点
 * Jenkins创建任务、配置任务
 #### 自动化测试任务的重要配置
 （1）选择“参数化构建过程”，git参数名称**BRANCH**，选项参数名称**appointedHost**
 （2）若用到master-slave模式，同时要勾选“限制项目并发构建”
 （3）“源码管理”，填写要拉取的代码仓库
-（4）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH $appointedHost 0**
+（4）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 0 $appointedHost **
 （5）其他配置略
 #### 性能测试任务的重要配置
 （1）选择“参数化构建过程”，git参数名称**BRANCH**，选项参数名称**appointedHost**
 （2）“源码管理”，填写要拉取的代码仓库
-（3）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH $appointedHost 6（或其他数值）** 。注：appointedHost没有被程序执行，但必须要传
+（3）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH <非0正整数> $appointedHost** 。注：appointedHost没有被程序执行，但必须要传
 （4）其他配置略
 
 
@@ -51,9 +51,9 @@ http://42.192.227.196:8080/
 
 其中，**任务构建时**，必选参数：
 * $JOB_NAME ：项目名，Jenkins环境变量，直接引用
-* $BRANCH : 代码分支，git参数，“参数化构建过程”中定义，这里引用
-* $workerNum : 启动worker数量，类型为Interger，需手动输入参数值
-* $appointedHost: 选项参数，“参数化构建过程”中定义，这里引用。填写需要执行自动化测试的所有环境，与开发代码呼应。
+* $BRANCH : 代码分支，Jenkins的git参数，“参数化构建过程”中定义，这里引用
+* $workerNum : 启动worker数量，自定义参数，类型为Interger，需手动填写一个参数值
+* $appointedHost: Jenkins的选项参数，“参数化构建过程”中定义，这里引用。填写需要执行自动化测试的所有环境，与开发代码呼应。
 ```
 # tips:
 if [ $workerNum -ge 1 ];then
@@ -64,10 +64,10 @@ fi
 ```
 
 可选参数：
-* $appointedCase：指定路径或用例，路径填写 $PRJ_ROOT_DIR 相对路径，如 testcases/create_user.yml
+* $appointedCase：指定路径或用例，自定义参数，路径填写 $PRJ_ROOT_DIR 的相对路径，如 testcases/create_user.yml
 
 
-# 8.两个重要配置文件
+# 8.重要配置文件说明
 ## 8.1.测试集群配置hosts.ini
 配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
 
@@ -78,6 +78,8 @@ fi
 * $MasterOrSlave：参数值为“master”或者“slave”，指明是master还是slave节点。
 
 hosts.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文件，在首次初始化前配置，后续新增slave需要重新执行一次初始化**bash $PRJ_ROOT_DIR/main-cli.sh**。
+
+若只有单台测试机器，该配置文件无需做任何配置。
 
 ## 8.2.config.ini部分参数说明
 * installedEnv：是否安装了基础环境。不建议手动修改。
