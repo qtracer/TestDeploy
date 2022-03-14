@@ -42,7 +42,7 @@ http://42.192.227.196:8080/
 #### 性能测试任务的重要配置
 （1）选择“参数化构建过程”，git参数名称**BRANCH**，选项参数名称**appointedHost**
 （2）“源码管理”，填写要拉取的代码仓库
-（3）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH <非0正整数> $appointedHost** 。注：appointedHost没有被程序执行，但必须要传
+（3）构建选择“执行Shell”，配置 **bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH <正整数，如6> ** 。
 （4）其他配置略
 
 
