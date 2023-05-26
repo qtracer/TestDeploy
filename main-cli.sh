@@ -23,14 +23,17 @@ ifexist=$(cat ${workdir}/ini/config.ini | grep "installedEnv" | awk -F = '{print
 installedCI=$(cat ${workdir}/ini/config.ini | grep "installedCI" | awk -F = '{print $2}')
 echo "ifexist is: "$ifexist
 
+# 安装依赖环境
+bash ${workdir}/views/buildEnvDepend.sh ${workdir}
+
 # 搭建CI平台
 if [ "$installedCI" = "notInstalled" ];then
   bash ${workdir}/views/buildCIPlatform.sh ${workdir}
 fi
 
-# ----@初始化Node，并安装测试依赖环境----
+# ----@初始化Node----
 bash ${workdir}/views/initJenkinsNode.sh ${workdir}
-bash ${workdir}/views/buildEnvDepend.sh ${workdir}
+# bash ${workdir}/views/buildEnvDepend.sh ${workdir}
 
 # 注意:默认Jenkins下执行,若cli执行需要将代码包放置在pwd的上级目录
 if [ "$ifexist" = "false" ];then
@@ -40,5 +43,4 @@ elif [ $workerNum -ge 1 ];then
 else
   bash ${workdir}/views/hrunExe.sh $workdir $JOB_NAME $tag $appointedHost $appointedCase
 fi
-
 
