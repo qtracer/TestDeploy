@@ -16,9 +16,10 @@ sed -i '1,$d' ${workdir}/ini/cores.ini
 sed -i '1,$d' ${workdir}/ini/hosts.ini
 sed -i '1,$d' ${workdir}/ini/remoteProject.ini
 sed -i '1,$d' ${workdir}/data/usableNetWork.txt
-ed -i '1,$d' ${workdir}/data/tmp.txt
+sed -i '1,$d' ${workdir}/data/tmp.txt
 
-rm -rf $basePythonHome/*
+if [ $basePythonHome ];then
+   rm -rf $basePythonHome/*
 
 # 删除日志
 find ${workdir} -name "*.log" -delete
