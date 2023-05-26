@@ -37,7 +37,6 @@ do
           \"*yes/no*\" {send \"yes\r\"; exp_continue}
           \"*assword*\" {send \"${password}\r\";}
         }
-        expect \"]*\" {send \"exit\n\"}
 
         spawn /usr/bin/ssh ${account}@${host}
         expect {
