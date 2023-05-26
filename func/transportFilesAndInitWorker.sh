@@ -31,7 +31,6 @@ expect -c "
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
     \"*password*\" {send \"${password}\r\";}
   } 
-  expect \"]*\" {send \"exit\n\"}
 
   spawn /usr/bin/ssh ${account}@${host}
   expect {
@@ -45,6 +44,7 @@ expect -c "
   expect \"]*\" {send \"rm -rf ${targetDir}/${shellPackage} && mv ${targetDir}/${sourceDir}${sn}/${shellPackage} ${targetDir} \n\"}
   expect \"]*\" {send \"cd ${targetDir}/${shellPackage} \n\"}
   expect \"]*\" {send \"nohup bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} &\n\"}
+  expect \"]*\" {send \"sleep 15\n\"}
   expect \"]*\" {send \"exit\n\"}
   expect eof;"
   
