@@ -20,6 +20,7 @@ sed -i '1,$d' ${workdir}/data/tmp.txt
 
 if [ $basePythonHome ];then
    rm -rf $basePythonHome/*
+fi
 
 # 删除日志
 find ${workdir} -name "*.log" -delete
