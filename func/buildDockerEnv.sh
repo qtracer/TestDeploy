@@ -48,8 +48,8 @@ installDocker(){
    #更改docker的镜像源
   cp ${workdir}/data/daemon.json /etc/docker/
 
-  systemctl restart docker
-  systemctl enable docker
+  systemctl restart docker.service
+  systemctl enable docker.service
   sleep 3s
 }
 
