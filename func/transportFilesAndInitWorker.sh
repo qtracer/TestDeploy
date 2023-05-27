@@ -43,8 +43,8 @@ expect -c "
   expect \"]*\" {send \"cd /opt/locust && rm -rf ${projectPackage} && mv /${targetDir}/${sourceDir}${sn}/${projectPackage} /opt/locust\n\"}
   expect \"]*\" {send \"rm -rf ${targetDir}/${shellPackage} && mv ${targetDir}/${sourceDir}${sn}/${shellPackage} ${targetDir} \n\"}
   expect \"]*\" {send \"cd ${targetDir}/${shellPackage} \n\"}
-  expect \"]*\" {send \"nohup bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} &\n\"}
-  expect \"]*\" {send \"sleep 15\n\"}
+  expect \"]*\" {send \"bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} \n\"}
+  expect \"]*\" {send \"sleep 3\n\"}
   expect \"]*\" {send \"exit\n\"}
   expect eof;"
   
