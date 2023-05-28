@@ -31,7 +31,7 @@ do
       :
     else
       expect -c "
-        set timeout 2
+        set timeout -1
         spawn /usr/bin/scp ${workdir}/func/countCores_byworker.sh ${account}@${host}:${targetDir}
         expect {
           \"*yes/no*\" {send \"yes\r\"; exp_continue}
