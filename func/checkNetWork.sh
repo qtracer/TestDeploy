@@ -24,16 +24,23 @@ do
   if [ $? -eq 0 ];then
     cores=$(echo $line | awk -F , '{print $6}')
     totalCores=$[ $cores + $totalCores ]
-    if [ "$localhost" != "$host" ];then
-      echo $line >> ${workdir}/data/usableNetWork.txt
-    fi
 
-    if [ $totalCores -gt $workerNum ];then
-      remain=$[ $totalCores - $workerNum ]
-      remain=$[ $cores - $remain ]
-      echo "remain is : $remain"
-      sed -i '$s/'"$cores"'$/'"$remain"'/' ${workdir}/data/usableNetWork.txt
-      break
+    if [ "$localhost" != "$host" -a $cores -gt 0 ];then
+      if [ $totalCores -ge $workerNum ];then
+        echo $line >> ${workdir}/data/usableNetWork.txt
+        remain=$[ $totalCores - $cores ]
+        remain=$[ $workerNum - $remain ]
+        sed -i '$s/'"$cores"'$/'"$remain"'/' ${workdir}/data/usableNetWork.txt
+        break
+      else
+        echo $line >> ${workdir}/data/usableNetWork.txt
+        remain=$[ $workerNum - $totalCores ]
+        if [ $remain -le 0 ];then
+          sed -i '$s/'"$cores"'$/'"$remain"'/' ${workdir}/data/usableNetWork.txt
+          break;
+        fi
+      fi
+
     fi
 
   fi
