@@ -25,7 +25,7 @@ do
   cores=$(echo $line | awk -F , '{print $6}')
 
 expect -c "
-  set timeout 10
+  set timeout -1
   spawn /usr/bin/scp /data/${sourceDir}${sn}.tar ${account}@${host}:${targetDir}
   expect {
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
