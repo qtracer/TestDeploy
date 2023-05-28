@@ -35,7 +35,7 @@ do
     mv ${workdir}/ini/hosts_bak.ini ${workdir}/ini/hosts.ini
 
     expect -c "
-      set timeout 10
+      set timeout -1
       spawn /usr/bin/scp ${dirname0}/${shellPackage}.tar ${account}@${host}:${targetDir}
       expect {
         \"*yes/no*\" {send \"yes\r\"; exp_continue}
