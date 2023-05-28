@@ -19,3 +19,5 @@ bash ${workdir}/func/installDockerCompose.sh ${workdir}
 bash ${workdir}/func/installCrontab.sh
 
 sed -i '/github/d' /etc/hosts
+
+exit
