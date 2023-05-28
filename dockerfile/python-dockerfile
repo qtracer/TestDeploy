@@ -12,6 +12,8 @@ ARG envArg="2.5.4"
 
 RUN pip3 install requests==2.24.0
 
+RUN pip3 install requests-toolbelt
+
 RUN pip3 install markupsafe==2.0.1
 
 RUN pip3 install PyMySQL
