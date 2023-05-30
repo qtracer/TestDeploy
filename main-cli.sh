@@ -24,7 +24,7 @@ installedCI=$(cat ${workdir}/ini/config.ini | grep "installedCI" | awk -F = '{pr
 echo "ifexist is: "$ifexist
 
 # 安装依赖环境
-bash ${workdir}/views/installDocker.sh ${workdir}
+bash ${workdir}/views/buildEnvDepend.sh ${workdir}
 
 # 搭建CI平台
 if [ "$installedCI" = "notInstalled" ];then
