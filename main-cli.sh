@@ -23,7 +23,7 @@ ifexist=$(cat ${workdir}/ini/config.ini | grep "installedEnv" | awk -F = '{print
 installedCI=$(cat ${workdir}/ini/config.ini | grep "installedCI" | awk -F = '{print $2}')
 echo "ifexist is: "$ifexist
 
-# 安装依赖环境
+# 单机环境下(不配置hosts.ini)安装依赖环境
 bash ${workdir}/views/buildEnvDepend.sh ${workdir}
 
 # 搭建CI平台
