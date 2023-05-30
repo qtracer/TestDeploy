@@ -52,7 +52,6 @@ do
       expect \"]*\" {send \"tar zxvf ${shellPackage}.tar \n\"}
       expect \"]*\" {send \"rm -f ${targetDir}/${shellPackage}.tar \n\"}
       expect \"]*\" {send \"cd ${targetDir}/${shellPackage} && bash views/buildEnvDepend.sh ${targetDir}/${shellPackage} && exit \n\"}
-      expect \"]*\" {send \"exit\n\"}
       expect eof;"
   fi
 done < ${workdir}/ini/hosts.ini
