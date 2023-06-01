@@ -41,12 +41,18 @@ bash $PRJ_ROOT_DIR/main-cli.sh #Bash
 （1）选择“参数化构建过程”，git参数名称**BRANCH**，选项参数名称**appointedHost**
 （2）若用到master-slave模式，同时要勾选“限制项目并发构建”
 （3）“源码管理”，填写要拉取的代码仓库
-（4）构建选择“执行Shell”，配置 ```Bash bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 0 $appointedHost #Bash```
+（4）构建选择“执行Shell”，配置 
+```Bash 
+bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 0 $appointedHost #Bash
+```
 （5）其他配置略
 #### 性能测试任务的重要配置
 （1）选择“参数化构建过程”，git参数名称**BRANCH**，选项参数名称**appointedHost**
 （2）“源码管理”，填写要拉取的代码仓库
-（3）构建选择“执行Shell”，配置 ```Bash bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH <正整数，如6> #Bash```。
+（3）构建选择“执行Shell”，配置 
+```Bash 
+bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH <正整数，如6> #Bash
+```
 （4）其他配置略
 
 
