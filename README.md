@@ -33,7 +33,8 @@ http://42.192.227.196:8080/
 * CLI进入$PRJ_ROOT_DIR，通过环境部署和任务构建统一入口执行初始化
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh #Bash
-```，首次初始化时会搭建CI平台Jenkins
+```
+首次初始化时会搭建CI平台Jenkins
 * 配置Jenkins、创建节点
 * Jenkins创建任务、配置任务
 #### 自动化测试任务的重要配置
