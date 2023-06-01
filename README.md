@@ -104,7 +104,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 
 # 9.代码文档组织结构
 * HttpRunner2.X参考：https://github.com/qtracer/HttpRunner_demo
-* Locust1.4.1参考：https://docs.locust.io/en/1.4.1/running-locust-docker.html
+* Locust1.4.1参考：https://docs.locust.io/en/stable/
 
 # 10.Jenkins建议插件
 除了系统默认安装插件外，这里建议安装以下插件
