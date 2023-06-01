@@ -87,7 +87,10 @@ fi
 * $constant：参数值为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”
 * $MasterOrSlave：参数值为“master”或者“slave”，指明是master还是slave节点。
 
-hosts.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文件，在首次初始化前配置，后续新增slave需要重新执行一次初始化**bash $PRJ_ROOT_DIR/main-cli.sh**。
+hosts.ini为Jenkins Master-Slave以及Locust Master-Slave模式管理slave的文件，在首次初始化前配置，后续新增slave需要重新执行一次初始化
+```Bash
+bash $PRJ_ROOT_DIR/main-cli.sh
+```
 
 若只有单台测试机器，该配置文件无需做任何配置。
 
