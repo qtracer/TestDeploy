@@ -8,4 +8,4 @@ hrunVersion=$(cat ${workdir}/ini/config.ini | grep "hrunVersion" | awk -F = '{pr
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-timeout 5m docker build -t ${python_image} -f ${workdir}/dockerfile/python-dockerfile --build-arg envArg=${hrunVersion} . | tee -a ${workdir}/log/${curdate}.log
+docker build -t ${python_image} -f ${workdir}/dockerfile/python-dockerfile --build-arg envArg=${hrunVersion} . | tee -a ${workdir}/log/${curdate}.log
