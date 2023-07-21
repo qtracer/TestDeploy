@@ -55,6 +55,8 @@ bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH <正整数，如6> #Bash
 ```
 （4）其他配置略
 
+注意事项：镜像都是从Docker Hub等远程仓库下载的，存在超时下载失败的可能，取决于网络情况。最好用私库拉取镜像。
+
 
 # 7.环境部署和任务构建统一入口
 > bash $PRJ_ROOT_DIR/main-cli.sh **$JOB_NAME** **$BRANCH** **$workerNum** **$appointedHost** $appointedCase
