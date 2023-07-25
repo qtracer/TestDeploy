@@ -1,16 +1,22 @@
 #!/bin/bash
-# 设置时间同步
 
 workdir=$1
-
 export info="$0: timeSync for the machine"
-bash ${workdir}/comm/echoInfo.sh $workdir
+bash $workdir/comm/echoInfo.sh $workdir
 
-# 修改时区
-rm -rf /etc/localtime
-ln -s /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-# 时间同步
-yum install chrony -y
-sed 's/0.centos.pool.ntp.org/time2.aliyun.com/' /etc/chrony.conf
-systemctl start chronyd
-chronyc sources
+[ "`rpm -qa | egrep ^rdate`" ] || yum -y install rdate > /dev/null 2>&1
+tz=`date -R | awk '{print $NF}'`
+if [ $tz != "+0800" ]
+   then
+       \cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+        echo ZONE=\"Asia/Shanghai\" > /etc/sysconfig/clock
+fi
+
+yum install ntpdate -y
+/usr/sbin/ntpdate us.ntp.org.cn
+if [ $? != 0 ]
+   then
+      /usr/bin/rdate -s time.nist.gov
+fi
+
+/sbin/hwclock -w
