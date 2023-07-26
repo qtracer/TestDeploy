@@ -5,8 +5,9 @@
 JOB_NAME=$1
 tag=$2
 workerNum=$3
-appointedHost=$4
-appointedCase=$5
+appointedCase=$4
+appointedHost=$5
+
 
 # ------@设置全局变量，并写入全局变量配置文件------
 curdate="$(date +%Y%m%d)"
