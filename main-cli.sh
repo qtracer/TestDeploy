@@ -1,7 +1,7 @@
 #!/bin/bash
 # @author GHJ qtracer
 
-# Jenkins传入参数
+# Jenkins或命令行终端传入参数
 JOB_NAME=$1
 tag=$2
 workerNum=$3
