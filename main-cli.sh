@@ -5,8 +5,8 @@
 JOB_NAME=$1
 tag=$2
 workerNum=$3
-appointedCase=$4
-appointedHost=$5
+arg1=$4
+arg2=$5
 
 
 # ------@设置全局变量，并写入全局变量配置文件------
@@ -39,7 +39,7 @@ bash ${workdir}/views/initJenkinsNode.sh ${workdir}
 if [ "$ifexist" = "false" ];then
   sed -i 's/false/true/g' ${workdir}/ini/config.ini
 elif [ $workerNum -ge 1 ];then
-  bash ${workdir}/views/locustExe.sh $workdir $JOB_NAME $tag $workerNum $appointedCase
+  bash ${workdir}/views/locustExe.sh $workdir $JOB_NAME $tag $workerNum $arg1
 else
-  bash ${workdir}/views/hrunExe.sh $workdir $JOB_NAME $tag $appointedHost $appointedCase
+  bash ${workdir}/views/hrunExe.sh $workdir $JOB_NAME $tag $arg1 $arg2
 fi
