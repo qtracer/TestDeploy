@@ -47,7 +47,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH 0 $appointedHost #Bash
 ```
 （5）其他配置略
 #### 性能测试任务的重要配置
-（1）选择“参数化构建过程”，git参数名称**BRANCH**，选项参数名称**appointedHost**
+（1）选择“参数化构建过程”，git参数名称**BRANCH**
 （2）“源码管理”，填写要拉取的代码仓库
 （3）构建选择“执行Shell”，配置 
 ```Bash 
