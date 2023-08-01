@@ -4,7 +4,6 @@
 
 FROM jenkins/jenkins:lts
 
-MAINTAINER GHJ <1993huajun@gmail.com>
 
 # 指定Dockerfile的使用用户
 # USER root
