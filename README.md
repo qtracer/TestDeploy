@@ -1,24 +1,18 @@
 # 推荐用最新版本，因历史原因，旧版本运行不稳定
-# 1.演示demo
-http://42.192.227.196:8080/
-账号：gaohuajun
-密码：gaohuajun
 
-备注：整套流程尚未实现完全的自动化，如jenkins启动和配置、服务器相关信息配置等，仍需手动操作。
-
-# 2.目标
+# 1.目标
 快速提供测试标准化环境，
 促进测试流程高效与稳定。
 
-# 3.设计原则
+# 2.设计原则
 * 高效的自动化和标准化
 * 简单的技术栈，高可维护性
 * 拥抱开源，充分利用已有的优秀轮子
 
-# 4.整体架构设计
+# 3.整体架构设计
 ![效果](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE00.png)
 
-# 5.核心特性
+# 4.核心特性
 * 结合Docker容器技术，轻量高效
 * 开箱即用，简化测试的执行过程，提供测试用例版本控制机制
 * 集成Httprunner2.X/Locust1.4.X等工具特性
@@ -27,7 +21,7 @@ http://42.192.227.196:8080/
 * 支持通过参数输入切换不同环境
 
 
-# 6.如何快速开始
+# 5.如何快速开始
 * main-cli.sh放置在项目根目录下，假设为**PRJ_ROOT_DIR**
 * 配置 $PRJ_ROOT_DIR/ini/hosts.ini
 * CLI进入$PRJ_ROOT_DIR，通过环境部署和任务构建统一入口执行初始化
@@ -58,7 +52,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BRANCH <正整数，如6> #Bash
 注意事项：镜像都是从Docker Hub等远程仓库下载的，最好用私库拉取镜像。
 
 
-# 7.环境部署和任务构建统一入口
+# 6.环境部署和任务构建统一入口
 > bash $PRJ_ROOT_DIR/main-cli.sh **$JOB_NAME** **$BRANCH** **$workerNum** **$appointedHost** $appointedCase
 
 其中，**任务构建时**，必选参数：
@@ -79,8 +73,8 @@ fi
 * $appointedCase：指定路径或用例，自定义参数，路径填写 $PRJ_ROOT_DIR 的相对路径，如 testcases/create_user.yml
 
 
-# 8.重要配置文件说明
-## 8.1.测试集群配置hosts.ini
+# 7.重要配置文件说明
+## 7.1.测试集群配置hosts.ini
 配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
 
 * $host：slave节点的IP地址
@@ -96,7 +90,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 
 若只有单台测试机器，该配置文件无需做任何配置。
 
-## 8.2.config.ini部分参数说明
+## 7.2.config.ini部分参数说明
 * installedEnv：是否安装了基础环境。注：若因网络问题环境安装失败，需要手动重置为false并执行初始化。
 * installedCI：是否安装了CI平台Jenkins。不建议手动修改。
 * remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留2个。支持修改。
@@ -104,11 +98,11 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 * hrun_main：接口自动化执行入口，默认为main-hrun.py，支持修改，与代码入口对应。
 
 
-# 9.代码文档组织结构
+# 8.代码文档组织结构
 * HttpRunner2.X参考：https://github.com/qtracer/HttpRunner_demo
 * Locust1.4.1参考：https://docs.locust.io/en/stable/
 
-# 10.Jenkins建议插件
+# 9.Jenkins建议插件
 除了系统默认安装插件外，这里建议安装以下插件
 * Node and Label parameter	
 * Extended Choice Parameter
@@ -117,7 +111,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 * Email Extension Plugin
 * Role-based Authorization Strategy
 
-# 11.NGINX转发请求执行shell
+# 10.NGINX转发请求执行shell
 > Jenkins配置：curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${BRANCH}%200
 * PWD为shell系统变量，表示自动化项目代码包路径；参数host对应Nginx主机ip address，参数shellpath对应路径+TestDeploy，参数BRANCH对应自动化测试项目代码分支。
 * 该方式已支持，但不推荐使用，默认为关闭状态。若需要使用，则在views/buildEnvDepend.sh 取消注释，开启。
