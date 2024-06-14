@@ -34,7 +34,7 @@ done < ${workdir}/data/container_extra.txt
 
 
 # 如果是slave节点，则需要将report传master
-if [ "$localhost" != "$masterip" ];then
+if [ "$localhost" != "$masterip" ] && [ $masterip ];then
   # 将新增reports存放到目录tmp
   for((i=0;i<${#fileWithPathList[*]};i++))
   do
@@ -54,14 +54,7 @@ if [ "$localhost" != "$masterip" ];then
 
   # 传送到master,先远程创建项目报告存放目录，然后传输报告压缩包，最后解压
   expect -c "
-  set timeout 10
-  spawn /usr/bin/ssh ${account}@${masterip}
-  expect {
-    \"*yes/no*\" {send \"yes\r\"; exp_continue}
-    \"*assword*\" {send \"${password}\r\";}
-  }
-  expect \"]*\" {send \"mkdir -vp /opt/reports/hrun/$JOB_NAME\n\"}
-
+  set timeout -1
   spawn /usr/bin/scp /opt/reports/tmp/reports${currentTimeStamp}.tar ${account}@${masterip}:/opt/reports/hrun/$JOB_NAME
   expect {
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
@@ -73,6 +66,7 @@ if [ "$localhost" != "$masterip" ];then
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
     \"*assword*\" {send \"${password}\r\";}
   }
+  expect \"]*\" {send \"mkdir -vp /opt/reports/hrun/$JOB_NAME\n\"}
   expect \"]*\" {send \"cd /opt/reports/hrun/$JOB_NAME\n\"}
   expect \"]*\" {send \"tar xvf reports${currentTimeStamp}.tar\n\"}
   expect \"]*\" {send \"rm -f reports${currentTimeStamp}.tar\n\"}
