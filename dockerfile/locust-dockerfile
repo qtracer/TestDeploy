@@ -1,15 +1,22 @@
-FROM python:3.7.4
+ARG pyVersion
 
-WORKDIR /root
+FROM python:$pyVersion
 
-COPY requirements.txt ./
+# WORKDIR /root
+
+# COPY requirements.txt ./
 
 RUN pip config set global.index-url http://mirrors.aliyun.com/pypi/simple
 
 RUN pip config set install.trusted-host mirrors.aliyun.com
 
-RUN pip install -U pip
+RUN pip install --upgrade pip
 
-RUN pip3 install -r requirements.txt
+ARG locustVersion
 
-RUN pip3 install rsa
+ARG reqVersion
+
+ARG redisVersion
+
+# RUN pip install -r requirements.txt
+RUN pip install locust==$locustVersion requests==$reqVersion redis==$redisVersion rsa

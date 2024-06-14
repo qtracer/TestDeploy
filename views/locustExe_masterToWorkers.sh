@@ -20,7 +20,7 @@ bash ${workdir}/views/installDocker.sh $workdir
 bash ${workdir}/func/installDockerCompose.sh ${workdir}
 cat ${workdir}/data/daemon.json > /etc/docker/daemon.json
 
-bash ${workdir}/func/locust_build.sh $workdir $JOB_NAME
+bash ${workdir}/views/buildLocustImage.sh $workdir $JOB_NAME
 
 echo "locustExe_mw cores are: $cores"
 cd /opt/locust/$JOB_NAME

@@ -21,7 +21,7 @@ port=$[ 9000 + $sn ]
 echo "${python_container},${python_home},${port},0" >> ${workdir}/ini/pycontainer.ini
 
 # 需要添加镜像构建失败重试机制
-docker run -it -d -p ${port}:8080 --name ${python_container} --privileged=true -v ${python_home}:${python_home} $python_image /bin/bash
+docker run -it -d -p ${port}:8080 --name ${python_container} -e TZ='Asia/Shanghai' --privileged=true -v ${python_home}:${python_home} $python_image /bin/bash
 
 export info="$0: cat docker containers after run PythonImage"
 bash ${workdir}/comm/echoInfo.sh $workdir

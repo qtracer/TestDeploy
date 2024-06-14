@@ -6,13 +6,13 @@ bash $workdir/comm/echoInfo.sh $workdir
 
 ifexist=$(cat ${workdir}/ini/config.ini | grep "installedEnv" | awk -F = '{print $2}')
 
-[ "`rpm -qa | egrep ^rdate`" ] || yum -y install rdate > /dev/null 2>&1
-tz=`date -R | awk '{print $NF}'`
-if [ $tz != "+0800" ]
-   then
-       \cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-        echo ZONE=\"Asia/Shanghai\" > /etc/sysconfig/clock
-fi
+#[ "`rpm -qa | egrep ^rdate`" ] || yum -y install rdate > /dev/null 2>&1
+#tz=`date -R | awk '{print $NF}'`
+#if [ $tz != "+0800" ]
+#   then
+#       \cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+#        echo ZONE=\"Asia/Shanghai\" > /etc/sysconfig/clock
+#fi
 
 if [ "$ifexist" = "false" ];then
   yum install ntpdate -y

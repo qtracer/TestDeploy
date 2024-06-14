@@ -24,13 +24,14 @@ bash ${workdir}/func/changeComposeEnv.sh $workdir $JOB_NAME $appointedCase  # �
 
 
 # 构建locust镜像
-bash ${workdir}/func/locust_build.sh $workdir $JOB_NAME
+bash ${workdir}/views/buildLocustImage.sh $workdir $JOB_NAME
 
 echo "realWorkers is: $realWorkers"
 echo "openModel is: $openModel"
 
 if [ "$openModel" = "single" ];then
-  bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase
+  mkdir -vp /root/locustlog/$JOB_NAME
+  nohup bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > /root/locustlog/$JOB_NAME/nohub.out
 else
   bash ${workdir}/views/prepareFiles.sh $workdir $openModel $JOB_NAME $workerNum
   bash ${workdir}/func/locust_compose_master.sh $workdir $JOB_NAME

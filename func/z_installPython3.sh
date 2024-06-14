@@ -56,11 +56,16 @@ function addLink(){
 }
 
 function addTools(){
-  pip3 install requests
-  pip3 install mock
+  pip3 config set global.index-url http://mirrors.aliyun.com/pypi/simple
+  pip3 config set install.trusted-host mirrors.aliyun.com
+  pip3 install --upgrade pip
+  pip3 install requests urllib3==1.25.11 -y
+  pip3 install mock csv rsa -y
+  pip3 install redis pymysql -y
 }
 
 installPy
 installDepend "下载python3依赖环境"
 compile "编译"
 addLink "添加软链接，加入到环境变量"
+addTools

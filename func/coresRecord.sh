@@ -43,7 +43,7 @@ do
           \"*yes/no*\" {send \"yes\r\"; exp_continue}
           \"*assword*\" {send \"${password}\r\";}
         }
-        expect \"]*\" {send \"cd ${targetDir}\n\"}
+        expect \"]*\" {send \"cd ${targetDir} && chmod -777 countCores_byworker.sh\n\"}
         expect \"]*\" {send \"bash countCores_byworker.sh ${remaincores}\n\"}
         expect \"]*\" {send \"exit\n\"}
         expect eof

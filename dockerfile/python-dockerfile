@@ -1,27 +1,20 @@
-FROM python:3.7.4
+ARG pyVersion
+
+FROM python:$pyVersion
 
 RUN pip config set global.index-url http://mirrors.aliyun.com/pypi/simple
 
 RUN pip config set install.trusted-host mirrors.aliyun.com
 
-RUN pip install -U pip
+RUN pip install --upgrade pip
 
-ARG envArg="2.5.4"
+ARG reqVersion
+ARG masaVersion
 
-RUN pip3 install requests==2.24.0
+RUN pip install requests==$reqVersion requests-toolbelt markupsafe==$masaVersion colorama
 
-RUN pip3 install requests-toolbelt
+ARG hrunVersion
 
-RUN pip3 install markupsafe==2.0.1
-
-RUN pip3 install PyMySQL
-
-RUN pip3 install rsa
-
-RUN pip3 install PyYAML
-
-RUN pip3 install httprunner==$envArg
-
-RUN pip3 install mock
+RUN pip install PyMySQL rsa PyYAML httprunner==$hrunVersion mock
 
 EXPOSE 8080
