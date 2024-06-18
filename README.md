@@ -93,7 +93,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 ## 7.2.config.ini部分参数说明
 * installedEnv：是否安装了基础环境。注：若因网络问题环境安装失败，需要手动重置为false并执行初始化。
 * installedCI：是否安装了CI平台Jenkins。不建议手动修改。
-* remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留2个。支持修改。
+* remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留1个。
 * hrun_path：接口自动化默认执行的指定路径，默认为testcases/，支持修改，也可在统一执行入口指定。
 * hrun_main：接口自动化执行入口，默认为main-hrun.py，支持修改，与代码入口对应。
 
