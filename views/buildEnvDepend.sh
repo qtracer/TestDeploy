@@ -6,7 +6,9 @@ workdir=$1
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-mkdir -vp $logpath
+logpath=$(cat ${workdir}/ini/config.ini | grep "logpath" | awk -F = '{print $2}')
+
+# mkdir -vp $logpath
 # bash ${workdir}/func/timeSync.sh ${workdir}
 bash ${workdir}/views/installDocker.sh ${workdir}
 bash ${workdir}/func/installGit.sh ${workdir}

@@ -1,2 +1,0 @@
-_,/opt/pythonContainer/python1,9001,1
-_,/opt/pythonContainer/python2,9002,0

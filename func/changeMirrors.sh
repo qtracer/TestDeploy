@@ -10,27 +10,26 @@ export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
 # 改变docker的镜像源
-cat ${workdir}/data/daemon.json > /etc/docker/daemon.json
+# cat ${workdir}/data/daemon.json > /etc/docker/daemon.json
 
 
 # 改变jenkins下载组件的镜像源
 export info="$0: 更换容器Jenkins镜像源(判断tsinghua是否存在，存在1,不存在0)"
 bash ${workdir}/comm/echoInfo.sh $workdir $curdate
 
-docker exec ${jenkins_container} sh -c "cd /var/jenkins_home/updates &&\
-sed -i 's/https:\/\/updates.jenkins.io\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g' default.json &&\
-sed -i 's/http:\/\/www.google.com/https:\/\/www.baidu.com/g' default.json"
+cd ${jenkins_home}/updates && ls -al
+sudo sed -i 's/https:\/\/updates.jenkins.io\/download/https:\/\/mirrors.tuna.tsinghua.edu.cn\/jenkins/g' ${jenkins_home}/updates/default.json
+sudo sed -i 's/http:\/\/www.google.com/https:\/\/www.baidu.com/g' ${jenkins_home}/updates/default.json
 
+cat ${jenkins_home}/updates/default.json | grep "tsinghua" &> /dev/null
 if [ $? -eq 0 ];then
-  echo "default.json已存在"
+  echo "tsinghua已存在"
 else
-  docker exec ${jenkins_container} sh -c "cd /var/jenkins_home && mkdir updates"
-  docker cp ${workdir}/data/default.json ${jenkins_container}:/var/jenkins_home/updates/
+  echo "tsinghua不存在"
 fi
+
+docker restart ${jenkins_container}
 
 sleep 2s
 
-docker exec ${jenkins_container} sh -c "cat /var/jenkins_home/updates/default.json | grep "tsinghua" | wc -l" | tee -a ${workdir}/log/${curdate}.log
-
 cat ${workdir}/data/statement_mirror.txt
-

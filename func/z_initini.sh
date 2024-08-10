@@ -17,6 +17,7 @@ sed -i '1,$d' ${workdir}/ini/hosts.ini
 sed -i '1,$d' ${workdir}/ini/remoteProject.ini
 sed -i '1,$d' ${workdir}/data/usableNetWork.txt
 sed -i '1,$d' ${workdir}/data/tmp.txt
+sed -i '1,$d' ${workdir}/data/container_extra.txt
 
 if [ $basePythonHome ];then
    rm -rf $basePythonHome/*

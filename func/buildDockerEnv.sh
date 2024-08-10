@@ -16,8 +16,8 @@ function setDockerRepo(){
   yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo &&
   yum makecache fast
 
-  echo "列出Docker所有版本"
-  yum list docker-ce --showduplicates | sort -r 
+  # echo "列出Docker所有版本"
+  # yum list docker-ce --showduplicates | sort -r 
 }
 
 :<<!
@@ -46,7 +46,7 @@ installDocker(){
   echo y | yum install -y $dVersion
 
    #更改docker的镜像源
-  cp ${workdir}/data/daemon.json /etc/docker/
+  sudo cp -f ${workdir}/data/daemon.json /etc/docker/
 
   systemctl restart docker.service
   systemctl enable docker.service

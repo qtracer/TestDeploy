@@ -10,7 +10,7 @@ bash ${workdir}/comm/echoInfo.sh $workdir
 
 java -version &> /dev/null
 if [ "$?" != "0" ];then
-  yum install -y java-${jdkVersion}-openjdk && sleep 2s && ln -s /usr/lib/jvm/java-${jdkVersion}-openjdk-${jdkVersion}.312.b07-1.el7_9.x86_64/jre/bin/java /usr/local/bin
+  yum install -y java-${jdkVersion}-openjdk.x86_64
 fi
 
 export info="$0: cat java version after install JDK"

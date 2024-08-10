@@ -1,5 +1,5 @@
 {
-    "registry-mirrors" : [
+  "registry-mirrors": [
     "https://docker.1panel.live",
     "https://docker.hpcloud.cloud",
     "https://dockerpull.com",
@@ -9,4 +9,5 @@
     "https://mirror.ccs.tencentyun.com",
     "https://registry.docker-cn.com"
   ]
+
 }
