@@ -9,18 +9,17 @@ bash ${workdir}/comm/echoInfo.sh $workdir
 logpath=$(cat ${workdir}/ini/config.ini | grep "logpath" | awk -F = '{print $2}')
 
 # mkdir -vp $logpath
-# bash ${workdir}/func/timeSync.sh ${workdir}
 bash ${workdir}/views/installDocker.sh ${workdir}
-bash ${workdir}/func/installGit.sh ${workdir}
 
+bash ${workdir}/func/installGit.sh ${workdir}
 bash ${workdir}/func/installJDK.sh ${workdir}
+bash ${workdir}/func/installExpect.sh $workdir
+bash ${workdir}/func/installDockerCompose.sh ${workdir}
+bash ${workdir}/func/installCrontab.sh
+# bash ${workdir}/views/ifNginxProxy.sh ${workdir}
+
 bash ${workdir}/views/buildPythonImage.sh ${workdir}
 
-bash ${workdir}/func/installDockerCompose.sh ${workdir}
-
-# bash ${workdir}/views/ifNginxProxy.sh ${workdir}
-bash ${workdir}/func/installCrontab.sh
-
-sed -i '/github/d' /etc/hosts
+# sed -i '/github/d' /etc/hosts
 
 exit

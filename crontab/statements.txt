@@ -7,3 +7,5 @@ crontab -e  # 编辑定时任务
 crontab -l  # 查看当前用户的定时任务
 
 crontab -r  # 删除当前用户的定时任务
+
+sudo service cron restart

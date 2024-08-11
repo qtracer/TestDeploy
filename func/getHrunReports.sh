@@ -11,7 +11,7 @@ export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
 # 减小误差时间间隔
-tail -15 ${workdir}/ini/pycontainer.ini > ${workdir}/data/container_extra.txt
+# tail -15 ${workdir}/ini/pycontainer.ini > ${workdir}/data/container_extra.txt
 sed -i 's/'"0"'$/'"1"'/g' ${workdir}/ini/pycontainer.ini
 
 mkdir -vp ${hrunReportBaseHome}/$JOB_NAME
@@ -21,26 +21,16 @@ declare -a fileList
 index=0
 
 # 获取新生成的报告
-while read line
-do    
-  if [ "$(echo ${line} | awk -F , '{print $4}')"  = "0" ];then
-    path=$(echo $line | awk -F , '{print $2}')/${JOB_NAME}/reports
-    file=$(cd $path && ls -l | tail -1 | awk -F " {1,3}" '{print $9}')
-    fileWithPathList[index]=${path}/${file}
-    fileList[index]=${file}
-    let index+=1
-    cp -rf $path/$file ${hrunReportBaseHome}/$JOB_NAME
-  fi
-done < ${workdir}/data/container_extra.txt
+
+path=$(cat ${workdir}/ini/pycontainer.ini | grep "${JOB_NAME}" | tail -1 | awk -F , '{print $2}')/${JOB_NAME}/reports
+file=$(cd $path && ls -l | tail -1 | awk -F " {1,3}" '{print $9}')
+cp -f $path/$file ${hrunReportBaseHome}/$JOB_NAME
 
 
 # 如果是slave节点，则需要将report传master
 if [ "$localhost" != "$masterip" ] && [ $masterip ];then
   # 将新增reports存放到目录tmp
-  for((i=0;i<${#fileWithPathList[*]};i++))
-  do
-    cp -rf ${fileWithPathList[i]} ${hrunReportBaseHome}/tmp
-  done
+  cp -rf $file ${hrunReportBaseHome}/tmp
 
   current=`date "+%Y-%m-%d %H:%M:%S"`
   timeStamp=`date -d "$current" +%s`

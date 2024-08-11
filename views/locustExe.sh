@@ -15,8 +15,9 @@ bash ${workdir}/comm/echoInfo.sh $workdir
 # 判断性能开启模式，获取从机开启worker数量
 bash ${workdir}/func/countCores.sh ${workdir} ${workerNum} ${appointedCase}
 openModel=$(cat ${workdir}/ini/cores.ini | awk -F , '{print $1}')
-# echo "openModel is: $openModel"
+echo "openModel is: $openModel"
 realWorkers=$(cat ${workdir}/ini/cores.ini | awk -F , '{print $2}')
+locustlog=$(cat ${workdir}/ini/config.ini | grep "locustlog" | awk -F = '{print $2}')
 
 # copy 镜像文件、docker-compose.yml等文件到项目内部
 bash ${workdir}/func/locust_packCode.sh $workdir $JOB_NAME $tag $openModel $appointedCase &&\
@@ -30,8 +31,8 @@ echo "realWorkers is: $realWorkers"
 echo "openModel is: $openModel"
 
 if [ "$openModel" = "single" ];then
-  mkdir -vp /root/locustlog/$JOB_NAME
-  nohup bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > /root/locustlog/$JOB_NAME/nohub.out
+  mkdir -vp ${locustlog}/$JOB_NAME/$(date +%Y%m%d)
+  nohup bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohub.out &
 else
   bash ${workdir}/views/prepareFiles.sh $workdir $openModel $JOB_NAME $workerNum
   bash ${workdir}/func/locust_compose_master.sh $workdir $JOB_NAME

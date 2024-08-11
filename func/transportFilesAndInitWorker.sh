@@ -15,7 +15,7 @@ export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
 sn=$[ $(cat ${workdir}/ini/locontainer.ini | grep "${baseLocustHome}" | wc -l)]
-
+locustlog=$(cat ${workdir}/ini/config.ini | grep "locustlog" | awk -F = '{print $2}')
 
 while read line
 do
@@ -38,12 +38,13 @@ expect -c "
     \"*assword*\" {send \"${password}\r\";}
   }
   expect \"]*\" {send \"mkdir -vp /opt/locust\n\"}
+  expect \"]*\" {send \"mkdir -vp ${locustlog}/$JOB_NAME/$(date +%Y%m%d)\n\"}
   expect \"]*\" {send \"cd ${targetDir}\n\"}
   expect \"]*\" {send \"tar zxvf ${sourceDir}${sn}.tar\n\"}
   expect \"]*\" {send \"cd /opt/locust && rm -rf ${projectPackage} && mv /${targetDir}/${sourceDir}${sn}/${projectPackage} /opt/locust\n\"}
   expect \"]*\" {send \"rm -rf ${targetDir}/${shellPackage} && mv ${targetDir}/${sourceDir}${sn}/${shellPackage} ${targetDir} \n\"}
   expect \"]*\" {send \"cd ${targetDir}/${shellPackage} \n\"}
-  expect \"]*\" {send \"nohup bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} &\n\"}
+  expect \"]*\" {send \"nohup bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohub.out &\n\"}
   expect \"]*\" {send \"sleep 3\n\"}
   expect \"]*\" {send \"exit\n\"}
   expect eof;"

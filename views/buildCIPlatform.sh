@@ -3,7 +3,7 @@
 
 workdir=$1
 
-logpath=$(cat ${workdir}/ini/config.ini | grep "logpath" | awk -F = '{print $2}')
+# logpath=$(cat ${workdir}/ini/config.ini | grep "logpath" | awk -F = '{print $2}')
 
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
@@ -13,7 +13,6 @@ bash ${workdir}/views/runJenkinsImage.sh ${workdir}
 
 bash ${workdir}/func/changeMirrors.sh ${workdir}
 
-bash ${workdir}/func/installExpect.sh $workdir
 bash ${workdir}/views/runRedisImage.sh ${workdir}
 
 sed -i 's/notInstalled/isInstalled/g' ${workdir}/ini/config.ini
