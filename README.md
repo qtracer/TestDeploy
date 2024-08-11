@@ -98,9 +98,9 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 
 # 8.Jenkins Pipeline
 **Jenkins Pipeline不走main-cli.sh统一入口**，部署文件分三部分：
-build：views/pipelineBuild.sh
-runAPI：views/pipelineRunAPIAuto.sh
-getReport：views/pipelineHrunReport.sh
+* build：views/pipelineBuild.sh
+* runAPI：views/pipelineRunAPIAuto.sh
+* getReport：views/pipelineHrunReport.sh
 
 # 9.代码文档组织结构
 * HttpRunner2.X参考：https://github.com/qtracer/HttpRunner_demo
