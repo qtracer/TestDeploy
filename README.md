@@ -20,10 +20,9 @@
 * 最大化测试执行机器的资源利用率
 * 支持通过参数输入切换不同环境
 
-
 # 5.如何快速开始
 * main-cli.sh放置在项目根目录下，假设为**PRJ_ROOT_DIR**
-* 配置 $PRJ_ROOT_DIR/ini/hosts.ini
+* 配置 $PRJ_ROOT_DIR/ini/hosts.ini（不配置默认单机）
 * CLI进入$PRJ_ROOT_DIR，通过环境部署和任务构建统一入口执行初始化
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh #Bash
