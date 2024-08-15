@@ -2,6 +2,7 @@
 
 workdir=$1
 JOB_NAME=$2
+tag=$3
 
 localhost=$(ip addr | grep -e "eth0" -e "ens33" | grep "inet" | awk -F " " '{print $2}' | awk -F / '{print $1}')
 masterip=$(cat ${workdir}/ini/hosts.ini | grep "master" | head -1 | awk -F , '{print $1}')
@@ -10,22 +11,25 @@ hrunReportBaseHome=$(cat ${workdir}/ini/config.ini | grep "hrunReportBaseHome" |
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-# 减小误差时间间隔
-# tail -15 ${workdir}/ini/pycontainer.ini > ${workdir}/data/container_extra.txt
 sed -i 's/'"0"'$/'"1"'/g' ${workdir}/ini/pycontainer.ini
+year=$(date +%Y)
+mday=$(date +%m%d)
 
-mkdir -vp ${hrunReportBaseHome}/$JOB_NAME
+mkdir -vp ${hrunReportBaseHome}/$JOB_NAME/$year/$mday
 mkdir -vp ${hrunReportBaseHome}/tmp
-declare -a fileWithPathList
-declare -a fileList
-index=0
 
 # 获取新生成的报告
-
 path=$(cat ${workdir}/ini/pycontainer.ini | grep "${JOB_NAME}" | tail -1 | awk -F , '{print $2}')/${JOB_NAME}/reports
 file=$(cd $path && ls -l | tail -1 | awk -F " {1,3}" '{print $9}')
-cp -f $path/$file ${hrunReportBaseHome}/$JOB_NAME
+cp -f $path/$file ${hrunReportBaseHome}/$JOB_NAME/$year/$mday
 
+# 处理Hrun报告
+python3 --version &> /dev/null
+if [ $? -eq 0 ];then
+  python3 ${workdir}/python/sendHrunReport.py ${JOB_NAME}_${tag} $path/$file
+else
+  python ${workdir}/python/sendHrunReport.py ${JOB_NAME}_${tag} $path/$file
+fi
 
 # 如果是slave节点，则需要将report传master
 if [ "$localhost" != "$masterip" ] && [ $masterip ];then
@@ -57,8 +61,8 @@ if [ "$localhost" != "$masterip" ] && [ $masterip ];then
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
     \"*assword*\" {send \"${password}\r\";}
   }
-  expect \"]*\" {send \"mkdir -vp ${hrunReportBaseHome}/$JOB_NAME\n\"}
-  expect \"]*\" {send \"cd ${hrunReportBaseHome}/$JOB_NAME\n\"}
+  expect \"]*\" {send \"mkdir -vp ${hrunReportBaseHome}/$JOB_NAME/$year/$mday\n\"}
+  expect \"]*\" {send \"cd ${hrunReportBaseHome}/$JOB_NAME/$year/$mday\n\"}
   expect \"]*\" {send \"tar xvf reports${currentTimeStamp}.tar\n\"}
   expect \"]*\" {send \"rm -f reports${currentTimeStamp}.tar\n\"}
   expect eof;"

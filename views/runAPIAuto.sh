@@ -16,6 +16,7 @@ hrunlog=$(cat ${workdir}/ini/config.ini | grep "hrunlog" | awk -F = '{print $2}'
 export info="$0: auto execute apis and scenes"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
+echo "appointedCase is: $appointedCase"
 if [ $appointedCase ];then
   mkdir -vp ${hrunlog}/$JOB_NAME
   docker exec ${python_container} sh -c "cd ${python_home}/${JOB_NAME} && python3 $hrun_main hrun ${appointedCase} $appointedHost" | tee -a ${hrunlog}/$JOB_NAME/$(date +%Y%m%d).log

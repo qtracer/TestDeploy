@@ -17,8 +17,8 @@ function reRunJenkins(){
   
   docker run -it -d -p ${port}:8080  --name ${jenkins_container} -e TZ='Asia/Shanghai' --privileged=true -v ${jenkins_home}:/var/jenkins_home $jenkins_image
   
-  echo "sleep 15s,等待jenkins ready"
-  sleep 15s
+  echo "sleep 25s,等待jenkins ready"
+  sleep 25s
   sudo chown -R 1000:1000 ${jenkins_home}
   sudo chmod -R 755 ${jenkins_home}
 

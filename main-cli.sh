@@ -28,15 +28,15 @@ installedCI=$(cat ${workdir}/ini/config.ini | grep "installedCI" | awk -F = '{pr
 echo "ifexist is: "$ifexist
 echo "installedCI is:"$installedCI
 
-# ----单机环境下(不配置hosts.ini)安装依赖环境----
+# ----@单机环境下(不配置hosts.ini)安装依赖环境----
 bash ${workdir}/views/buildEnvDepend.sh ${workdir}
 
-# ----搭建CI平台----
+# ----@搭建CI平台----
 if [ "$installedCI" == "notInstalled" ];then
   bash ${workdir}/views/buildCIPlatform.sh ${workdir}
 fi
 
-# ----初始化Node,读取hosts.ini----
+# ----@初始化Node,读取hosts.ini----
 bash ${workdir}/views/initJenkinsNode.sh ${workdir}
 
 # 注意:默认Jenkins下执行,若cli执行需要将代码包放置在pwd的上级目录下

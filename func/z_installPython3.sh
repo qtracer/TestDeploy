@@ -59,9 +59,10 @@ function addTools(){
   pip3 config set global.index-url http://mirrors.aliyun.com/pypi/simple
   pip3 config set install.trusted-host mirrors.aliyun.com
   pip3 install --upgrade pip
-  pip3 install requests urllib3==1.25.11 -y
-  pip3 install mock csv rsa -y
-  pip3 install redis pymysql -y
+  pip3 install requests urllib3==1.25.11
+  pip3 install mock rsa
+  pip3 install redis pymysql
+  pip3 install beautifulsoup4 lxml
 }
 
 installPy

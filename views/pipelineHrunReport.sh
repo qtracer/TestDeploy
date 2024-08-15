@@ -17,8 +17,8 @@ else
 fi
 
 # 获取执行报告
-bash ${workdir}/func/getHrunReports.sh ${workdir} ${JOB_NAME}
+bash ${workdir}/func/getHrunReports.sh ${workdir} ${JOB_NAME} ${tag}
 # 运行完即删掉容器,不在定时任务处理
-bash ${workdir}/func/removeContainer.sh ${workdir} ${JOB_NAME} $tag
+bash ${workdir}/func/removeContainer.sh ${workdir} ${JOB_NAME} ${tag}
 # 获取报告后清除宿主机映射文件
 # bash ${workdir}/func/hrunClean.sh ${workdir}  # warning:多任务并行容易冲突  solution:定时任务定时清除
