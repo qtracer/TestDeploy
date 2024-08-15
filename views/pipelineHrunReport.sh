@@ -16,6 +16,7 @@ else
   workdir=$(find / -type d -name "TestDeploy*" | head -1)
 fi
 
+echo "workdir"
 # 获取执行报告
 bash ${workdir}/func/getHrunReports.sh ${workdir} ${JOB_NAME} ${tag}
 # 运行完即删掉容器,不在定时任务处理

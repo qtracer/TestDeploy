@@ -14,13 +14,24 @@ bash ${workdir}/comm/echoInfo.sh $workdir
 function reRunJenkins(){
   docker stop ${jenkins_container}
   docker rm -f ${jenkins_container}
+  echo "jenkins重跑,报错无需理会"
   
-  docker run -it -d -p ${port}:8080  --name ${jenkins_container} -e TZ='Asia/Shanghai' --privileged=true -v ${jenkins_home}:/var/jenkins_home $jenkins_image
-  
-  echo "sleep 25s,等待jenkins ready"
-  sleep 25s
+  mkdir -vp ${jenkins_home}/updates
   sudo chown -R 1000:1000 ${jenkins_home}
   sudo chmod -R 755 ${jenkins_home}
+
+  cp -f ${workdir}/data/default.json ${jenkins_home}/updates/
+ 
+  docker run -it -d -p ${port}:8080  --name ${jenkins_container} -e TZ='Asia/Shanghai' --privileged=true -v ${jenkins_home}:/var/jenkins_home $jenkins_image
+  
+  sleep 3s
+ 
+  docker exec ${jenkins_container} sh -c "cat /var/jenkins_home/updates/default.json | grep 'tsinghua'" &> /dev/null
+  if [ $? -eq 0 ];then
+    echo "tsinghua已存在"
+  else
+    echo "tsinghua不存在"
+  fi
 
 
   export info="$0: cat docker ps after run JenkinsImage"
@@ -34,6 +45,7 @@ if [ $? == 0 ];then
   :
 else
   reRunJenkins
+  cat ${workdir}/data/statement_mirror.txt
 fi
 
 

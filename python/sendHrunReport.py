@@ -162,9 +162,10 @@ def send_email(subject, dicbody, file=None):
         print("Error:无法发送邮件")
 
 if __name__ == '__main__':
-    # 获取报告关键指标
-    dicbody = reportElementHandle(file)
-    # print(dicbody)
-    # 发送邮件
-    subject = projectname+"项目接口自动化测试结果" # projectname 项目名+Jenkins构建号
-    send_email(subject, dicbody, file)
+    if getConfig('email', 'sender'):
+        # 获取报告关键指标
+        dicbody = reportElementHandle(file)
+        # print(dicbody)
+        # 发送邮件
+        subject = projectname+"项目接口自动化测试结果" # projectname 项目名+Jenkins构建号
+        send_email(subject, dicbody, file)

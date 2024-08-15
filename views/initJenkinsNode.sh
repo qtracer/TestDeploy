@@ -10,7 +10,6 @@ localhost=$(ip addr | grep -e "eth0" -e "ens33" | grep "inet" | awk -F " " '{pri
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-mkdir -vp /opt/reports/hrun/
 
 while read line
 do

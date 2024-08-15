@@ -11,8 +11,6 @@ bash ${workdir}/comm/echoInfo.sh $workdir
 bash ${workdir}/views/buildJenkinsImage.sh ${workdir}
 bash ${workdir}/views/runJenkinsImage.sh ${workdir}
 
-bash ${workdir}/func/changeMirrors.sh ${workdir}
-
 bash ${workdir}/views/runRedisImage.sh ${workdir}
 
 sed -i 's/notInstalled/isInstalled/g' ${workdir}/ini/config.ini
