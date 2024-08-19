@@ -1,4 +1,4 @@
-<h3><p align="center",style="color: #FF0000;font-weight: bold; font-size: 68px;">标准化环境部署与测试持续集成工具</p></h3>
+<h3 align="center"><p style="color: green;font-weight: bold; font-size: 68px;">标准化环境部署与测试持续集成工具</p></h3>
 <p align="center">
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/stars/qtracer/TestDeploy?color=%231890FF&style=flat-square" alt="Stars"></a>
@@ -47,8 +47,8 @@ bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES #
 bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $APPOINTEDCASES #Bash
 # APPOINTEDCASES: 非必选，对应locust的tag
 ```
-
-#### tips:
+```
+# tips:
 if [ $WORKERNUM -ge 1 ];then
   "performance test"
 else
@@ -57,7 +57,7 @@ fi
 ```
 
 # 5.重要配置文件说明
-## 5.1.测试集群配置hosts.ini
+## 测试集群配置hosts.ini
 配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
 
 * $host：slave节点的IP地址
@@ -71,7 +71,7 @@ fi
 bash $PRJ_ROOT_DIR/main-cli.sh
 ```
 
-## 5.2.config.ini部分参数说明
+## config.ini部分参数说明
 * installedEnv：是否安装了基础环境。注：若因网络问题环境安装失败，需要手动重置为false并执行初始化。
 * installedCI：是否安装了CI平台Jenkins。不建议手动修改。
 * remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留1个。
