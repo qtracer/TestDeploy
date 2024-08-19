@@ -1,9 +1,9 @@
-<p align="center"><a href="https://blog.csdn.net/qq_24601279/article/details/120084792"><td colspan="4",style="color: green;font-weight: bold; font-size: 24px;>TestDeploy</td></a></p>
+<p align="center"><a href="https://blog.csdn.net/qq_24601279/article/details/120084792"><td colspan="4",style="color: green;font-weight: bold; font-size: 108px;>TestDeploy</td></a></p>
 <h3 align="center">标准化环境部署与测试持续集成工具</h3>
 <p align="center">
-  <a href="https://github.com/metersphere/metersphere/releases"><img src="https://img.shields.io/github/v/release/metersphere/metersphere" alt="GitHub release"></a>
-  <a href="https://github.com/metersphere/metersphere"><img src="https://img.shields.io/github/stars/metersphere/metersphere?color=%231890FF&style=flat-square" alt="Stars"></a>
-  <a href="https://hub.docker.com/r/metersphere/metersphere-ce-allinone"><img src="https://img.shields.io/docker/pulls/metersphere/metersphere-ce-allinone?label=downloads" alt="Download"></a>
+  <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
+  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/stars/qtracer/TestDeploy?color=%231890FF&style=flat-square" alt="Stars"></a>
+  <a href="https://hub.docker.com/r/qtracer/TestDeploy"><img src="https://img.shields.io/docker/pulls/qtracer/TestDeploy?label=downloads" alt="Download"></a>
 </p>
 <hr />
 
