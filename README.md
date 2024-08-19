@@ -1,5 +1,4 @@
-<p align="center"><td colspan="4",style="color: green;font-weight: bold; font-size: 108px;>TestDeploy</td></p>
-<h3 align="center">标准化环境部署与测试持续集成工具</h3>
+<h3 align="center"><td colspan="4",style="color: green;font-weight: bold; font-size: 48px;>标准化环境部署与测试持续集成工具</td></h3>
 <p align="center">
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/stars/qtracer/TestDeploy?color=%231890FF&style=flat-square" alt="Stars"></a>
