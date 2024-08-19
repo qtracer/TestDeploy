@@ -33,7 +33,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh #Bash
 ## 环境部署和任务构建统一入口
 > bash $PRJ_ROOT_DIR/main-cli.sh **$JOB_NAME** **$BUILD_NUMBER** **$WORKERNUM** $arg1 $arg2
 
-#### 自动化测试任务
+### 自动化测试任务
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES #Bash
 # JOB_NAME: 项目名，Jenkins环境变量，直接引用
@@ -42,13 +42,13 @@ bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES #
 # APPOINTEDCASES: 指定用例，非必填，默认/testcases
 ```
 
-#### 性能测试任务
+### 性能测试任务
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $APPOINTEDCASES #Bash
 # APPOINTEDCASES: 非必选，对应locust的tag
 ```
 
-# tips:
+#### tips:
 if [ $WORKERNUM -ge 1 ];then
   "performance test"
 else
