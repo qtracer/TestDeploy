@@ -89,23 +89,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 * HttpRunner2.X参考：https://github.com/qtracer/HttpRunner_demo
 * Locust2.X参考：https://docs.locust.io/en/stable/
 
-# 8.Jenkins建议插件
-除了系统默认安装插件外，这里建议安装以下插件
-* Node and Label parameter	
-* Extended Choice Parameter
-* Git Parameter
-* Git
-* Email Extension Plugin
-* Role-based Authorization Strategy
-* Pipeline Stage View
-* Generic Webhook Trigger
-* gitlab
-* Pipeline
-* SSH Agent Plugin
-* SSH Build Agents plugin
-* SSH Pipeline Steps
-
-# 9.NGINX转发请求执行shell
+# 8.NGINX转发请求执行shell
 > Jenkins配置：curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${WORKERNUM}%200
 * PWD为shell系统变量，表示自动化项目代码包路径；参数host对应Nginx主机ip address，参数shellpath对应路径+TestDeploy，参数BRANCH对应自动化测试项目代码分支。
 * 该方式已支持，但不推荐使用，默认为关闭状态。若需要使用，则在views/buildEnvDepend.sh 取消注释，开启。
