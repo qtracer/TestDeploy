@@ -1,8 +1,8 @@
 <h3 align="center"><p style="color: green;font-weight: bold; font-size: 68px;">标准化环境部署与测试持续集成工具</p></h3>
 <p align="center">
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
-  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/stars/qtracer/TestDeploy?color=%231890FF&style=flat-square" alt="Stars"></a>
-  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/forks/qtracer/TestDeploy?color=%231890FF&style=flat-square" alt="Forks"></a>
+  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/stars/qtracer/TestDeploy?color=%23D0A20D&style=flat-square" alt="Stars"></a>
+  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/forks/qtracer/TestDeploy?color=%230ACB84&style=flat-square" alt="Forks"></a>
 </p>
 <hr />
 
