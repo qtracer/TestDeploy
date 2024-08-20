@@ -37,7 +37,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh #Bash
 
 ### 自动化测试任务
 ```Bash 
-bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES #Bash
+bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES
 # JOB_NAME: 项目名，Jenkins环境变量，直接引用
 # BUILD_NUMBER: 构建号，Jenkins环境变量，直接引用
 # HOST: 任务执行环境
@@ -46,7 +46,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES #
 
 ### 性能测试任务
 ```Bash 
-bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $APPOINTEDCASES #Bash
+bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $APPOINTEDCASES
 # APPOINTEDCASES: 非必选，对应locust的tag
 ```
 ```
