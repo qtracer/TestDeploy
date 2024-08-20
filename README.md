@@ -3,6 +3,7 @@
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/stars/qtracer/TestDeploy?color=%23D0A20D&style=flat-square" alt="Stars"></a>
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/forks/qtracer/TestDeploy?color=%230ACB84&style=flat-square" alt="Forks"></a>
+  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/Language-Bash-blue.svg"></a>
 </p>
 <hr />
 
