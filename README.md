@@ -75,9 +75,9 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 
 ## config.ini部分参数说明
 * installedEnv：是否安装了基础环境。注：若因网络问题环境安装失败，需要手动重置为false并执行初始化。
-* installedCI：是否安装了CI平台Jenkins，默认需要安装。
+* installedCI：是否安装了CI平台Jenkins。默认安装notInstalled，无需安装isInstalled。
 * remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留1个。
-* hrun_main：接口自动化执行入口，默认为main-hrun.py，支持修改，与代码执行入口对应。
+* hrun_main：接口自动化执行入口。默认为main-hrun.py，支持修改，与代码执行入口对应。
 
 # 6.Jenkins Pipeline
 **Jenkins Pipeline不走main-cli.sh统一入口**，部署文件分三部分：
