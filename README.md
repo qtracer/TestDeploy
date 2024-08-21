@@ -1,4 +1,4 @@
-<h3 align="center"><p style="color: green;font-weight: bold; font-size: 68px;">标准化环境部署与测试持续集成工具</p></h3>
+<h3 align="center"><p style="color: green;font-weight: bold; font-size: 68px;">测试Dev/Ops工具</p></h3>
 <p align="center">
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
   <a href="https://www.linux.org/"><img src="https://img.shields.io/badge/Language-Bash | Python3-blue.svg"></a>
