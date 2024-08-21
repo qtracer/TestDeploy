@@ -1,10 +1,11 @@
 <h3 align="center"><p style="color: green;font-weight: bold; font-size: 68px;">测试Dev/Ops工具</p></h3>
 <p align="center">
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
-  <a href="https://www.linux.org/"><img src="https://img.shields.io/badge/Language-Bash | Python3-blue.svg"></a>
-  <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/System-Centos 7-yellow.svg"></a>
-  <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/Privileges-root | sudo-green.svg"></a>
-  <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/Desc-CSDN-green.svg"></a>
+  <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/Desc-CSDN-blue.svg"></a>
+  <a href="https://www.linux.org/"><img src="https://img.shields.io/badge/Language-Bash | Python3-yellow.svg"></a>
+  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/System-Centos 7-green.svg"></a>
+  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/Privileges-root | sudo-green.svg"></a>
+  
   
 <!--   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/stars/qtracer/TestDeploy?color=%23D0A20D&style=flat-square" alt="Stars"></a>
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/forks/qtracer/TestDeploy?color=%230ACB84&style=flat-square" alt="Forks"></a> -->
