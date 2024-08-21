@@ -1,9 +1,8 @@
 <h3 align="center"><p style="color: green;font-weight: bold; font-size: 68px;">测试Dev/Ops工具</p></h3>
 <p align="center">
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
-  <a href="https://www.linux.org/"><img src="https://img.shields.io/badge/Language-Bash | Python3-purple.svg"></a>
+  <a href="https://www.linux.org/"><img src="https://img.shields.io/badge/Language-Bash | Python3-blue.svg"></a>
   <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/System-Centos 7-green.svg"></a>
-  <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/Kernel Version-3.10+-green.svg"></a>
   <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/Role Privileges-root | sudo-red.svg"></a>
   <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/Desc-CSDN-yellow.svg"></a>
   
