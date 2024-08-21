@@ -59,7 +59,7 @@ fi
 ```
 
 # 5.重要配置文件说明
-## 测试集群配置hosts.ini
+## hosts.ini测试集群配置
 配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
 
 * $host：节点的IP地址
@@ -85,7 +85,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 * runAPI：views/pipelineRunAPIAuto.sh
 * getReport：views/pipelineHrunReport.sh
 
-# 7.代码文档组织结构
+# 7.代码组织结构
 * HttpRunner2.X参考：https://github.com/qtracer/HttpRunner_demo
 * Locust2.X参考：https://docs.locust.io/en/stable/
 
