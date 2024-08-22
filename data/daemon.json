@@ -1,13 +1,18 @@
 {
   "registry-mirrors": [
+    "https://registry.docker-cn.com",
+    "https://dockerhub.icu",
+    "https://docker.chenby.cn",
+    "https://docker.1panel.live",
+    "https://docker.awsl9527.cn",
+    "https://docker.anyhub.us.kg",
+    "https://dhub.kubesre.xyz",
     "https://docker.1panel.live",
     "https://docker.hpcloud.cloud",
     "https://dockerpull.com",
     "https://docker.anyhub.us.kg",
     "https://dockerhub.icu",
     "https://docker.awsl9527.cn",
-    "https://mirror.ccs.tencentyun.com",
-    "https://registry.docker-cn.com"
+    "https://mirror.ccs.tencentyun.com"
   ]
-
 }
