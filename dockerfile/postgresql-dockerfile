@@ -1,0 +1,5 @@
+ARG psqlVersion
+
+FROM postgres:$psqlVersion
+
+EXPOSE 5432

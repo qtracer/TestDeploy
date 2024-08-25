@@ -1,0 +1,5 @@
+ARG sonarVersion
+
+FROM sonarqube:${sonarVersion}
+
+EXPOSE 9000

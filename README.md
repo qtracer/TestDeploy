@@ -30,7 +30,7 @@
 # 4.快速开始
 * main-cli.sh放置在项目根目录下，假设为**PRJ_ROOT_DIR**
 * 配置 $PRJ_ROOT_DIR/ini/hosts.ini（不配置默认单机）
-* 通过环境部署和任务构建统一入口执行初始化，默认搭建CI平台Jenkins
+* 通过环境部署和任务构建统一入口执行初始化
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh #Bash
 ```
@@ -79,7 +79,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 
 ## config.ini部分参数说明
 * installedEnv：是否安装了基础环境。注：若因网络问题环境安装失败，需要手动重置为false并执行初始化。
-* installedCI：是否安装了CI平台Jenkins。默认安装notInstalled，无需安装isInstalled。
+* installedJenkins：是否安装Jenkins。默认不安装isJenkins，手动安装notJenkins。
 * remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留1个。
 * hrun_main：接口自动化执行入口。默认为main-hrun.py，支持修改，与代码执行入口对应。
 

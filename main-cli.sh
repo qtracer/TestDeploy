@@ -24,17 +24,13 @@ fi
 echo "workdir is: ${workdir}"
 
 ifexist=$(cat ${workdir}/ini/config.ini | grep "installedEnv" | awk -F = '{print $2}')
-installedCI=$(cat ${workdir}/ini/config.ini | grep "installedCI" | awk -F = '{print $2}')
-echo "ifexist is: "$ifexist
-echo "installedCI is:"$installedCI
 
 # ----@单机环境下(不配置hosts.ini)安装依赖环境----
 bash ${workdir}/views/buildEnvDepend.sh ${workdir}
 
-# ----@搭建CI平台----
-if [ "$installedCI" == "notInstalled" ];then
-  bash ${workdir}/views/buildCIPlatform.sh ${workdir}
-fi
+# ----@安装各种工具,默认不安装----
+# 手动修改配置ini/config.ini
+bash ${workdir}/views/buildTools.sh ${workdir}
 
 # ----@初始化Node,读取hosts.ini----
 bash ${workdir}/views/initJenkinsNode.sh ${workdir}

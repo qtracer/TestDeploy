@@ -11,7 +11,6 @@ sed -i '1,$d' ${workdir}/ini/pycontainer.ini
 sed -i '1,$d' ${workdir}/ini/locontainer.ini
 sed -i '1,$d' ${workdir}/ini/global.ini
 sed -i 's/true/false/g' ${workdir}/ini/config.ini
-sed -i 's/isInstalled/notInstalled/g' ${workdir}/ini/config.ini
 sed -i '1,$d' ${workdir}/ini/cores.ini
 sed -i '1,$d' ${workdir}/ini/hosts.ini
 sed -i '1,$d' ${workdir}/ini/remoteProject.ini

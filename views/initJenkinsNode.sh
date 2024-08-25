@@ -19,7 +19,6 @@ do
   ifnew=$(echo $line | awk -F , '{print $4}')
 
   if [ "$ifnew" = "isnew" ];then
-    sed -i 's/notInstalled/isInstalled/g' ${workdir}/ini/config.ini
     cp -rf ${workdir}/ini/hosts.ini ${workdir}/ini/hosts_bak.ini
     sed -i 's/isnew/notnew/g' ${workdir}/ini/hosts.ini
     sed -i 's/true/false/g' ${workdir}/ini/config.ini
