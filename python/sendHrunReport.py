@@ -106,36 +106,36 @@ def send_email(subject, dicbody, file=None):
         <title>Email Example</title>
     </head>
     <body>
-        <table id="summary">
+        <table id="summary", style="width: 100%; margin:auto">
             <tr>
-              <th>PROJECT</th>
+              <th>Project</th>
               <td colspan="4">{projectname}</td>
             </tr>
             <tr>
-              <th>RESULT</th>
+              <th>Result</th>
               <td colspan="4",style="color: red;font-weight: bold; font-size: 24px;">{result}</td>
             </tr>
             <tr>
-              <th>START AT</th>
+              <th>Start At</th>
               <td colspan="4">{dicbody['startat']}</td>
             </tr>
             <tr>
-              <th>DURATION</th>
+              <th>Duration</th>
               <td colspan="4">{dicbody['duration']}</td>
             </tr>
             <tr>
-              <th>REMARK</th>
+              <th>Tips</th>
               <td colspan="4">.:suc || F:fail || E:err || s:skip</td>
             </tr>
+        </table>
+        <table style="width: 100%; margin:auto">
             <tr>
-              <th>STAT</th>
-              <th colspan="2">TestCases (./F)</th>
-              <th colspan="2">TestSteps (./F/E/s)</th>
+              <th style="text-align: center; color: blue;">TestCases (./F)</th>
+              <th style="text-align: center; color: blue;">TestSteps (./F/E/s)</th>
             </tr>
             <tr>
-              <td>total(details)</td>
-              <td colspan="2">{dicbody['testcases-sum']} ({dicbody['testcases-success']}/{dicbody['testcases-fail']})</td>
-              <td colspan="2">{dicbody['teststeps-sum']} ({dicbody['teststeps-success']}/{dicbody['teststeps-fail']}/{dicbody['teststeps-error']}/{dicbody['teststeps-skip']})</td>
+              <td style="text-align: center;">{dicbody['testcases-sum']} ({dicbody['testcases-success']}/{dicbody['testcases-fail']})</td>
+              <td style="text-align: center;">{dicbody['teststeps-sum']} ({dicbody['teststeps-success']}/{dicbody['teststeps-fail']}/{dicbody['teststeps-error']}/{dicbody['teststeps-skip']})</td>
             </tr>
         </table>
     </body>
