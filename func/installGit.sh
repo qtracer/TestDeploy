@@ -3,6 +3,7 @@
 workdir=$1
 
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
+release=$(cat ${workdir}/ini/global.ini | grep "release" | awk -F = '{print $2}')
 
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
@@ -12,8 +13,11 @@ git --version &> /dev/null
 if [ $? -eq 0 ];then
   echo "宿主机Git环境已安装，不需要重新安装"
 else
-  echo "尚未安装，docker环境安装中" 
-  yum -y install git
+  if [ "$release" == "centos" ];then
+    yum -y install git
+  else
+    apt -y install git
+  fi
 fi
 
 export info="$0: git version"

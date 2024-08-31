@@ -37,14 +37,15 @@ expect -c "
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
     \"*assword*\" {send \"${password}\r\";}
   }
-  expect \"]*\" {send \"mkdir -vp /opt/locust\n\"}
-  expect \"]*\" {send \"mkdir -vp ${locustlog}/$JOB_NAME/$(date +%Y%m%d)\n\"}
+  expect \"]*\" {send \"sudo mkdir -vp /opt/locust/${projectPackage} \n\"}
+  expect \"]*\" {send \"sudo mkdir -vp ${targetDir}/${shellPackage} \n\"}
+  expect \"]*\" {send \"sudo mkdir -vp ${locustlog}/$JOB_NAME/$(date +%Y%m%d)\n\"}
   expect \"]*\" {send \"cd ${targetDir}\n\"}
-  expect \"]*\" {send \"tar zxvf ${sourceDir}${sn}.tar\n\"}
-  expect \"]*\" {send \"cd /opt/locust && rm -rf ${projectPackage} && mv /${targetDir}/${sourceDir}${sn}/${projectPackage} /opt/locust\n\"}
-  expect \"]*\" {send \"rm -rf ${targetDir}/${shellPackage} && mv ${targetDir}/${sourceDir}${sn}/${shellPackage} ${targetDir} \n\"}
+  expect \"]*\" {send \"sudo tar zxvf ${sourceDir}${sn}.tar\n\"}
+  expect \"]*\" {send \"cd /opt/locust && sudo rm -rf ${projectPackage} && sudo mv /${targetDir}/${sourceDir}${sn}/${projectPackage} /opt/locust\n\"}
+  expect \"]*\" {send \"sudo rm -rf ${targetDir}/${shellPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${shellPackage} ${targetDir} \n\"}
   expect \"]*\" {send \"cd ${targetDir}/${shellPackage} \n\"}
-  expect \"]*\" {send \"nohup bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohub.out &\n\"}
+  expect \"]*\" {send \"nohup sudo bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohub.out &\n\"}
   expect \"]*\" {send \"sleep 3\n\"}
   expect \"]*\" {send \"exit\n\"}
   expect eof;"

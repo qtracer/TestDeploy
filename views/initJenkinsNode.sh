@@ -10,6 +10,8 @@ localhost=$(ip addr | grep -e "eth0" -e "ens33" | grep "inet" | awk -F " " '{pri
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
+# 初始化Nodes前,installedEnv设置为已初始化
+sed -i 's/false/true/g' ${workdir}/ini/config.ini
 
 while read line
 do
@@ -17,13 +19,13 @@ do
   account=$(echo $line | awk -F , '{print $2}')
   password=$(echo $line | awk -F , '{print $3}')
   ifnew=$(echo $line | awk -F , '{print $4}')
-
+  
   if [ "$ifnew" = "isnew" ];then
-    cp -rf ${workdir}/ini/hosts.ini ${workdir}/ini/hosts_bak.ini
+    cp -f ${workdir}/ini/hosts.ini ${workdir}/ini/hosts_bak.ini
     sed -i 's/isnew/notnew/g' ${workdir}/ini/hosts.ini
-    sed -i 's/true/false/g' ${workdir}/ini/config.ini
 
     dirname0=$(dirname $workdir)
+    cat ${workdir}/ini/config.ini
     cd $dirname0 && bash ${workdir}/func/cvfTarCode.sh $shellPackage $shellPackage
     if [ "$dirname0" != "/opt" ];then
       cp -rf ${shellPackage}.tar /opt
@@ -45,11 +47,15 @@ do
         \"*yes/no*\" {send \"yes\r\"; exp_continue}
         \"*assword*\" {send \"${password}\r\";}
       }
-      expect \"]*\" {send \"yum -y install expect\n\"}
-      expect \"]*\" {send \"cd ${targetDir}\n\"}
-      expect \"]*\" {send \"tar zxvf ${shellPackage}.tar \n\"}
-      expect \"]*\" {send \"rm -f ${targetDir}/${shellPackage}.tar \n\"}
-      expect \"]*\" {send \"cd ${targetDir}/${shellPackage} && bash views/buildEnvDepend.sh ${targetDir}/${shellPackage} && exit \n\"}
+      expect \"]*\" {send \"cd ${targetDir} \n\"}
+      expect \"]*\" {send \"sudo mkdir -vp ${targetDir}/${shellPackage} \n\"}
+      expect \"]*\" {send \"sudo rm -rf ${shellPackage}/ \n\"}
+      expect \"]*\" {send \"sudo tar zxvf ${shellPackage}.tar \n\"}
+      expect \"]*\" {send \"sudo rm -f ${targetDir}/${shellPackage}.tar \n\"}
+      expect \"]*\" {send \"cd ${targetDir}/${shellPackage} \n\"}
+      expect \"]*\" {send \"sudo bash func/setGlobal.sh ${targetDir}/${shellPackage} \n\"}
+      expect \"]*\" {send \"sudo bash func/installExpect.sh ${targetDir}/${shellPackage} \n\"}
+      expect \"]*\" {send \"sudo bash views/buildEnvDepend.sh ${targetDir}/${shellPackage} && exit \n\"}
       expect eof;"
   fi
 done < ${workdir}/ini/hosts.ini

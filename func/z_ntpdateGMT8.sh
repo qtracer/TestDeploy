@@ -1,11 +1,19 @@
 #!/bin/bash
 
 workdir=$1
+release=$(cat ${workdir}/ini/global.ini | grep "release" | awk -F = '{print $2}')
+
 export info="$0: timeSync for the machine"
 bash $workdir/comm/echoInfo.sh $workdir
 
-rpm -qi ntpdate > /dev/null
+which ntpdate &> /dev/null
 if [ $? -ne 0 ];then
-  yum install ntpdate -y
+  if [ "$release" == "centos" ];then
+    yum install ntpdate -y
+  else
+    apt install ntpdate -y
+  fi
+
   /usr/sbin/ntpdate ntp.aliyun.com
+  sudo timedatectl set-timezone Asia/Shanghai
 fi

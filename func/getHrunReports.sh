@@ -61,10 +61,10 @@ if [ "$localhost" != "$masterip" ] && [ $masterip ];then
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
     \"*assword*\" {send \"${password}\r\";}
   }
-  expect \"]*\" {send \"mkdir -vp ${hrunReportBaseHome}/$JOB_NAME/$year/$mday\n\"}
+  expect \"]*\" {send \"sudo mkdir -vp ${hrunReportBaseHome}/$JOB_NAME/$year/$mday\n\"}
   expect \"]*\" {send \"cd ${hrunReportBaseHome}/$JOB_NAME/$year/$mday\n\"}
-  expect \"]*\" {send \"tar xvf reports${currentTimeStamp}.tar\n\"}
-  expect \"]*\" {send \"rm -f reports${currentTimeStamp}.tar\n\"}
+  expect \"]*\" {send \"sudo tar xvf reports${currentTimeStamp}.tar\n\"}
+  expect \"]*\" {send \"sudo rm -f reports${currentTimeStamp}.tar\n\"}
   expect eof;"
 
   # 删除slave缓存区的内容，逐个删除，避免影响期间其他项目生成的报告

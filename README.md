@@ -2,7 +2,7 @@
 <p align="center">
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
   <a href="https://www.linux.org/"><img src="https://img.shields.io/badge/Language-Bash | Python3-blue.svg"></a>
-  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/System-Centos 7 | Red Hat-red.svg"></a>
+  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/System-Centos 7 | Ubuntu-red.svg"></a>
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/Privileges-root | sudo-green.svg"></a>
   <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/Desc-CSDN-green.svg"></a>
   
@@ -44,14 +44,14 @@ bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES
 # JOB_NAME: 项目名，Jenkins环境变量，直接引用
 # BUILD_NUMBER: 构建号，Jenkins环境变量，直接引用
 # HOST: 任务执行环境
-# APPOINTEDCASES: 指定用例，非必填，默认/testcases
+# APPOINTEDCASES: 指定用例，非必填，默认/testsuites
 ```
 
 ### 性能测试任务
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $APPOINTEDCASES
 # WORKERNUM：CPU cores，依此动态计算需要多少worker支持
-# APPOINTEDCASES: 非必选，对应locust的tag
+# APPOINTEDCASES: 非必选，对应locust的@tag属性
 ```
 ```
 # tips:

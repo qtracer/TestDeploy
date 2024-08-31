@@ -1,5 +1,8 @@
 #!/bin/bash
-# @author GHJ qtracer
+
+:<<!
+'''author @GHJ qtracer'''
+!
 
 # Jenkins或命令行终端传入参数
 JOB_NAME=$1
@@ -8,42 +11,43 @@ workerNum=$3
 arg1=$4
 arg2=$5
 
-
-# ------@设置全局变量，并写入全局变量配置文件------
+# ----@定位根目录----
 workdir=$PWD
 keyword="TestDeploy"
-
-# echo "curdate=$(date +%Y%m%d)" >> ${workdir}/ini/global.ini
 
 if [[ $PWD == *$keyword* ]];then
   :
 else
-  workdir=$(find / -type d -name "TestDeploy*" | head -1)
+  workdir=$(sudo find / -type d -name "TestDeploy*" | head -1)
 fi
-
 echo "workdir is: ${workdir}"
+
+# ----@动态全局变量----
+sudo bash ${workdir}/func/setGlobal.sh ${workdir}
+
+# ----@判断是否有新节点加入----
+sudo bash ${workdir}/func/ifNewNodesJoin.sh ${workdir}
 
 ifexist=$(cat ${workdir}/ini/config.ini | grep "installedEnv" | awk -F = '{print $2}')
 
-# ----@单机环境下(不配置hosts.ini)安装依赖环境----
-bash ${workdir}/views/buildEnvDepend.sh ${workdir}
+# ----@单机(不配置hosts.ini)安装依赖环境----
+sudo bash ${workdir}/views/buildEnvDepend.sh ${workdir}
 
 # ----@安装各种工具,默认不安装----
-# 手动修改配置ini/config.ini
-bash ${workdir}/views/buildTools.sh ${workdir}
+sudo bash ${workdir}/views/buildTools.sh ${workdir}
 
-# ----@初始化Node,读取hosts.ini----
-bash ${workdir}/views/initJenkinsNode.sh ${workdir}
+# ----@初始化Nodes,读取hosts.ini----
+sudo bash ${workdir}/views/initJenkinsNode.sh ${workdir}
 
-# 注意:默认Jenkins下执行,若cli执行需要将代码包放置在pwd的上级目录下
+# tips: 默认Jenkins下执行,若cli执行需要将代码包放置在pwd的上级目录下
 if [ "$ifexist" = "false" ];then
-  sed -i 's/false/true/g' ${workdir}/ini/config.ini
+  sudo sed -i 's/false/true/g' ${workdir}/ini/config.ini
 elif [ $workerNum -ge 1 ];then
   # arg1:即locust @tag，指定标签的用例[locust暂未支持切换环境]
-  bash ${workdir}/views/locustExe.sh $workdir $JOB_NAME $tag $workerNum $arg1
+  sudo bash ${workdir}/views/locustExe.sh $workdir $JOB_NAME $tag $workerNum $arg1
 else
   # tag:即jenkins ${BUILD_NUMBER}
   # arg1:即执行项目的环境,如release
-  # arg2:即执行项目指定用例路径,默认testcases,ini/config.ini可配置
-  bash ${workdir}/views/hrunExe.sh $workdir $JOB_NAME $tag $arg1 $arg2
+  # arg2:即执行项目指定用例路径,默认testsuites,ini/config.ini可配置
+  sudo bash ${workdir}/views/hrunExe.sh $workdir $JOB_NAME $tag $arg1 $arg2
 fi
