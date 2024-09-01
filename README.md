@@ -1,4 +1,4 @@
-<h3 align="center"><p style="color: green;font-weight: bold; font-size: 68px;">测试Dev/Ops工具</p></h3>
+<h3 align="center"><p style="color: green;font-weight: bold; font-size: 68px;">测试DevOps工具</p></h3>
 <p align="center">
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
   <a href="https://www.linux.org/"><img src="https://img.shields.io/badge/Language-Bash | Python3-blue.svg"></a>
@@ -67,7 +67,7 @@ fi
 配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
 
 * $host：节点的IP地址
-* $account：节点主机的账号
+* $account：节点主机的账号(仅支持root权限)
 * $password：节点主机的密码
 * $constant：参数值为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”
 * $MasterOrSlave：参数值为“master”或者“slave”，指明是master还是slave节点。
