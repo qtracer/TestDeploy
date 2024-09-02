@@ -24,5 +24,5 @@ bash ${workdir}/views/buildLocustImage.sh $workdir $JOB_NAME
 
 echo "locustExe_mw cores are: $cores"
 cd /opt/locust/$JOB_NAME
-docker-compose -f docker-compose-worker.yml up --scale worker=$cores
+/usr/local/bin/docker-compose -f docker-compose-worker.yml up --scale worker=$cores
 

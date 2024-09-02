@@ -6,4 +6,4 @@ bash ${workdir}/comm/echoInfo.sh $workdir
 
 cd /opt/locust/$JOB_NAME
 
-docker-compose -f docker-compose-master.yml up
+/usr/local/bin/docker-compose -f docker-compose-master.yml up

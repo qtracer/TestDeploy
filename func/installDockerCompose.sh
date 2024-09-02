@@ -8,7 +8,7 @@ dcVersion=$(cat ${workdir}/ini/config.ini | grep "dcVersion" | awk -F = '{print 
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-docker-compose -v &> /dev/null
+/usr/local/bin/docker-compose -v &> /dev/null
 if [ $? -eq 0 ];then
   echo "docker-compose不需要重新安装"
 else

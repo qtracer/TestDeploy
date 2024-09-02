@@ -10,9 +10,6 @@ localhost=$(ip addr | grep -e "eth0" -e "ens33" | grep "inet" | awk -F " " '{pri
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-# 初始化Nodes前,installedEnv设置为已初始化
-sed -i 's/false/true/g' ${workdir}/ini/config.ini
-
 while read line
 do
   host=$(echo $line | awk -F , '{print $1}')
@@ -23,9 +20,10 @@ do
   if [ "$ifnew" = "isnew" ];then
     cp -f ${workdir}/ini/hosts.ini ${workdir}/ini/hosts_bak.ini
     sed -i 's/isnew/notnew/g' ${workdir}/ini/hosts.ini
+    # 初始化Nodes,installedEnv设置为已初始化
+    sed -i 's/false/true/g' ${workdir}/ini/config.ini
 
     dirname0=$(dirname $workdir)
-    cat ${workdir}/ini/config.ini
     cd $dirname0 && bash ${workdir}/func/cvfTarCode.sh $shellPackage $shellPackage
     if [ "$dirname0" != "/opt" ];then
       cp -rf ${shellPackage}.tar /opt
@@ -36,6 +34,13 @@ do
 
     expect -c "
       set timeout -1
+      spawn /usr/bin/ssh ${account}@${host}
+      expect {
+        \"*yes/no*\" {send \"yes\r\"; exp_continue}
+        \"*assword*\" {send \"${password}\r\";}
+      }
+      expect \"]*\" {send \"sudo mkdir -vp ${targetDir} && sudo chmod 775 ${targetDir} \n\"}
+
       spawn /usr/bin/scp ${dirname0}/${shellPackage}.tar ${account}@${host}:${targetDir}
       expect {
         \"*yes/no*\" {send \"yes\r\"; exp_continue}

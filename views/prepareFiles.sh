@@ -13,4 +13,4 @@ bash ${workdir}/func/coresRecord.sh $workdir
 
 bash ${workdir}/func/checkNetWork.sh $workdir $workerNum
 bash ${workdir}/views/copyFilesToTmp.sh $workdir $openModel ${projectPackage}
-bash ${workdir}/func/transportFilesAndInitWorker.sh $workdir $projectPackage
+bash ${workdir}/func/transportFilesAndInitWorker.sh $workdir ${projectPackage}

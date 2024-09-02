@@ -18,6 +18,11 @@ sed -i '1,$d' ${workdir}/data/usableNetWork.txt
 sed -i '1,$d' ${workdir}/data/tmp.txt
 sed -i '1,$d' ${workdir}/locusts/.env
 
+echo "JOB_NAME=default" >> ${workdir}/locusts/.env
+echo "locust_image=default" >> ${workdir}/locusts/.env
+echo "appointedCase=all" >> ${workdir}/locusts/.env
+echo "mainhost=192.168.6.158" >> ${workdir}/locusts/.env
+
 # 清空email配置
 FIELDS=("receiver" "sender" "sender_password" "smtp_server" "smtp_port")
 # 循环处理每个指定的字段
