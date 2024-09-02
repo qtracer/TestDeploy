@@ -3,7 +3,7 @@
   <a href="https://github.com/qtracer/TestDeploy/releases"><img src="https://img.shields.io/github/v/release/qtracer/TestDeploy" alt="GitHub release"></a>
   <a href="https://www.linux.org/"><img src="https://img.shields.io/badge/Language-Bash | Python3-blue.svg"></a>
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/System-Centos 7 | Ubuntu-red.svg"></a>
-  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/Privileges-root | sudo-green.svg"></a>
+  <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/Privileges-root | sudo[NOPASSWD]-green.svg"></a>
   <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/Desc-CSDN-green.svg"></a>
   
 <!--   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/stars/qtracer/TestDeploy?color=%23D0A20D&style=flat-square" alt="Stars"></a>
@@ -67,7 +67,7 @@ fi
 配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
 
 * $host：节点的IP地址
-* $account：节点主机的账号(仅支持root权限)
+* $account：节点主机的账号(支持root账号和sudo免密权限账号)
 * $password：节点主机的密码
 * $constant：参数值为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”
 * $MasterOrSlave：参数值为“master”或者“slave”，指明是master还是slave节点。
