@@ -31,6 +31,7 @@ else
   python ${workdir}/python/sendHrunReport.py ${JOB_NAME}_${tag} $path/$file
 fi
 
+:<<!
 # 如果是slave节点，则需要将report传master
 if [ "$localhost" != "$masterip" ] && [ $masterip ];then
   # 将新增reports存放到目录tmp
@@ -75,4 +76,4 @@ if [ "$localhost" != "$masterip" ] && [ $masterip ];then
   done
   rm -f reports${currentTimeStamp}.tar
 fi
-
+!
