@@ -79,7 +79,7 @@ def getConfig(section, key):
 '''发送邮件'''
 def send_email(subject, dicbody, file=None):
     # 从配置获取EMAIL信息
-    receiver = getConfig('email', 'receiver')
+    receiver = getConfig('email', 'receiver').split(',')
     sender = getConfig('email', 'sender')
     sender_password = getConfig('email', 'sender_password')
     smtp_server = getConfig('email', 'smtp_server')
