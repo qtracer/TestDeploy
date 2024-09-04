@@ -12,7 +12,7 @@ export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
 if [ "$ifJenkins" = "notJenkins" ];then
- # bash ${workdir}/views/buildJenkinsImage.sh ${workdir}
+  bash ${workdir}/views/buildJenkinsImage.sh ${workdir}
   bash ${workdir}/views/runJenkinsImage.sh ${workdir}
   sed -i 's/notJenkins/isJenkins/g' ${workdir}/ini/config.ini
 fi

@@ -1,5 +1,5 @@
-ARG images
+ARG psqlVersion
 
-FROM $images
+FROM postgres:$psqlVersion
 
 EXPOSE 5432

@@ -1,9 +1,8 @@
 # 前提：首先安装docker环境，安装docker环境后才可以执行Dockerfile
 
 # 安装tomcat
-ARG images
 
-FROM $images
+FROM jenkins/jenkins:lts
 
 
 # 指定Dockerfile的使用用户
