@@ -1,6 +1,6 @@
-ARG pyVersion
+ARG images
 
-FROM python:$pyVersion
+FROM $images
 
 # WORKDIR /root
 

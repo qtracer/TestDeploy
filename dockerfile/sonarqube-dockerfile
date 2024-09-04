@@ -1,5 +1,5 @@
-ARG sonarVersion
+ARG images
 
-FROM sonarqube:${sonarVersion}
+FROM $images
 
 EXPOSE 9000

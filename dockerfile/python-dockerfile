@@ -1,6 +1,6 @@
-ARG pyVersion
+ARG images
 
-FROM python:$pyVersion
+FROM $images
 
 RUN pip config set global.index-url http://mirrors.aliyun.com/pypi/simple
 

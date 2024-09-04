@@ -23,8 +23,8 @@ echo "locust_image=default" >> ${workdir}/locusts/.env
 echo "appointedCase=all" >> ${workdir}/locusts/.env
 echo "mainhost=192.168.6.158" >> ${workdir}/locusts/.env
 
-# 清空email配置
-FIELDS=("receiver" "sender" "sender_password" "smtp_server" "smtp_port")
+# 清空填充配置
+FIELDS=("receiver" "sender" "sender_password" "smtp_server" "smtp_port" "registry_url_login" "registry_url_download" "registry_user" "registry_password" "registry_python" "registry_redis" "registry_postgresql" "registry_sonarqube" "registry_jenkins")
 # 循环处理每个指定的字段
 for field in "${FIELDS[@]}"; do
     # 使用 sed 命令清空指定字段后面的内容
