@@ -93,9 +93,11 @@ def send_email(subject, dicbody, file=None):
     mail['To'] = ",".join(receiver)
 
     if int(dicbody['testcases-fail']) > 0:
-        result = "不通过"
+        result = "Failed"
+        color = "red"
     else:
-        result = "通过"
+        result = "Passed"
+        color = "green"
     # 邮件正文 创建HTML对象，填充数据
     html_content = f"""
     <!DOCTYPE html>
@@ -108,36 +110,41 @@ def send_email(subject, dicbody, file=None):
     <body>
         <table id="summary", style="width: 100%; margin:auto">
             <tr>
-              <th>Project</th>
-              <td colspan="4">{projectname}</td>
+              <th style="font-weight: bold;font-size: 15px;">Project</th>
+              <td colspan="4",style="font-size: 15px;">{projectname}</td>
             </tr>
             <tr>
-              <th>Result</th>
-              <td colspan="4",style="color: red;font-weight: bold; font-size: 24px;">{result}</td>
+              <th style="font-weight: bold;font-size: 15px;">Result</th>
+              <td colspan="4",style="font-weight: bold; font-size: 17px; color: {color};">{result}</td>
             </tr>
             <tr>
-              <th>Start At</th>
-              <td colspan="4">{dicbody['startat']}</td>
+              <th style="font-weight: bold;font-size: 15px;">Start At</th>
+              <td colspan="4",style="font-size: 15px;">{dicbody['startat']}</td>
             </tr>
             <tr>
-              <th>Duration</th>
-              <td colspan="4">{dicbody['duration']}</td>
+              <th style="font-weight: bold;font-size: 15px;">Duration</th>
+              <td colspan="4",style="font-size: 15px;">{dicbody['duration']}</td>
             </tr>
             <tr>
-              <th>Tips</th>
-              <td colspan="4">.:suc || F:fail || E:err || s:skip</td>
+              <th style="font-weight: bold;font-size: 15px;">Tips</th>
+              <td colspan="4", style="font-size: 15px;">.:suc / F:fail / E:err / s:skip</td>
             </tr>
         </table>
         <table style="width: 100%; margin:auto">
             <tr>
-              <th style="text-align: center; color: blue;">TestCases (./F)</th>
-              <th style="text-align: center; color: blue;">TestSteps (./F/E/s)</th>
+              <th style="text-align: center; color: orange;font-size: 17px;">TestCases (./F)</th>
+              <th style="text-align: center; color: purple;font-size: 17px;">TestSteps (./F/E/s)</th>
             </tr>
             <tr>
-              <td style="text-align: center;">{dicbody['testcases-sum']} ({dicbody['testcases-success']}/{dicbody['testcases-fail']})</td>
-              <td style="text-align: center;">{dicbody['teststeps-sum']} ({dicbody['teststeps-success']}/{dicbody['teststeps-fail']}/{dicbody['teststeps-error']}/{dicbody['teststeps-skip']})</td>
+              <td style="text-align: center;font-weight: bold;font-size: 15px;">
+                {dicbody['testcases-sum']} ({dicbody['testcases-success']}/{dicbody['testcases-fail']})
+              </td>
+              <td style="text-align: center;font-weight: bold;font-size: 15px;">
+                {dicbody['teststeps-sum']} ({dicbody['teststeps-success']}/{dicbody['teststeps-fail']}/{dicbody['teststeps-error']}/{dicbody['teststeps-skip']})
+              </td>
             </tr>
         </table>
+        
     </body>
     </html>
     """
