@@ -32,20 +32,25 @@ do
     else
       expect -c "
         set timeout -1
-        spawn /usr/bin/scp ${workdir}/func/countCores_byworker.sh ${account}@${host}:${targetDir}
+        spawn ssh-keygen -R $host
+        expect eof
+        wait
+
+        spawn sudo /usr/bin/scp ${workdir}/func/countCores_byworker.sh ${account}@${host}:${targetDir}
         expect {
           \"*yes/no*\" {send \"yes\r\"; exp_continue}
           \"*assword*\" {send \"${password}\r\";}
         }
+        expect -re {\\$|#} {send \"sleep 1s\n\"}
 
         spawn /usr/bin/ssh ${account}@${host}
         expect {
           \"*yes/no*\" {send \"yes\r\"; exp_continue}
           \"*assword*\" {send \"${password}\r\";}
         }
-        expect \"]*\" {send \"cd ${targetDir} && sudo chmod -777 countCores_byworker.sh\n\"}
-        expect \"]*\" {send \"sudo bash countCores_byworker.sh ${remaincores}\n\"}
-        expect \"]*\" {send \"exit\n\"}
+        expect -re {\\$|#} {send \"cd ${targetDir} && sudo chmod -777 countCores_byworker.sh\n\"}
+        expect -re {\\$|#} {send \"sudo bash countCores_byworker.sh ${remaincores}\n\"}
+        expect -re {\\$|#} {send \"exit\n\"}
         expect eof
         catch wait result
         exit [lindex \$result 3]

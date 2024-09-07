@@ -14,7 +14,7 @@ if [ $? -ne 0 ];then
   if [ "$release" == "centos" ];then
     yum install -y java-${jdkVersion}-openjdk.x86_64
   else
-    apt install openjdk-${jdkVersion}-jdk
+    apt install openjdk-${jdkVersion}-jdk -y
   fi
 fi
 

@@ -8,7 +8,7 @@ release=$(cat ${workdir}/ini/global.ini | grep "release" | awk -F = '{print $2}'
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-expect -v &> /dev/null
+/usr/bin/expect -v &> /dev/null
 
 if [ $? -ne 0 ];then
   if [ "$release" == "centos" ];then

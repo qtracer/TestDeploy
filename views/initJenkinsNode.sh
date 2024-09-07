@@ -34,35 +34,39 @@ do
 
     expect -c "
       set timeout -1
+      spawn ssh-keygen -R $host
+      expect eof
+      wait
+
       spawn /usr/bin/ssh ${account}@${host}
       expect {
         \"*yes/no*\" {send \"yes\r\"; exp_continue}
         \"*assword*\" {send \"${password}\r\";}
       }
-      expect \"]*\" {send \"sudo mkdir -vp ${targetDir} && sudo chmod 775 ${targetDir} && exit\n\"}
-      expect \"]*\" {send \"sleep 2s \n\"}
+      expect -re {\\$|#} {send \"sudo mkdir -vp ${targetDir} && cd ${targetDir} && sudo chmod 775 ${targetDir}\n\"}
+      expect -re {\\$|#} {send \"sudo chown -R ${account}:${account} ${targetDir} && exit\n\"}
 
-      spawn /usr/bin/scp ${dirname0}/${shellPackage}.tar ${account}@${host}:${targetDir}
+      spawn sudo /usr/bin/scp ${dirname0}/${shellPackage}.tar ${account}@${host}:${targetDir}
       expect {
         \"*yes/no*\" {send \"yes\r\"; exp_continue}
         \"*password*\" {send \"${password}\r\";}
       }
-      expect \"]*\" {send \"sleep 2s \n\"}
+      expect -re {\\$|#} {send \"sleep 1s \n\"}
 
       spawn /usr/bin/ssh ${account}@${host}
       expect {
         \"*yes/no*\" {send \"yes\r\"; exp_continue}
         \"*assword*\" {send \"${password}\r\";}
       }
-      expect \"]*\" {send \"cd ${targetDir} \n\"}
-      expect \"]*\" {send \"sudo mkdir -vp ${targetDir}/${shellPackage} \n\"}
-      expect \"]*\" {send \"sudo rm -rf ${shellPackage}/ \n\"}
-      expect \"]*\" {send \"sudo tar zxvf ${shellPackage}.tar \n\"}
-      expect \"]*\" {send \"sudo rm -f ${targetDir}/${shellPackage}.tar \n\"}
-      expect \"]*\" {send \"cd ${targetDir}/${shellPackage} \n\"}
-      expect \"]*\" {send \"sudo bash func/setGlobal.sh ${targetDir}/${shellPackage} \n\"}
-      expect \"]*\" {send \"sudo bash func/installExpect.sh ${targetDir}/${shellPackage} \n\"}
-      expect \"]*\" {send \"sudo bash views/buildEnvDepend.sh ${targetDir}/${shellPackage} && exit \n\"}
+      expect -re {\\$|#} {send \"cd ${targetDir} \n\"}
+      expect -re {\\$|#} {send \"sudo mkdir -vp ${targetDir}/${shellPackage} \n\"}
+      expect -re {\\$|#} {send \"sudo rm -rf ${shellPackage}/ \n\"}
+      expect -re {\\$|#} {send \"sudo tar zxvf ${shellPackage}.tar \n\"}
+      expect -re {\\$|#} {send \"sudo rm -f ${targetDir}/${shellPackage}.tar \n\"}
+      expect -re {\\$|#} {send \"cd ${targetDir}/${shellPackage} \n\"}
+      expect -re {\\$|#} {send \"sudo bash func/setGlobal.sh ${targetDir}/${shellPackage} \n\"}
+      expect -re {\\$|#} {send \"sudo bash func/installExpect.sh ${targetDir}/${shellPackage} && sleep 3s \n\"}
+      expect -re {\\$|#} {send \"sudo bash views/buildEnvDepend.sh ${targetDir}/${shellPackage} && exit \n\"}
       expect eof;"
   fi
 done < ${workdir}/ini/hosts.ini

@@ -26,31 +26,37 @@ do
 
 expect -c "
   set timeout -1
-  spawn /usr/bin/scp /data/${sourceDir}${sn}.tar ${account}@${host}:${targetDir}
+  spawn ssh-keygen -R $host
+  expect eof
+  wait
+
+  spawn sudo /usr/bin/scp /data/${sourceDir}${sn}.tar ${account}@${host}:${targetDir}
   expect {
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
     \"*password*\" {send \"${password}\r\";}
-  } 
+  }
+  expect -re {\\$|#} {send \"sleep 1s\n\"}
 
   spawn /usr/bin/ssh ${account}@${host}
   expect {
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
     \"*assword*\" {send \"${password}\r\";}
   }
-  expect \"]*\" {send \"sudo mkdir -vp /opt/locust/${projectPackage} \n\"}
-  expect \"]*\" {send \"sudo mkdir -vp ${targetDir}/${shellPackage} \n\"}
-  expect \"]*\" {send \"sudo mkdir -vp ${targetDir}/${sourceDir}${sn} \n\"}
-  expect \"]*\" {send \"sudo mkdir -vp ${locustlog}/${projectPackage}/$(date +%Y%m%d)\n\"}
-  expect \"]*\" {send \"sudo chmod 775 ${locustlog}/${projectPackage}/$(date +%Y%m%d)\n\"}
-  expect \"]*\" {send \"cd ${targetDir}\n\"}
-  expect \"]*\" {send \"sudo tar zxvf ${sourceDir}${sn}.tar\n\"}
-  expect \"]*\" {send \"cd /opt/locust && sudo rm -rf ${projectPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${projectPackage} /opt/locust\n\"}
-  expect \"]*\" {send \"sudo rm -rf ${targetDir}/${shellPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${shellPackage} ${targetDir} \n\"}
-  expect \"]*\" {send \"sudo rm -rf ${targetDir}/${sourceDir}${sn}* \n\"}
-  expect \"]*\" {send \"cd ${targetDir}/${shellPackage} \n\"}
-  expect \"]*\" {send \"nohup sudo bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} > ${locustlog}/${projectPackage}/$(date +%Y%m%d)/nohub.out &\n\"}
-  expect \"]*\" {send \"sleep 3\n\"}
-  expect \"]*\" {send \"exit\n\"}
+  expect -re {\\$|#} {send \"sudo mkdir -vp /opt/locust/${projectPackage} \n\"}
+  expect -re {\\$|#} {send \"sudo mkdir -vp ${targetDir}/${shellPackage} \n\"}
+  expect -re {\\$|#} {send \"sudo mkdir -vp ${targetDir}/${sourceDir}${sn} \n\"}
+  expect -re {\\$|#} {send \"sudo mkdir -vp ${locustlog}/${projectPackage}/$(date +%Y%m%d)\n\"}
+  expect -re {\\$|#} {send \"sudo chmod 775 ${locustlog}/${projectPackage}/$(date +%Y%m%d)\n\"}
+  expect -re {\\$|#} {send \"sudo chown -R ${account}:${account} ${locustlog}/${projectPackage}/$(date +%Y%m%d)\n\"}
+  expect -re {\\$|#} {send \"cd ${targetDir}\n\"}
+  expect -re {\\$|#} {send \"sudo tar zxvf ${sourceDir}${sn}.tar\n\"}
+  expect -re {\\$|#} {send \"cd /opt/locust && sudo rm -rf ${projectPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${projectPackage} /opt/locust\n\"}
+  expect -re {\\$|#} {send \"sudo rm -rf ${targetDir}/${shellPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${shellPackage} ${targetDir} \n\"}
+  expect -re {\\$|#} {send \"sudo rm -rf ${targetDir}/${sourceDir}${sn}* \n\"}
+  expect -re {\\$|#} {send \"cd ${targetDir}/${shellPackage} \n\"}
+  expect -re {\\$|#} {send \"nohup sudo bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} > ${locustlog}/${projectPackage}/$(date +%Y%m%d)/nohub.out &\n\"}
+  expect -re {\\$|#} {send \"sleep 3\n\"}
+  expect -re {\\$|#} {send \"exit\n\"}
   expect eof;"
   
 done < ${workdir}/data/usableNetWork.txt

@@ -19,12 +19,12 @@ function setDockerRepo(){
     yum list docker-ce --showduplicates | sort -r
   else
     apt update -y
-    apt -y install apt-transport-https ca-certificates curl software-properties-common
-    curl -fsSL https://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
-    sed -i 's|http://archive.ubuntu.com/ubuntu|http://mirrors.aliyun.com/ubuntu/|g' /etc/apt/sources.list
+    apt -y install apt-transport-https ca-certificates curl software-properties-common curl gnupg lsb-release
+    curl -s http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/NAME.gpg --import
+    sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" -y 
     
     echo "列出Docker所有版本"
-    apt-cache madison docker-ce
+    apt-cache policy docker-ce
   fi
 }
 
@@ -40,8 +40,10 @@ installDocker(){
     fi
   else
     if [ "$dVersion" == "latest" ];then
+      apt install -y docker.io
       apt install -y docker-ce
     else
+      apt install -y docker.io
       apt install -y docker-ce=${dVersion}~ce~3-0~ubuntu
     fi
   fi
