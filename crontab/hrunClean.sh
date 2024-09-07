@@ -7,7 +7,7 @@ echo "workdir is: $workdir"
 while read line
 do
   if [ -d "$(echo $line | awk -F , '{print $2}')" ];then
-    sudo rm -rf $(echo $line | awk -F , '{print $2}')/*
+    sudo rm -rf $(echo $line | awk -F , '{print $2}')
   fi
 done < ${workdir}/ini/pycontainer.ini
 

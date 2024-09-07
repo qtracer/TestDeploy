@@ -32,9 +32,11 @@ echo "openModel is: $openModel"
 
 if [ "$openModel" = "single" ];then
   mkdir -vp ${locustlog}/$JOB_NAME/$(date +%Y%m%d)
-  nohup bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohub.out &
+  nohup bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohub.out
+  cat ${workdir}/data/statement_locust.txt
 else
   bash ${workdir}/views/prepareFiles.sh $workdir $openModel $JOB_NAME $workerNum
   bash ${workdir}/func/locust_compose_master.sh $workdir $JOB_NAME
+  cat ${workdir}/data/statement_locust.txt
 fi
 

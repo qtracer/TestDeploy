@@ -39,13 +39,15 @@ do
         \"*yes/no*\" {send \"yes\r\"; exp_continue}
         \"*assword*\" {send \"${password}\r\";}
       }
-      expect \"]*\" {send \"sudo mkdir -vp ${targetDir} && sudo chmod 775 ${targetDir} \n\"}
+      expect \"]*\" {send \"sudo mkdir -vp ${targetDir} && sudo chmod 775 ${targetDir} && exit\n\"}
+      expect \"]*\" {send \"sleep 2s \n\"}
 
       spawn /usr/bin/scp ${dirname0}/${shellPackage}.tar ${account}@${host}:${targetDir}
       expect {
         \"*yes/no*\" {send \"yes\r\"; exp_continue}
         \"*password*\" {send \"${password}\r\";}
       }
+      expect \"]*\" {send \"sleep 2s \n\"}
 
       spawn /usr/bin/ssh ${account}@${host}
       expect {

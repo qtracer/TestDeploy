@@ -6,8 +6,19 @@ JOB_NAME=$2
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-container_name=${JOB_NAME}_master_1
+localhost=$(ip addr | grep -e "eth0" -e "ens33" | grep "inet" | awk -F " " '{print $2}' | awk -F / '{print $1}')
+locustReportBaseHome=$(cat ${workdir}/ini/config.ini | grep "locustReportBaseHome" |  awk -F = '{print $2}')
 
-docker attach --sig-proxy=false $container_name
+year=$(date +%Y)
+mday=$(date +%m%d)
+sudo mkdir -vp ${locustReportBaseHome}/$JOB_NAME/$year/$mday/
+reportDir=${locustReportBaseHome}/$JOB_NAME/$year/$mday/
+echo "$reportDir"
 
-`python3 ${workdir}/python/getLocustReports.py`
+python3 --version &> /dev/null
+if [ $? -eq 0 ];then
+  echo "python3"
+  python3 ${workdir}/python/sendLocustReports.py $JOB_NAME $reportDir $localhost
+else
+  python ${workdir}/python/sendLocustReports.py $JOB_NAME $reportDir $localhost
+fi
