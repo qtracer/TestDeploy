@@ -16,7 +16,7 @@ echo "workdir=$workdir" >> ${workdir}/ini/global.ini
 JOB_NAME=$(cat ${workdir}/ini/remoteProject.ini | grep "projectPackage" | awk -F = '{print $2}')
 
 echo "this is locustExe_masterToWorkers"
-# bash ${workdir}/views/installDocker.sh $workdir
+bash ${workdir}/views/installDocker.sh $workdir
 bash ${workdir}/func/installDockerCompose.sh ${workdir}
 cat ${workdir}/data/daemon.json > /etc/docker/daemon.json
 
