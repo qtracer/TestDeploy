@@ -22,16 +22,12 @@ function setDockerRepo(){
     apt -y install apt-transport-https ca-certificates curl software-properties-common curl gnupg lsb-release
     curl -s http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo gpg --no-default-keyring --keyring gnupg-ring:/etc/apt/trusted.gpg.d/NAME.gpg --import
     sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable" -y 
-    
-    echo "列出Docker所有版本"
-    apt-cache policy docker-ce
   fi
 }
 
 
 # 安装Docker
 installDocker(){
-  echo "选中的docker-ce版本: $dVersion"
   if [ "$release" == "centos" ];then
     if [ "$dVersion" == "latest" ];then
       yum install -y docker-ce
@@ -39,13 +35,8 @@ installDocker(){
       yum install -y docker-ce-${dVersion}.ce
     fi
   else
-    if [ "$dVersion" == "latest" ];then
-      apt install -y docker.io
-      apt install -y docker-ce
-    else
-      apt install -y docker.io
-      apt install -y docker-ce=${dVersion}~ce~3-0~ubuntu
-    fi
+    apt install -y docker.io
+    apt install -y docker-ce
   fi
  
   #更改docker的镜像源
