@@ -47,6 +47,8 @@ installDocker(){
   sleep 3s
 }
 
-
-setDockerRepo "安装docker仓库和依赖"
-installDocker "安装docker环境并且加入开机自启动"
+docker version &> /dev/null
+if [ $? -ne 0 ];then
+  setDockerRepo "安装docker仓库和依赖"
+  installDocker "安装docker环境并且加入开机自启动"
+fi
