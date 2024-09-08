@@ -65,7 +65,7 @@ do
       expect -re {\\$|#} {send \"sudo rm -f ${targetDir}/${shellPackage}.tar \n\"}
       expect -re {\\$|#} {send \"cd ${targetDir}/${shellPackage} \n\"}
       expect -re {\\$|#} {send \"sudo bash func/setGlobal.sh ${targetDir}/${shellPackage} \n\"}
-      expect -re {\\$|#} {send \"sudo bash func/installExpect.sh ${targetDir}/${shellPackage} && sleep 3s \n\"}
+      expect -re {\\$|#} {send \"sudo bash func/installExpect.sh ${targetDir}/${shellPackage} && sleep 5s \n\"}
       expect -re {\\$|#} {send \"sudo bash views/buildEnvDepend.sh ${targetDir}/${shellPackage} && exit \n\"}
       expect eof;"
   fi
