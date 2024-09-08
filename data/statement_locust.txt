@@ -4,6 +4,6 @@
 考虑到不同项目压测时长和所需并发Users不同，项目暂不支持--headless模式。
 
 2、若需要保存报告并邮件，即在locust WEB点击【Stop】后，
-在项目根目录(TestDeploy)下执行: bash main-cli.sh . <性能项目名称>
+在项目根目录(TestDeploy)下执行: bash func/getLocustReport.sh . <性能项目名称>
 
 
