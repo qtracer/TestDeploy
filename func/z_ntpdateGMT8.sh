@@ -7,7 +7,7 @@ export info="$0: timeSync for the machine"
 bash $workdir/comm/echoInfo.sh $workdir
 
 which ntpdate &> /dev/null
-if [ $? -ne 0 ];then
+if [ $? -eq 0 ];then
   if [ "$release" == "centos" ];then
     yum install ntpdate -y
   else

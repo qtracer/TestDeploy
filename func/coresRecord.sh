@@ -48,7 +48,7 @@ do
           \"*yes/no*\" {send \"yes\r\"; exp_continue}
           \"*assword*\" {send \"${password}\r\";}
         }
-        expect -re {\\$|#} {send \"cd ${targetDir} && sudo chmod -777 countCores_byworker.sh\n\"}
+        expect -re {\\$|#} {send \"cd ${targetDir} && sudo chmod 775 countCores_byworker.sh\n\"}
         expect -re {\\$|#} {send \"sudo bash countCores_byworker.sh ${remaincores}\n\"}
         expect -re {\\$|#} {send \"exit\n\"}
         expect eof

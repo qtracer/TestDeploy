@@ -30,13 +30,15 @@ bash ${workdir}/views/buildLocustImage.sh $workdir $JOB_NAME
 echo "realWorkers is: $realWorkers"
 echo "openModel is: $openModel"
 
+# 检测locust
+nohup bash ${workdir}/func/checkLocustState.sh $workdir $JOB_NAME > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/checkstatenohup.out &  
+
 if [ "$openModel" = "single" ];then
   mkdir -vp ${locustlog}/$JOB_NAME/$(date +%Y%m%d)
-  nohup bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohub.out
   cat ${workdir}/data/statement_locust.txt
+  nohup bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohup.out
 else
   bash ${workdir}/views/prepareFiles.sh $workdir $openModel $JOB_NAME $workerNum
-  bash ${workdir}/func/locust_compose_master.sh $workdir $JOB_NAME
   cat ${workdir}/data/statement_locust.txt
+  bash ${workdir}/func/locust_compose_master.sh $workdir $JOB_NAME
 fi
-
