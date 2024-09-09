@@ -25,7 +25,7 @@ do
     cores=$(echo $line | awk -F , '{print $6}')
     totalCores=$[ $cores + $totalCores ]
 
-    if [ "$localhost" != "$host" -a $cores -gt 0 ];then
+    if [ "$localhost" != "$host" ] && [ $cores -gt 0 ];then
       if [ $totalCores -ge $workerNum ];then
         echo $line >> ${workdir}/data/usableNetWork.txt
         remain=$[ $totalCores - $cores ]

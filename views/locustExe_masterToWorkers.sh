@@ -10,9 +10,6 @@ workdir=$(find $targetDir -type d -name "TestDeploy*" | head -1)
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
-echo "curdate=$curdate" > ${workdir}/ini/global.ini
-echo "workdir=$workdir" >> ${workdir}/ini/global.ini
-
 JOB_NAME=$(cat ${workdir}/ini/remoteProject.ini | grep "projectPackage" | awk -F = '{print $2}')
 
 echo "this is locustExe_masterToWorkers"

@@ -55,7 +55,6 @@ expect -c "
   expect -re {\\$|#} {send \"sudo rm -rf ${targetDir}/${sourceDir}${sn}* \n\"}
   expect -re {\\$|#} {send \"cd ${targetDir}/${shellPackage} \n\"}
   expect -re {\\$|#} {send \"nohup sudo bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} > ${locustlog}/${projectPackage}/$(date +%Y%m%d)/nohub.out &\n\"}
-  expect -re {\\$|#} {send \"sleep 3\n\"}
   expect -re {\\$|#} {send \"exit\n\"}
   expect eof;"
   
