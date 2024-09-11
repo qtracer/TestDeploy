@@ -64,7 +64,7 @@ def send_email(subject, dicbody, file=None):
 
     starttime=dicbody['starttime']
     endtime=dicbody['endtime']
-    bodytext=f"starttime:{starttime}\nendtime:{endtime}\n详细见附件"
+    bodytext=f"starttime:GMT{starttime}\nendtime:GMT{endtime}\n详细见附件"
     mail.attach(MIMEText(bodytext, 'plain', 'utf-8'))
 
     # 附件
