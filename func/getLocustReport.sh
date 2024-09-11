@@ -18,7 +18,9 @@ echo "$reportDir"
 
 python3 --version &> /dev/null
 if [ $? -eq 0 ];then
+  pip3 install beautifulsoup4 lxml
   python3 ${workdir}/python/sendLocustReports.py $JOB_NAME $reportDir $masterhost
 else
+  pip install beautifulsoup4 lxml
   python ${workdir}/python/sendLocustReports.py $JOB_NAME $reportDir $masterhost
 fi

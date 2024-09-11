@@ -22,7 +22,8 @@ ifexist=$(cat ${workdir}/ini/config.ini | grep "installedEnv" | awk -F = '{print
 sudo bash ${workdir}/views/buildEnvDepend.sh ${workdir}
 
 if [ "$ifexist" = "false" ];then
-  sudo sed -i 's/false/true/g' ${workdir}/ini/config.ini
+  # sudo sed -i 's/false/true/g' ${workdir}/ini/config.ini
+  sed -i 's/^installedEnv=.*/installedEnv=true/' ${workdir}/ini/config.ini
 fi
 
 # run PythonImage

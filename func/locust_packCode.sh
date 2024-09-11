@@ -45,5 +45,5 @@ cp ${workdir}/locusts/requirements.txt $(pwd)
 
 export info="$0: list files of $JOB_NAME after pack code to /opt/locust/$JOB_NAME"
 bash ${workdir}/comm/echoInfo.sh $workdir
-ls -al | tee -a /${workdir}/log/${curdate}.log
+ls -al
 

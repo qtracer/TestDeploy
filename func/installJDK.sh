@@ -20,5 +20,5 @@ fi
 
 export info="$0: cat java version after install JDK"
 bash ${workdir}/comm/echoInfo.sh $workdir
-java -version | tee -a ${workdir}/log/${curdate}.log
+java -version
 

@@ -25,8 +25,8 @@ echo "workdir is: ${workdir}"
 # ----@动态全局变量----
 sudo bash ${workdir}/func/setGlobal.sh ${workdir}
 
-# ----@判断是否有新节点加入----
-sudo bash ${workdir}/func/ifNewNodesJoin.sh ${workdir}
+# ----@一些前置处理----
+sudo bash ${workdir}/func/preHandle.sh ${workdir}
 
 ifexist=$(cat ${workdir}/ini/config.ini | grep "installedEnv" | awk -F = '{print $2}')
 
@@ -37,11 +37,12 @@ sudo bash ${workdir}/views/buildEnvDepend.sh ${workdir}
 sudo bash ${workdir}/views/buildTools.sh ${workdir}
 
 # ----@初始化Nodes,读取hosts.ini----
-sudo bash ${workdir}/views/initJenkinsNode.sh ${workdir}
+sudo bash ${workdir}/views/initNodes.sh ${workdir}
 
 # tips: 默认Jenkins下执行,若cli执行需要将代码包放置在pwd的上级目录下
 if [ "$ifexist" = "false" ];then
-  sudo sed -i 's/false/true/g' ${workdir}/ini/config.ini
+  #sudo sed -i 's/false/true/g' ${workdir}/ini/config.ini
+  sudo sed -i 's/^installedEnv=.*/installedEnv=true/' ${workdir}/ini/config.ini
 elif [ $workerNum -ge 1 ];then
   # arg1:即locust @tag，指定标签的用例[locust暂未支持切换环境]
   sudo bash ${workdir}/views/locustExe.sh $workdir $JOB_NAME $tag $workerNum $arg1

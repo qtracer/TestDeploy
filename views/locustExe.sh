@@ -31,10 +31,10 @@ echo "realWorkers is: $realWorkers"
 echo "openModel is: $openModel"
 
 # 检测locust
-nohup bash ${workdir}/func/checkLocustState.sh $workdir $JOB_NAME > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/checkstatenohup.out &  
+mkdir -vp ${locustlog}/$JOB_NAME/$(date +%Y%m%d)
+nohup bash ${workdir}/crontab/checkLocustState.sh $workdir $JOB_NAME > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/checkstatenohup.out &  
 
 if [ "$openModel" = "single" ];then
-  mkdir -vp ${locustlog}/$JOB_NAME/$(date +%Y%m%d)
   cat ${workdir}/data/statement_locust.txt
   nohup bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohup.out
 else

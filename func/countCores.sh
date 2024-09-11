@@ -31,5 +31,5 @@ fi
 
 export info="locust: cat openModel and machines‘ cores after count cores"
 bash ${workdir}/comm/echoInfo.sh $workdir
-cat ${workdir}/ini/cores.ini | tee -a /${workdir}/log/${curdate}.log
+cat ${workdir}/ini/cores.ini
 

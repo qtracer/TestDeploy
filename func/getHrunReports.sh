@@ -26,8 +26,10 @@ cp -f $path/$file ${hrunReportBaseHome}/$JOB_NAME/$year/$mday
 # 处理Hrun报告
 python3 --version &> /dev/null
 if [ $? -eq 0 ];then
+  pip3 install beautifulsoup4 lxml
   python3 ${workdir}/python/sendHrunReport.py ${JOB_NAME}_${tag} $path/$file
 else
+  pip install beautifulsoup4 lxml
   python ${workdir}/python/sendHrunReport.py ${JOB_NAME}_${tag} $path/$file
 fi
 

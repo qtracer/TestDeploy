@@ -20,6 +20,6 @@ fi
 
 export info="$0: cat expect version after install it"
 bash ${workdir}/comm/echoInfo.sh $workdir
-expect -v | tee -a /${workdir}/log/${curdate}.log
+expect -v
 
 

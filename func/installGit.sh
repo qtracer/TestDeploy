@@ -22,7 +22,7 @@ fi
 
 export info="$0: git version"
 bash ${workdir}/comm/echoInfo.sh $workdir
-git --version | tee -a ${workdir}/log/${curdate}.log
+git --version
 
 # 修改提交缓存大小
 git config --global https.postBuffer 524288000

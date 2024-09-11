@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 import requests as r
 import time
-import re
+from bs4 import BeautifulSoup
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -15,29 +15,6 @@ projectname = sys.argv[1]
 reportDir = sys.argv[2]
 masterHost = sys.argv[3]
 
-'''
-# get 内网ip
-re_ipaddr = re.compile(r"\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b")
-ipstring = os.popen('ip addr | grep -e "eth0" -e "ens33" | grep "inet"')
-net_stat = ipstring.read()
-master_ip = re_ipaddr.search(net_stat)
-print(master_ip)
-
-# get 公网ip
-open_re_ipaddr = re.compile(r"\b([0-9]{1,3}\.){3}[0-9]{1,3}\b")
-open_ipstring = os.popen('curl cip.cc | grep "URL"')
-open_net_stat = open_ipstring.read()
-open_master_ip = open_re_ipaddr.search(open_net_stat)
-print(open_master_ip)
-
-# 重设连接数
-r.DEFAULT_RETRIES = 5
-s = r.session()
-s.keep_alive = False
-
-os.popen('sudo mkdir -vp ' + reportDir)
-'''
-
 projectname = projectname + time.strftime("%Y%m%d%H%M%S", time.localtime())
 
 host = 'http://' + masterHost + ':8089'  # master_ip.group(0)
@@ -47,6 +24,22 @@ with open(reportDir + projectname + ".html", 'wb') as file:
     file.write(down_res.content)
 file.close()
 
+'''截取HTML测试报告关键信息'''
+def reportElementHandle(wfile):
+    # 读取HTML文件
+    with open(wfile, 'r', encoding='utf-8') as file:
+        html_content = file.read()
+
+    # 使用BeautifulSoup解析HTML
+    soup = BeautifulSoup(html_content, 'lxml')
+
+    summ = soup.find(class_='info')
+    allspan = summ.find_all('span')
+    dic = {}
+    dic['starttime']=allspan[0].text
+    dic['endtime'] = allspan[1].text
+    return dic
+
 '''获取ini/config.ini的邮件配置信息'''
 def getConfig(section, key):
     cf.read(cfp, encoding="utf8")
@@ -54,7 +47,7 @@ def getConfig(section, key):
     return value
 
 '''发送邮件'''
-def send_email(subject, file=None):
+def send_email(subject, dicbody, file=None):
     # 从配置获取EMAIL信息
     receiver = getConfig('email', 'receiver').split(',')
     sender = getConfig('email', 'sender')
@@ -69,7 +62,10 @@ def send_email(subject, file=None):
     mail['From'] = sender
     mail['To'] = ",".join(receiver)
 
-    mail.attach(MIMEText("详细见附件", 'plain', 'utf-8'))
+    starttime=dicbody['starttime']
+    endtime=dicbody['endtime']
+    bodytext=f"starttime:{starttime}\nendtime:{endtime}\n详细见附件"
+    mail.attach(MIMEText(bodytext, 'plain', 'utf-8'))
 
     # 附件
     att1 = MIMEText(open(file, 'rb').read(), 'html', 'utf-8')
@@ -91,6 +87,8 @@ def send_email(subject, file=None):
 
 if __name__ == '__main__':
     if getConfig('email', 'sender'):
+        # 获取报告内容
+        dicbody = reportElementHandle(reportDir + projectname + ".html")
         # 发送邮件
         subject = projectname+"项目性能测试报告"
-        send_email(subject, reportDir + projectname + ".html")
+        send_email(subject, dicbody, reportDir + projectname + ".html")

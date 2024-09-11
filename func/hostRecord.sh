@@ -14,5 +14,5 @@ sed -i '$amainhost='"${mainhost}" ${workdir}/locusts/.env
 
 export info="$0: cat .env after record locust master's host"
 bash ${workdir}/comm/echoInfo.sh $workdir
-cat ${workdir}/locusts/.env | tee -a /${workdir}/log/${curdate}.log
+cat ${workdir}/locusts/.env
 

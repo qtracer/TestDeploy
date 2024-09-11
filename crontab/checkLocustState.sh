@@ -5,6 +5,7 @@
 workdir=$1
 JOB_NAME=$2
 
+locust_sendreport_wait=$(cat ${workdir}/ini/config.ini | grep "locust_sendreport_wait" | awk -F = '{print $2}')
 masterhost=$(ip addr | grep -e "eth0" -e "ens33" | grep "inet" | awk -F " " '{print $2}' | awk -F / '{print $1}')
 
 LOCUST_URL="http://${masterhost}:8089/stats/requests"
@@ -28,7 +29,7 @@ while true; do
   fi
   
   # 重置[是否保存report和发送邮件]状态
-  if echo "$response" | grep "running"; then
+  if echo "$response" | grep -q "running"; then
     ifsend=1
   fi
 
@@ -38,13 +39,13 @@ while true; do
   fi
 
   # 每当state由running转为stopped,均保存一次report并邮件
-  if echo "$response" | grep "state" | grep "stopped" && [ $ifsend -eq 1 ]; then
+  if echo "$response" |  grep -q "stopped" && [ $ifsend -eq 1 ]; then
     echo "Locust is stopped and send report"
     bash ${workdir}/func/getLocustReport.sh ${workdir} ${JOB_NAME} ${masterhost}
     ifsend=0
   fi
 
-  # 每隔 2秒 检查一次
-  sleep 2
+  # 默认每隔2秒检查一次
+  sleep $locust_sendreport_wait
 done
 

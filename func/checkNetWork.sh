@@ -18,7 +18,6 @@ sed -i '1,$d' ${workdir}/data/usableNetWork.txt
 while read line
 do
   host=$(echo $line | awk -F , '{print $1}')
-  echo $line
   ping $(echo $line | awk -F , '{print $1}') -c 1 -w 1 | grep "ttl=" 
   
   if [ $? -eq 0 ];then
@@ -48,4 +47,4 @@ done < ${workdir}/ini/hosts.ini
 
 export info="$0: cat usableNetWork.txt which will run workers while performance"
 bash ${workdir}/comm/echoInfo.sh $workdir
-cat ${workdir}/data/usableNetWork.txt | tee -a /${workdir}/log/${curdate}.log
+cat ${workdir}/data/usableNetWork.txt

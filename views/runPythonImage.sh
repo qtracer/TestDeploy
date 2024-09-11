@@ -52,4 +52,4 @@ fi
 
 export info="$0: cat docker containers after run PythonImage"
 bash ${workdir}/comm/echoInfo.sh $workdir
-docker ps | tee -a ${workdir}/log/${curdate}.log
+docker ps

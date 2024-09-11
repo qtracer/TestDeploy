@@ -82,7 +82,7 @@ fi
   
 export info="$0: cat docker ps after run JenkinsImage"
 bash ${workdir}/comm/echoInfo.sh $workdir
-docker ps | tee -a /${workdir}/log/${curdate}.log
+docker ps
 
 cat ${workdir}/data/statement_mirror.txt
 

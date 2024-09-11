@@ -59,8 +59,8 @@ function addLink(){
     ln -s ${jenkins_home}/python3/bin/pip3 /usr/bin/pip3
     export info="主机python3环境"
     bash ${workdir}/comm/echoInfo.sh $workdir $curdate
-    echo "主机python3命令是否可运行：$(python3 -V)" >> ${workdir}/log/${curdate}.log
-    echo "主机pip3命令是否可运行：$(pip3 -V)" >> ${workdir}/log/${curdate}.log
+    echo "主机python3命令是否可运行：$(python3 -V)"
+    echo "主机pip3命令是否可运行：$(pip3 -V)"
   fi
 }
 

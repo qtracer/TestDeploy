@@ -45,4 +45,3 @@ rm -rf /data/${tmp}${sn}
 
 export info="$0: list files of /data/${tmp}${sn} after copyFilesToTmp"
 bash ${workdir}/comm/echoInfo.sh $workdir
-ls -al /data/${tmp}${sn} | tee -a /${workdir}/log/${curdate}.log

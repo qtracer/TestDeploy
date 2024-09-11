@@ -18,4 +18,4 @@ echo -e "\n\n\n\n$(date)\n" >> $logpath/${curdate}.log
 
 export info="$0: install docker, cat docker version"
 bash ${workdir}/comm/echoInfo.sh $workdir
-docker version | tee -a /${workdir}/log/${curdate}.log
+docker version

@@ -21,7 +21,8 @@ do
     cp -f ${workdir}/ini/hosts.ini ${workdir}/ini/hosts_bak.ini
     sed -i 's/isnew/notnew/g' ${workdir}/ini/hosts.ini
     # 初始化Nodes,installedEnv设置为已初始化
-    sed -i 's/false/true/g' ${workdir}/ini/config.ini
+    # sed -i 's/false/true/g' ${workdir}/ini/config.ini
+    sed -i 's/^installedEnv=.*/installedEnv=true/' ${workdir}/ini/config.ini
 
     dirname0=$(dirname $workdir)
     cd $dirname0 && bash ${workdir}/func/cvfTarCode.sh $shellPackage $shellPackage
@@ -66,6 +67,7 @@ do
       expect -re {\\$|#} {send \"cd ${targetDir}/${shellPackage} \n\"}
       expect -re {\\$|#} {send \"sudo bash func/setGlobal.sh ${targetDir}/${shellPackage} \n\"}
       expect -re {\\$|#} {send \"sudo bash func/installExpect.sh ${targetDir}/${shellPackage} && sleep 5 \n\"}
+      expect -re {\\$|#} {send \"sudo bash views/cronForlogAndContainer.sh ${targetDir}/${shellPackage} \n\"}
       expect -re {\\$|#} {send \"nohup sudo bash views/buildEnvDepend.sh ${targetDir}/${shellPackage} > ${targetDir}/nohup.out & \n\"}
       expect -re {\\$|#} {send \"exit \n\"}
       expect eof;"

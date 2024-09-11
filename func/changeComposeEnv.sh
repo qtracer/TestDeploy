@@ -18,5 +18,5 @@ fi
 
 export info="$0: cat .env after do changeComposeEnv"
 bash ${workdir}/comm/echoInfo.sh $workdir
-cat .env | tee -a /${workdir}/log/${curdate}.log
+cat .env
 

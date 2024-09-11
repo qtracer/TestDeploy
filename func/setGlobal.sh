@@ -2,6 +2,9 @@
 
 workdir=$1
 
+export info="$0: $PWD"
+bash ${workdir}/comm/echoInfo.sh $workdir
+
 sed -i '1,$d' ${workdir}/ini/global.ini
 
 # 支持Ubuntu/Centos
