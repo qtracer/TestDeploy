@@ -50,7 +50,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES
 ### 性能测试任务
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $APPOINTEDCASES
-# WORKERNUM：CPU cores，依此动态计算需要多少worker支持
+# WORKERNUM：locust-worker进程数,默认1 worker对应1 CPU core，依此动态计算需要多少主机节点的支持
 # APPOINTEDCASES: 非必选，对应locust的@tag属性
 ```
 ```
