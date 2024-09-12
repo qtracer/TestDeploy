@@ -50,8 +50,8 @@ bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES
 ### 性能测试任务
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $APPOINTEDCASES
-# WORKERNUM：locust-worker进程数,默认1 worker对应1 CPU core，依此动态计算需要多少主机节点的支持
-# APPOINTEDCASES: 非必选，对应locust的@tag属性
+# WORKERNUM：Locust worker进程数,默认1 worker对应1 CPU core，依此动态计算需要多少主机节点的支持。另，1 worker约可支持1000虚拟用户。
+# APPOINTEDCASES: 非必选，对应Locust的@tag属性
 ```
 ```
 # tips:
@@ -67,7 +67,7 @@ fi
 配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
 
 * $host：节点的IP地址
-* $account：节点主机的账号(支持root账号和sudo免密权限账号)
+* $account：节点主机的账号(支持root账号和sudo免密提权账号)
 * $password：节点主机的密码
 * $constant：参数值为“isnew”或者“notnew”，如果是新主机且需要做初始化，则必须是“isnew”，初始化后会变为“notnew”
 * $MasterOrSlave：参数值为“master”或者“slave”，指明是master还是slave节点。
