@@ -44,11 +44,12 @@ if [ "$ifexist" = "false" ];then
   #sudo sed -i 's/false/true/g' ${workdir}/ini/config.ini
   sudo sed -i 's/^installedEnv=.*/installedEnv=true/' ${workdir}/ini/config.ini
 elif [ $workerNum -ge 1 ];then
-  # arg1:即locust @tag，指定标签的用例[locust暂未支持切换环境]
-  sudo bash ${workdir}/views/locustExe.sh $workdir $JOB_NAME $tag $workerNum $arg1
+  # arg1:即执行项目的环境,如release
+  # arg2:即locust @tag，指定标签的用例
+  sudo bash ${workdir}/views/locustExe.sh $workdir $JOB_NAME $tag $workerNum $arg1 $arg2
 else
   # tag:即jenkins ${BUILD_NUMBER}
   # arg1:即执行项目的环境,如release
-  # arg2:即执行项目指定用例路径,默认testsuites,ini/config.ini可配置
+  # arg2:即执行项目指定用例路径,默认testsuites
   sudo bash ${workdir}/views/hrunExe.sh $workdir $JOB_NAME $tag $arg1 $arg2
 fi
