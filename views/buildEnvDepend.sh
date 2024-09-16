@@ -13,7 +13,7 @@ bash ${workdir}/func/installGit.sh ${workdir}
 bash ${workdir}/func/installJDK.sh ${workdir}
 bash ${workdir}/func/installExpect.sh $workdir
 bash ${workdir}/func/installDockerCompose.sh ${workdir}
-# bash ${workdir}/views/ifNginxProxy.sh ${workdir}
+# bash ${workdir}/func/ifNginxProxy.sh ${workdir}
 
 bash ${workdir}/views/buildPythonImage.sh ${workdir}
 

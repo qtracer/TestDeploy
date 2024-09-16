@@ -14,9 +14,11 @@ if [ $? -eq 0 ];then
   sed -i 's/^installedEnv=.*/installedEnv=false/' ${workdir}/ini/config.ini
 fi
 
+# 判断是否具备Python3环境
+bash ${workdir}/func/ifInstallPython3.sh ${workdir}
 
 # 设置定时任务
 if [ $master_cronExist_flag -eq 0 ];then
-  bash ${workdir}/views/cronForlogAndContainer.sh ${workdir}
+  bash ${workdir}/views/logCrontab.sh ${workdir}
   sed -i 's/^master_cronExist_flag=.*/master_cronExist_flag=1/' ${workdir}/ini/config.ini
 fi

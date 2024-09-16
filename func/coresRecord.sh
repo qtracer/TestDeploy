@@ -22,7 +22,7 @@ do
   account=$(echo $line | awk -F , '{print $2}')
   password=$(echo $line | awk -F , '{print $3}')
 
-  echo "line is : $line"
+  #echo "line is : $line"
   coresExist=$(echo $line | awk -F , '{print $6}')
   echo "coreExist is : $coresExist"
 

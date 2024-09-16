@@ -13,12 +13,12 @@ hrun_main=$(cat ${workdir}/ini/config.ini | grep "hrun_main" | awk -F = '{print 
 curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}')
 hrunlog=$(cat ${workdir}/ini/config.ini | grep "hrunlog" | awk -F = '{print $2}')
 
-export info="$0: auto execute apis and scenes"
+export info="$0: Run APIs"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
 echo "appointedCase is: $appointedCase"
+mkdir -vp ${hrunlog}/$JOB_NAME
 if [ $appointedCase ];then
-  mkdir -vp ${hrunlog}/$JOB_NAME
   docker exec ${python_container} sh -c "cd ${python_home}/${JOB_NAME} && python3 $hrun_main hrun ${appointedCase} $appointedHost" | tee -a ${hrunlog}/$JOB_NAME/$(date +%Y%m%d).log
 else
   docker exec ${python_container} sh -c "cd ${python_home}/${JOB_NAME} && python3 $hrun_main hrun ${hrun_path} $appointedHost" | tee -a ${hrunlog}/$JOB_NAME/$(date +%Y%m%d).log

@@ -5,5 +5,5 @@ services:
     image: ${locust_image}
     tty: true
     volumes:
-      - /opt/locust/${JOB_NAME}:/mnt/locust/${JOB_NAME}
-    command: locust -f /mnt/locust/${JOB_NAME}/locustfile.py --worker --master-host=${mainhost}
+      - ${locust_workspace}/${JOB_NAME}:/mnt/locust/${JOB_NAME}
+    command: locust -f /mnt/locust/${JOB_NAME}/${locust_main} --worker --master-host=${mainhost}

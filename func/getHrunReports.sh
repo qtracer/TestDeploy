@@ -24,7 +24,7 @@ file=$(cd $path && ls -l | tail -1 | awk -F " {1,3}" '{print $9}')
 cp -f $path/$file ${hrunReportBaseHome}/$JOB_NAME/$year/$mday
 
 # 处理Hrun报告
-python3 --version &> /dev/null
+which python3 &> /dev/null
 if [ $? -eq 0 ];then
   pip3 install beautifulsoup4 lxml
   python3 ${workdir}/python/sendHrunReport.py ${JOB_NAME}_${tag} $path/$file

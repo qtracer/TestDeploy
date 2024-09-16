@@ -16,7 +16,7 @@ sudo mkdir -vp ${locustReportBaseHome}/$JOB_NAME/$year/$mday/
 reportDir=${locustReportBaseHome}/$JOB_NAME/$year/$mday/
 echo "$reportDir"
 
-python3 --version &> /dev/null
+which python3 &> /dev/null
 if [ $? -eq 0 ];then
   pip3 install beautifulsoup4 lxml
   python3 ${workdir}/python/sendLocustReports.py $JOB_NAME $reportDir $masterhost

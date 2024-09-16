@@ -33,17 +33,13 @@ sed -i '1,$d' ${workdir}/ini/hosts.ini
 sed -i '1,$d' ${workdir}/ini/remoteProject.ini
 sed -i '1,$d' ${workdir}/data/usableNetWork.txt
 sed -i '1,$d' ${workdir}/data/tmp.txt
-sed -i '1,$d' ${workdir}/locusts/.env
-
-echo "JOB_NAME=default" >> ${workdir}/locusts/.env
-echo "locust_image=default" >> ${workdir}/locusts/.env
-echo "appointedCase=all" >> ${workdir}/locusts/.env
-echo "mainhost=192.168.6.158" >> ${workdir}/locusts/.env
 
 # 删除hrun容器  
-if [ $basePythonHome ];then
+if [ -d "$basePythonHome" ];then
    rm -rf $basePythonHome/*
 fi
 
 # 删除日志
-find ${workdir} -name "*.log" -delete
+if [ -d "$workdir" ];then
+  find ${workdir} -name "*.log" -delete
+fi

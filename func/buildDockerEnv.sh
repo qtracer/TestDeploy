@@ -40,6 +40,7 @@ installDocker(){
   fi
  
   #更改docker的镜像源
+  mkdir -vp /etc/docker/
   sudo cp -f ${workdir}/data/daemon.json /etc/docker/
 
   systemctl restart docker.service

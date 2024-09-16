@@ -10,6 +10,7 @@ targetDir=$(cat ${workdir}/ini/config.ini | grep "targetDir" | awk -F = '{print 
 projectPackage=$(cat ${workdir}/ini/remoteProject.ini | grep "projectPackage" | awk -F = '{print $2}')
 shellPackage=$(cat ${workdir}/ini/remoteProject.ini | grep "shellPackage" | awk -F = '{print $2}')
 baseLocustHome=$(cat ${workdir}/ini/config.ini | grep "baseLocustHome" | awk -F = '{print $2}')
+locust_workspace=$(cat ${workdir}/ini/config.ini | grep "locust_workspace" | awk -F = '{print $2}')
 
 export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
@@ -42,7 +43,7 @@ expect -c "
     \"*yes/no*\" {send \"yes\r\"; exp_continue}
     \"*assword*\" {send \"${password}\r\";}
   }
-  expect -re {\\$|#} {send \"sudo mkdir -vp /opt/locust/${projectPackage} \n\"}
+  expect -re {\\$|#} {send \"sudo mkdir -vp ${locust_workspace}/${projectPackage} \n\"}
   expect -re {\\$|#} {send \"sudo mkdir -vp ${targetDir}/${shellPackage} \n\"}
   expect -re {\\$|#} {send \"sudo mkdir -vp ${targetDir}/${sourceDir}${sn} \n\"}
   expect -re {\\$|#} {send \"sudo mkdir -vp ${locustlog}/${projectPackage}/$(date +%Y%m%d)\n\"}
@@ -50,11 +51,11 @@ expect -c "
   expect -re {\\$|#} {send \"sudo chown -R ${account}:${account} ${locustlog}/${projectPackage}/$(date +%Y%m%d)\n\"}
   expect -re {\\$|#} {send \"cd ${targetDir}\n\"}
   expect -re {\\$|#} {send \"sudo tar zxvf ${sourceDir}${sn}.tar\n\"}
-  expect -re {\\$|#} {send \"cd /opt/locust && sudo rm -rf ${projectPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${projectPackage} /opt/locust\n\"}
+  expect -re {\\$|#} {send \"cd ${locust_workspace} && sudo rm -rf ${projectPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${projectPackage} ${locust_workspace}\n\"}
   expect -re {\\$|#} {send \"sudo rm -rf ${targetDir}/${shellPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${shellPackage} ${targetDir} \n\"}
   expect -re {\\$|#} {send \"sudo rm -rf ${targetDir}/${sourceDir}${sn}* \n\"}
   expect -re {\\$|#} {send \"cd ${targetDir}/${shellPackage} \n\"}
-  expect -re {\\$|#} {send \"nohup sudo bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} > ${locustlog}/${projectPackage}/$(date +%Y%m%d)/nohup.out &\n\"}
+  expect -re {\\$|#} {send \"nohup sudo bash views/locustExe_masterToWorkers.sh ${targetDir} ${cores} > ${locustlog}/${projectPackage}/$(date +%Y%m%d)/nohup_locustExe_masterToWorkers.out &\n\"}
   expect -re {\\$|#} {send \"exit\n\"}
   expect eof;"
   

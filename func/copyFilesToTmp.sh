@@ -9,6 +9,8 @@ curdate=$(cat ${workdir}/ini/global.ini | grep "curdate" | awk -F = '{print $2}'
 tmp=$(cat ${workdir}/ini/config.ini | grep "sourceDir" | awk -F = '{print $2}')
 baseLocustHome=$(cat ${workdir}/ini/config.ini | grep "baseLocustHome" | awk -F = '{print $2}')
 
+locust_workspace=$(cat ${workdir}/ini/config.ini | grep "locust_workspace" | awk -F = '{print $2}')
+
 sn=$[ $(cat ${workdir}/ini/locontainer.ini | grep "${baseLocustHome}" | wc -l) + 1 ]
 locust_home=${baseLocustHome}/locust${sn}
 echo "${locust_home}" >> ${workdir}/ini/locontainer.ini
@@ -28,7 +30,7 @@ echo "shellPackage=$shellPackage" > ${workdir}/ini/remoteProject.ini
 # echo "package=$tmp" > ${workdir}/ini/remoteProject.ini
 
 if [ "$openModel" = "multiple" ];then
-  cp -r /opt/locust/${projectPackage} /data/${tmp}${sn}
+  cp -r ${locust_workspace}/${projectPackage} /data/${tmp}${sn}
   echo "projectPackage=${projectPackage}" >> ${workdir}/ini/remoteProject.ini
 fi
 

@@ -9,15 +9,15 @@ services:
     image: ${locust_image}
     tty: true
     volumes:
-      - /opt/locust/${JOB_NAME}:/mnt/locust/${JOB_NAME}
+      - ${locust_workspace}/${JOB_NAME}:/mnt/locust/${JOB_NAME}
     ports:
       - "8089:8089"
       - "5557:5557"
-    command: locust -f /mnt/locust/${JOB_NAME}/locustfile.py -T ${appointedCase}  --master
+    command: locust -f /mnt/locust/${JOB_NAME}/${locust_main} -T ${appointedCase}  --master
 
   worker:
     image: ${locust_image}
     tty: true
     volumes:
-      - /opt/locust/${JOB_NAME}:/mnt/locust/${JOB_NAME}
-    command: locust -f /mnt/locust/${JOB_NAME}/locustfile.py -T ${appointedCase} --worker --master-host=master
+      - ${locust_workspace}/${JOB_NAME}:/mnt/locust/${JOB_NAME}
+    command: locust -f /mnt/locust/${JOB_NAME}/${locust_main} -T ${appointedCase} --worker --master-host=master

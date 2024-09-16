@@ -47,4 +47,4 @@ done < ${workdir}/ini/hosts.ini
 
 export info="$0: cat usableNetWork.txt which will run workers while performance"
 bash ${workdir}/comm/echoInfo.sh $workdir
-cat ${workdir}/data/usableNetWork.txt
+#cat ${workdir}/data/usableNetWork.txt
