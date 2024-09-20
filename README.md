@@ -42,15 +42,16 @@ bash $PRJ_ROOT_DIR/main-cli.sh #Bash
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES
 # JOB_NAME: 项目名，Jenkins环境变量，直接引用
-# BUILD_NUMBER: 构建号，Jenkins环境变量，直接引用
+# BUILD_NUMBER: 构建号，Jenkins环境变量，直接引用。项目的tag标签也可以，只做标识用
 # HOST: 任务执行环境
-# APPOINTEDCASES: 指定用例，非必填，默认/testsuites
+# APPOINTEDCASES: 指定用例，非必选，默认testsuites/
 ```
 
 ### 性能测试任务
 ```Bash 
-bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $APPOINTEDCASES
-# WORKERNUM：Locust worker进程数,默认1 worker对应1 CPU core，依此动态计算需要多少主机节点的支持。另，1 worker约可支持1000虚拟用户。
+bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $HOST $APPOINTEDCASES
+# WORKERNUM：Locust worker进程数,默认1 worker对应1 CPU core，依此动态计算需要多少主机节点的支持。另，1 worker约可支持1000虚拟用户
+# HOST: 任务执行环境
 # APPOINTEDCASES: 非必选，对应Locust的@tag属性
 ```
 ```
@@ -78,12 +79,12 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 ```
 
 ## config.ini部分参数说明
-* installedEnv：是否安装了基础环境。注：若因网络问题环境安装失败，需要手动重置为false并执行初始化。
-* remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留1个。
-* hrun_main：接口自动化执行入口，默认为main-hrun.py。
-* hrun_path: 接口自动化执行的指定路径，默认为testsuites/。
-* locust_main: locust压测统一执行入口，默认为locustfile.py。
-* locust_project_setEnv: locust执行前切换压测环境和数据源的文件(务必放置在压测项目根目录下)，默认为project_setEnv.py。若不存在,则按照默认执行。
+* installedEnv：是否安装了基础环境。注：若因网络问题环境安装失败，需要手动重置为false并执行初始化
+* remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留1个
+* hrun_main：接口自动化统一执行入口，默认main-hrun.py
+* hrun_path: 接口自动化执行的指定路径，默认testsuites/
+* locust_main: locust压测统一执行入口，默认locustfile.py
+* locust_project_setEnv: locust执行前切换压测环境和数据源的文件(务必放置在压测项目根目录下)，默认project_setEnv.py。若不存在,则按照默认执行
 
 # 6.Jenkins Pipeline
 **Jenkins Pipeline不走main-cli.sh统一入口**，部署文件分三部分：
