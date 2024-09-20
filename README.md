@@ -32,7 +32,7 @@
 * 配置 $PRJ_ROOT_DIR/ini/hosts.ini（不配置默认单机）
 * 通过环境部署和任务构建统一入口执行初始化
 ```Bash 
-bash $PRJ_ROOT_DIR/main-cli.sh #Bash
+bash $PRJ_ROOT_DIR/main-cli.sh
 ```
 
 ## 环境部署和任务构建统一入口
@@ -66,6 +66,7 @@ fi
 # 5.重要配置文件说明
 ## hosts.ini测试集群配置
 配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
+需要注意的是：Locust分布式性能测试按照hosts.ini的节点顺序分配资源，故自动化测试代理节点建议放最后。
 
 * $host：节点的IP地址
 * $account：节点主机的账号(支持root账号和sudo免密提权账号)
