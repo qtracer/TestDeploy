@@ -66,7 +66,6 @@ fi
 # 5.重要配置文件说明
 ## hosts.ini测试集群配置
 配置**$PRJ_ROOT_DIR/ini/hosts.ini**，格式：$host,$account,$password,$constant,$MasterOrSlave
-需要注意的是：Locust分布式性能测试按照hosts.ini的节点顺序分配资源，故自动化测试代理节点建议放最后。
 
 * $host：节点的IP地址
 * $account：节点主机的账号(支持root账号和sudo免密提权账号)
@@ -78,6 +77,7 @@ fi
 ```Bash
 bash $PRJ_ROOT_DIR/main-cli.sh
 ```
+#tips：Locust分布式性能测试按照hosts.ini的节点顺序分配资源，故自动化测试代理节点建议放最后。
 
 ## config.ini部分参数说明
 * installedEnv：是否安装了基础环境。注：若因网络问题环境安装失败，需要手动重置为false并执行初始化
