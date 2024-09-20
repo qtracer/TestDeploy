@@ -13,9 +13,8 @@
 
 ### 推荐用最新版本
 
-# 1.目标
-快速提供测试标准化环境，
-促进测试流程高效与稳定。
+# 1.定位
+TestDeploy是一套符合DevOps实践的测试解决方案，涵盖接口测试、性能测试等测试类型，能够有效管理测试集群，快速提供测试标准化环境，促进测试流程高效与稳定。
 
 # 2.核心特性
 * 结合Docker容器技术，环境一键部署，用例一键执行
@@ -42,7 +41,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 ```Bash 
 bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES
 # JOB_NAME: 项目名，Jenkins环境变量，直接引用
-# BUILD_NUMBER: 构建号，Jenkins环境变量，直接引用。项目的tag标签也可以，只做标识用
+# BUILD_NUMBER: 构建号，Jenkins环境变量，直接引用。项目的tag标签也可以，仅做标识用
 # HOST: 任务执行环境
 # APPOINTEDCASES: 指定用例，非必选，默认testsuites/
 ```
@@ -93,11 +92,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 * runAPI：views/pipelineRunAPIAuto.sh
 * getReport：views/pipelineHrunReport.sh
 
-# 7.代码组织结构
-* HttpRunner2.X参考：https://github.com/qtracer/HttpRunner_demo
-* Locust2.X参考：https://docs.locust.io/en/stable/
-
-# 8.NGINX转发请求执行shell[已停止维护]
+# 7.NGINX转发请求执行shell[已停止维护]
 > Jenkins配置：curl -H "dirpath:$PWD" -H "shellpath:${shellpath}" ${host}:81/api/run?name=${JOB_NAME}%20${WORKERNUM}%200
 * PWD为shell系统变量，表示自动化项目代码包路径；参数host对应Nginx主机ip address，参数shellpath对应路径+TestDeploy，参数BRANCH对应自动化测试项目代码分支。
 * 该方式已支持，但不推荐使用，默认为关闭状态。若需要使用，则在views/buildEnvDepend.sh 取消注释，开启。
