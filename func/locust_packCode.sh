@@ -14,12 +14,12 @@ export info="$0: $PWD"
 bash ${workdir}/comm/echoInfo.sh $workdir
 
 mkdir -vp $locust_workspace
-# cd /opt/locust/${JOB_HOME}
 
 # 性能项目代码来源方式:(1)jenkins_workspace:git拉取 (2)放置在TestDeploy上级目录下:直接上传到服务器
 # 将jenkins_workspace/的性能项目代码复制到/opt/locust
 jenkins_workspace=$(pwd)
 
+rm -rf ${locust_workspace}/${JOB_NAME}
 cp -rf $(dirname $jenkins_workspace)/${JOB_NAME} $locust_workspace
 
 # 根据条件,将TestDeploy中的部分文件copy一份到Locust工作目录
