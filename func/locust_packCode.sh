@@ -19,7 +19,9 @@ mkdir -vp $locust_workspace
 # 将jenkins_workspace/的性能项目代码复制到/opt/locust
 jenkins_workspace=$(pwd)
 
-rm -rf ${locust_workspace}/${JOB_NAME}
+if [ -d "${locust_workspace}/${JOB_NAME}" ];then
+  rm -rf ${locust_workspace}/${JOB_NAME}
+fi
 cp -rf $(dirname $jenkins_workspace)/${JOB_NAME} $locust_workspace
 
 # 根据条件,将TestDeploy中的部分文件copy一份到Locust工作目录
