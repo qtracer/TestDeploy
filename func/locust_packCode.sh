@@ -41,7 +41,6 @@ fi
 
 cp -f ${workdir}/locusts/.env $(pwd)
 cp -f ${workdir}/dockerfile/locust-dockerfile $(pwd)
-cp -f ${workdir}/locusts/requirements.txt $(pwd)
 
 export info="$0: list files of $JOB_NAME after pack code to ${locust_workspace}/$JOB_NAME"
 bash ${workdir}/comm/echoInfo.sh $workdir
