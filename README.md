@@ -24,7 +24,7 @@ TestDeploy是一套符合DevOps实践的测试解决方案，涵盖接口自动�
 * 通过参数输入切换不同环境和执行特定用例
   
 # 3.整体设计
-![效果](https://github.com/qtracer/TestDeploy/blob/main/data/%E8%BF%90%E7%BB%B4%E5%B9%B3%E5%8F%B0%E6%9E%B6%E6%9E%84%E5%9B%BE00.png)
+![效果](https://github.com/qtracer/TestDeploy/blob/main/data/global%20design.png)
 
 # 4.快速开始
 * main-cli.sh放置在项目根目录下，假设为**PRJ_ROOT_DIR**
