@@ -80,7 +80,7 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 
 ## config.ini部分参数说明
 * installedEnv：是否安装了基础环境。注：若因网络问题环境安装失败，需要手动重置为false并执行初始化
-* installedRedis: 是否安装Redis，默认不安装。Redis用作压测前的数据准备，占用较大内存，不在管理节点安装。
+* installedRedis: 是否安装Redis，默认不安装。Redis用作压测前的数据准备，占用较大内存。
 * installedSonarqube: 是否安装Sonarqube，默认不安装。运行占用较大内存，不在管理节点安装。
 * remaincores：执行性能测试时，每个从机预留的cores数量，避免打满，默认预留1个
 * hrun_main：接口自动化统一执行入口，默认main-hrun.py
