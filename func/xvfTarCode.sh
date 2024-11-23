@@ -9,7 +9,7 @@ bash ${workdir}/comm/echoInfo.sh $workdir
 
 function xvfCodePackage(){
   package=$1
-  tar zxvf ${package}.tar $(ls | grep "${package}$")
+  tar zxvf ${package}.tar $(ls | grep "${package}$") > /dev/null
 }
 
 echo "xvfTarCode.sh, pwd is: $(pwd)"

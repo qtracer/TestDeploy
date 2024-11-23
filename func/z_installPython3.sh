@@ -17,7 +17,7 @@ function installPy(){
     cd ${jenkins_home}/python3
     wget http://python.org/ftp/python/${pyVersion}/Python-${pyVersion}.tgz --no-check-certificate
     sleep 1s
-    tar -zxvf Python-${pyVersion}.tgz
+    tar -zxvf Python-${pyVersion}.tgz > /dev/null
     sleep 2s
   fi
 }

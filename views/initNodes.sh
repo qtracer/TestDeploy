@@ -62,7 +62,7 @@ do
       expect -re {\\$|#} {send \"cd ${targetDir} \n\"}
       expect -re {\\$|#} {send \"sudo mkdir -vp ${targetDir}/${shellPackage} \n\"}
       expect -re {\\$|#} {send \"sudo rm -rf ${shellPackage}/ \n\"}
-      expect -re {\\$|#} {send \"sudo tar zxvf ${shellPackage}.tar \n\"}
+      expect -re {\\$|#} {send \"sudo tar zxvf ${shellPackage}.tar > /dev/null \n\"}
       expect -re {\\$|#} {send \"sudo rm -f ${targetDir}/${shellPackage}.tar \n\"}
       expect -re {\\$|#} {send \"cd ${targetDir}/${shellPackage} \n\"}
       expect -re {\\$|#} {send \"sudo bash func/setGlobal.sh ${targetDir}/${shellPackage} \n\"}

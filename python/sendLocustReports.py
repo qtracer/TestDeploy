@@ -24,6 +24,13 @@ with open(reportDir + projectname + ".html", 'wb') as file:
     file.write(down_res.content)
 file.close()
 
+'''获取ini/config.ini的邮件配置信息'''
+def getConfig(section, key):
+    cf.read(cfp, encoding="utf8")
+    value = cf.get(section, key)
+    return value
+
+
 '''截取HTML测试报告关键信息'''
 def reportElementHandle(wfile):
     # 读取HTML文件
@@ -32,19 +39,53 @@ def reportElementHandle(wfile):
 
     # 使用BeautifulSoup解析HTML
     soup = BeautifulSoup(html_content, 'lxml')
+    dic = {}
+    timeoutAPI90 = 0
+    timeoutAPI95 = 0
+    failAPI = 0
 
+    # 读取config.ini API超时设置
+    api_90timeout = int(getConfig('apitimeout', 'api_90timeout'))
+    api_95timeout = int(getConfig('apitimeout', 'api_95timeout'))
+
+    ## HTML-info
     summ = soup.find(class_='info')
     allspan = summ.find_all('span')
-    dic = {}
     dic['starttime']=allspan[0].text
     dic['endtime'] = allspan[1].text
+    dic['host'] = allspan[2].text
+
+    ## HTML-requests
+    rq = soup.find(class_='requests')
+    alltd = rq.find_all('td')
+    dic['total RPS'] = alltd[-2].text
+    dic['Failures/s'] = alltd[-1].text
+
+    alltr = rq.find('tbody').find_all('tr')
+    dic['API Amount'] = len(alltr) - 1
+    for tr in alltr:
+        alltd = tr.find_all('td')
+        if int(alltd[3].text) > 0:
+            failAPI += 1
+    # 去掉聚合td的统计
+    if failAPI > 0:
+        failAPI -= 1
+    dic['failAPIs'] = failAPI
+
+    ## HTML-responses
+    rs = soup.find(class_='responses')
+    alltr = rs.find('tbody').find_all('tr')
+    for tr in alltr:
+        alltd = tr.find_all('td')
+        if int(alltd[6].text) > api_90timeout:
+            timeoutAPI90 += 1
+        if int(alltd[7].text) > api_95timeout:
+            timeoutAPI95 += 1
+    dic['90timeoutAPIs'] = timeoutAPI90
+    dic['95timeoutAPIs'] = timeoutAPI95
+
     return dic
 
-'''获取ini/config.ini的邮件配置信息'''
-def getConfig(section, key):
-    cf.read(cfp, encoding="utf8")
-    value = cf.get(section, key)
-    return value
 
 '''发送邮件'''
 def send_email(subject, dicbody, file=None):
@@ -57,15 +98,93 @@ def send_email(subject, dicbody, file=None):
 
     # 创建 MIMEMultipart 对象
     # 邮件三个头部信息
-    mail = MIMEMultipart()
+    mail = MIMEMultipart('alternative')
     mail['Subject'] = subject
     mail['From'] = sender
     mail['To'] = ",".join(receiver)
 
-    starttime=dicbody['starttime']
-    endtime=dicbody['endtime']
-    bodytext=f"starttime:{starttime}GMT\nendtime:{endtime}GMT\n详细见附件"
-    mail.attach(MIMEText(bodytext, 'plain', 'utf-8'))
+    # HTML内容
+    if float(dicbody['Failures/s']) > 0:
+        color_Failures = "red"
+    else:
+        color_Failures = "green"
+
+    if dicbody['failAPIs'] > 0:
+        color_failAPIs = "red"
+    else:
+        color_failAPIs = "green"
+
+    if dicbody['90timeoutAPIs'] > 0:
+        color_90timeoutAPIs = "red"
+    else:
+        color_90timeoutAPIs = "green"
+
+    if dicbody['95timeoutAPIs'] > 0:
+        color_95timeoutAPIs = "red"
+    else:
+        color_95timeoutAPIs = "green"
+
+    html_content = f"""
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Email Example</title>
+        </head>
+        <body>
+            <table id="summary", style="width: 100%; margin:auto">
+                <tr>
+                  <th style="font-weight: bold;font-size: 15px;">Host</th>
+                  <td colspan="4",style="font-size: 15px;">{dicbody['host']}</td>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold;font-size: 15px;">StartTime</th>
+                  <td colspan="4",style="font-size: 15px;">{dicbody['starttime']}+00:00</td>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold;font-size: 15px;">EndTime</th>
+                  <td colspan="4",style="font-size: 15px;">{dicbody['endtime']}+00:00</td>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold; color: orange;font-size: 17px;">RPS</th>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold;font-size: 15px;">Totals</th>
+                  <td colspan="4",style="font-weight: bold; font-size: 17px; color: green;">{dicbody['total RPS']}</td>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold;font-size: 15px;">Failures</th>
+                  <td colspan="4",style="font-weight: bold; font-size: 17px; color: {color_Failures};">{dicbody['Failures/s']}</td>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold; color: orange;font-size: 17px;">APIs</th>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold;font-size: 15px;">Totals</th>
+                  <td colspan="4",style="font-size: 15px;">{dicbody['API Amount']}</td>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold;font-size: 15px;">Failures</th>
+                  <td colspan="4",style="font-size: 15px; font-weight: bold; color: {color_failAPIs};">{dicbody['failAPIs']}</td>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold; font-size: 15px;">90%Tout</th>
+                  <td colspan="4",style="font-size: 15px; font-weight: bold; color: {color_90timeoutAPIs};">{dicbody['90timeoutAPIs']}</td>
+                </tr>
+                <tr>
+                  <th style="font-weight: bold;font-size: 15px;">95%Tout</th>
+                  <td colspan="4",style="font-size: 15px; font-weight: bold; color: {color_95timeoutAPIs};">{dicbody['95timeoutAPIs']}</td>
+                </tr>
+            </table>
+        </body>
+        </html>
+        """
+    mail.attach(MIMEText(html_content, 'html'))
+
+    # # 纯文本
+    # bodytext = f"failAPIs:\n {dicbody['failAPIs']}\n timeoutAPIs:\n {dicbody['timeoutAPIs']}"
+    # mail.attach(MIMEText(bodytext, 'plain', 'utf-8'))
 
     # 附件
     att1 = MIMEText(open(file, 'rb').read(), 'html', 'utf-8')

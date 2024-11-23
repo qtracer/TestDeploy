@@ -50,7 +50,7 @@ expect -c "
   expect -re {\\$|#} {send \"sudo chmod 775 ${locustlog}/${projectPackage}/$(date +%Y%m%d)\n\"}
   expect -re {\\$|#} {send \"sudo chown -R ${account}:${account} ${locustlog}/${projectPackage}/$(date +%Y%m%d)\n\"}
   expect -re {\\$|#} {send \"cd ${targetDir}\n\"}
-  expect -re {\\$|#} {send \"sudo tar zxvf ${sourceDir}${sn}.tar\n\"}
+  expect -re {\\$|#} {send \"sudo tar zxvf ${sourceDir}${sn}.tar > /dev/null\n\"}
   expect -re {\\$|#} {send \"cd ${locust_workspace} && sudo rm -rf ${projectPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${projectPackage} ${locust_workspace}\n\"}
   expect -re {\\$|#} {send \"sudo rm -rf ${targetDir}/${shellPackage} && sudo mv ${targetDir}/${sourceDir}${sn}/${shellPackage} ${targetDir} \n\"}
   expect -re {\\$|#} {send \"sudo rm -rf ${targetDir}/${sourceDir}${sn}* \n\"}

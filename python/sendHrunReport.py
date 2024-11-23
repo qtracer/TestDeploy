@@ -31,7 +31,7 @@ def reportElementHandle(wfile):
     # time
     startat=alltd[0].text
     duration=alltd[1].text
-    dic['startat']=startat
+    dic['startat']=startat.split(".")[0]
     dic['duration']=duration
 
     ## testcases
@@ -119,7 +119,7 @@ def send_email(subject, dicbody, file=None):
             </tr>
             <tr>
               <th style="font-weight: bold;font-size: 15px;">Start At</th>
-              <td colspan="4",style="font-size: 15px;">{dicbody['startat']}</td>
+              <td colspan="4",style="font-size: 15px;">{dicbody['startat']}+00:00</td>
             </tr>
             <tr>
               <th style="font-weight: bold;font-size: 15px;">Duration</th>
@@ -127,7 +127,7 @@ def send_email(subject, dicbody, file=None):
             </tr>
             <tr>
               <th style="font-weight: bold;font-size: 15px;">Tips</th>
-              <td colspan="4", style="font-size: 15px;">.:suc / F:fail / E:err / s:skip</td>
+              <td colspan="4", style="font-size: 15px;">.>suc / F>fail / E>err / s>skip</td>
             </tr>
         </table>
         <table style="width: 100%; margin:auto">
