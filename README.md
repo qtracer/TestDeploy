@@ -35,22 +35,22 @@ bash $PRJ_ROOT_DIR/main-cli.sh
 ```
 
 ## 环境部署和任务构建统一入口
-> bash $PRJ_ROOT_DIR/main-cli.sh **$JOB_NAME** **$BUILD_NUMBER** **$WORKERNUM** $arg1 $arg2
+> bash $PRJ_ROOT_DIR/main-cli.sh **$JOB_NAME** **$flag** **$WORKERNUM** $arg1 $arg2
 
 ### 自动化测试任务
 ```Bash 
-bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER 0 $HOST $APPOINTEDCASES
+bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $flag 0 $HOST $APPOINTEDCASES
 # JOB_NAME: 项目名，Jenkins环境变量，直接引用
-# BUILD_NUMBER: 构建号，Jenkins环境变量，直接引用。项目的tag标签也可以，仅做标识用
-# HOST: 任务执行环境
+# flag: 仅做标识用。推荐用Jenkins构建号，即$BUILD_NUMBER
+# HOST: 用标识表示任务执行环境，如HOST=release, 表示任务执行时用的是生产环境的域名
 # APPOINTEDCASES: 指定用例，非必选，默认testsuites/
 ```
 
 ### 性能测试任务
 ```Bash 
-bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $BUILD_NUMBER $WORKERNUM $HOST $APPOINTEDCASES
+bash $PRJ_ROOT_DIR/main-cli.sh $JOB_NAME $flag $WORKERNUM $HOST $APPOINTEDCASES
 # WORKERNUM：Locust worker进程数,默认1 worker对应1 CPU core，依此动态计算需要多少主机节点的支持。另，1 worker约可支持1000虚拟用户
-# HOST: 任务执行环境
+# HOST: 用标识表示任务执行环境，如HOST=release, 表示任务执行时用的是生产环境的域名
 # APPOINTEDCASES: 非必选，对应Locust的@tag属性
 ```
 ```
