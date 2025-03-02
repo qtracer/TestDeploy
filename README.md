@@ -5,7 +5,7 @@
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/System-Centos 7 | Ubuntu 18/20-red.svg"></a>
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/badge/Privileges-root | sudo-green.svg"></a>
   <a href="https://blog.csdn.net/qq_24601279/article/details/122942046"><img src="https://img.shields.io/badge/Desc-CSDN-green.svg"></a>
-  [![Contributors](https://img.shields.io/github/contributors/qtracer/TestDeploy.svg?style=for-the-badge)](https://github.com/qtracer/TestDeploy/graphs/contributors)
+  <a href="https://github.com/qtracer/TestDeploy/graphs/contributors"><img src="https://img.shields.io/github/contributors/qtracer/TestDeploy.svg"></a>
 <!--   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/stars/qtracer/TestDeploy?color=%23D0A20D&style=flat-square" alt="Stars"></a>
   <a href="https://github.com/qtracer/TestDeploy"><img src="https://img.shields.io/github/forks/qtracer/TestDeploy?color=%230ACB84&style=flat-square" alt="Forks"></a> -->
 </p>
