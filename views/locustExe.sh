@@ -38,7 +38,11 @@ sleep 2
 
 if [ "$openModel" = "single" ];then
   cat ${workdir}/data/statement_locust.txt
-  nohup bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohup_locust_compose.out
+  echo "${locustlog}/$JOB_NAME/$(date +%Y%m%d)" 
+  bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase
+  #bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase > ${locustlog}/$JOB_NAME/$(date +%Y%m%d)/nohup_locustLog.out
+  #sleep 3
+  #docker rm $(docker ps -aq --filter status=exited)
   #bash ${workdir}/func/locust_compose.sh $workdir $JOB_NAME $realWorkers $appointedCase
 else
   bash ${workdir}/func/prepareFiles.sh $workdir $openModel $JOB_NAME $workerNum

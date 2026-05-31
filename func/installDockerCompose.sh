@@ -13,10 +13,10 @@ if [ $? -eq 0 ];then
   echo "docker-compose不需要重新安装"
 else
   # 国外镜像
-  # curl -L "https://github.com/docker/compose/releases/download/$dcVersion/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  curl -L "https://github.com/docker/compose/releases/download/$dcVersion/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
   # 国内镜像(该镜像源不可用)
   # curl -L "https://get.daocloud.io/docker/compose/releases/download/$dcVersion/docker-compose-$(uname -s)-$(uname -m)" > /usr/local/bin/docker-compose
   # 本地文件
-  cat $workdir/data/docker-compose > /usr/local/bin/docker-compose
+  #cat $workdir/data/docker-compose > /usr/local/bin/docker-compose
   chmod +x /usr/local/bin/docker-compose
 fi

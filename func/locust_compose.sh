@@ -14,7 +14,7 @@ cd ${locust_workspace}/$JOB_NAME
 
 # 单机模式下，docker-compose启动worker的方式
 if [ $appointedCase ];then
-  /usr/local/bin/docker-compose -f docker-compose-withCase.yml up --scale worker=${realWorkers}
+  /usr/local/bin/docker-compose -f docker-compose-withCase.yml up --force-recreate --scale worker=${realWorkers}
 else
-  /usr/local/bin/docker-compose -f docker-compose.yml up --scale worker=${realWorkers}
+  /usr/local/bin/docker-compose -f docker-compose.yml up --force-recreate --scale worker=${realWorkers}
 fi
